@@ -1,0 +1,7 @@
+server:
+  port: 7270
+shiro:
+  plugin-list:
+    - com.catand.skyblockhelper.plugins.HelpPlugin
+    - com.catand.skyblockhelper.plugins.LogPlugin
+  interceptor:
