@@ -4,4 +4,5 @@ shiro:
   plugin-list:
     - com.catand.skyblockhelper.plugins.HelpPlugin
     - com.catand.skyblockhelper.plugins.LogPlugin
+    - com.catand.skyblockhelper.plugins.NetworthPlugin
   interceptor:

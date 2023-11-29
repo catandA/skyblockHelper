@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
 public class HelpPlugin extends BotPlugin {
     @Override
     public int onAnyMessage(Bot bot, AnyMessageEvent event) {
-        System.out.println(event.getRawMessage());
         if (event.getRawMessage().contains("帮助")) {
             bot.sendMsg(event, "skyblock机器人\n还在开发", false);
         }
