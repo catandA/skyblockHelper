@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'com.catand'
-version = '0.0.1-SNAPSHOT'
+version = '0.0.1'
 
 java {
 	sourceCompatibility = '17'
@@ -18,6 +18,8 @@ configurations {
 }
 
 repositories {
+	maven { url 'https://maven.aliyun.com/repository/public' }
+	maven { url 'https://maven.aliyun.com/repository/spring/' }
 	mavenCentral()
 }
 
@@ -28,7 +30,7 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation 'org.apache.httpcomponents:httpclient:4.5.13'
-	implementation 'com.alibaba:fastjson:1.2.76'
+	implementation 'com.alibaba:fastjson:2.0.42'
 }
 
 tasks.named('test') {
