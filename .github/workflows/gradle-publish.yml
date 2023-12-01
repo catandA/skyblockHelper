@@ -97,7 +97,7 @@ jobs:
           
           echo "::set-output name=changelog_discord::$CHANGELOG"
 
-      - uses: actions/github-script@v6
+      - uses: actions/github-script@v7
         id: fname
         with:
           result-encoding: string
