@@ -11,6 +11,9 @@ public class InfoPlugin extends BotPlugin {
 	@Override
 	public int onGroupMessage(Bot bot, GroupMessageEvent event) {
 		String messageRaw = event.getRawMessage();
+		if (!messageRaw.contains("/")) {
+			return MESSAGE_IGNORE;
+		}
 		messageRaw = messageRaw.split("/")[1];
 		if (!messageRaw.startsWith("信息")) {
 			return MESSAGE_IGNORE;

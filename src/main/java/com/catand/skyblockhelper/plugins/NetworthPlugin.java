@@ -20,6 +20,9 @@ public class NetworthPlugin extends BotPlugin {
 	public int onGroupMessage(Bot bot, GroupMessageEvent event) {
 		//格式化消息获取参数
 		String messageRaw = event.getRawMessage();
+		if (!messageRaw.contains("/")) {
+			return MESSAGE_IGNORE;
+		}
 		messageRaw = messageRaw.split("/")[1];
 		if (!messageRaw.startsWith("身价")) {
 			return MESSAGE_IGNORE;
