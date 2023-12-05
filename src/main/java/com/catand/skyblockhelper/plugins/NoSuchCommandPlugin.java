@@ -1,25 +1,23 @@
 package com.catand.skyblockhelper.plugins;
 
+import com.mikuac.shiro.common.utils.MsgUtils;
 import com.mikuac.shiro.core.Bot;
 import com.mikuac.shiro.core.BotPlugin;
-import com.mikuac.shiro.dto.event.message.AnyMessageEvent;
 import com.mikuac.shiro.dto.event.message.GroupMessageEvent;
 import org.springframework.stereotype.Component;
 
 @Component
-public class HelpPlugin extends BotPlugin {
+public class NoSuchCommandPlugin extends BotPlugin {
+	MsgUtils sendMsg;
+
 	@Override
 	public int onGroupMessage(Bot bot, GroupMessageEvent event) {
+		//格式化消息获取参数
 		String messageRaw = event.getRawMessage();
 		messageRaw = messageRaw.split("/")[1];
-		if (!messageRaw.startsWith("帮助")) {
-			return MESSAGE_IGNORE;
-		}
-		bot.sendGroupMsg(event.getGroupId(), "/帮助 查看机器人指令列表" +
-				"\n/身价 查询指定玩家身价信息" +
-				"\n/技能 查询指定玩家技能信息"+
-				"\n/信息 查看SkyblockHelper基本信息", false);
+		String[] args = messageRaw.split(" ");
+		sendMsg = MsgUtils.builder().text("不存在名为\"" + args[0] + "\"的指令，输入/help查看帮助");
+		bot.sendGroupMsg(event.getGroupId(), sendMsg.build(), false);
 		return MESSAGE_BLOCK;
 	}
-
 }

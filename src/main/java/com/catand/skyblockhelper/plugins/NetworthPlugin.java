@@ -1,7 +1,9 @@
 package com.catand.skyblockhelper.plugins;
 
 import com.alibaba.fastjson2.JSONObject;
+import com.catand.skyblockhelper.InternalServerErrorProcessor;
 import com.catand.skyblockhelper.Player;
+import com.catand.skyblockhelper.utils.NumberFormatUtil;
 import com.catand.skyblockhelper.utils.ProfileUtil;
 import com.mikuac.shiro.common.utils.MsgUtils;
 import com.mikuac.shiro.core.Bot;
@@ -9,8 +11,6 @@ import com.mikuac.shiro.core.BotPlugin;
 import com.mikuac.shiro.dto.event.message.GroupMessageEvent;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.HttpServerErrorException;
-
-import java.text.DecimalFormat;
 
 @Component
 public class NetworthPlugin extends BotPlugin {
@@ -21,12 +21,12 @@ public class NetworthPlugin extends BotPlugin {
 		//格式化消息获取参数
 		String messageRaw = event.getRawMessage();
 		messageRaw = messageRaw.split("/")[1];
-		if (!messageRaw.contains("networth")) {
+		if (!messageRaw.startsWith("身价")) {
 			return MESSAGE_IGNORE;
 		}
 		String[] args = messageRaw.split(" ");
 		if (args.length < 2) {
-			sendMsg = MsgUtils.builder().text("参数错误，\n正确格式：/networth <玩家名>");
+			sendMsg = MsgUtils.builder().text("参数错误，\n正确格式：/身价 <玩家名>");
 			bot.sendGroupMsg(event.getGroupId(), sendMsg.build(), false);
 			return MESSAGE_BLOCK;
 		}
@@ -34,33 +34,34 @@ public class NetworthPlugin extends BotPlugin {
 		//获取networth
 		try {
 			Player player = new Player(args[1]);
-			player.refreshProfileList();
 			JSONObject networthData = ProfileUtil.getNetworthData(player.getMainProfile());
-			DecimalFormat decimalFormat = new DecimalFormat(",###");
-			sendMsg = MsgUtils.builder().text(player.name + ":\n"
-					+ "Networth: " + decimalFormat.format((int) networthData.getDoubleValue("networth")));
+			sendMsg = MsgUtils.builder().text(player.name + "在" + ProfileUtil.getProfileName(player.getMainProfile()) + "上的身价:\n" +
+					"总计:" + NumberFormatUtil.format(networthData.getDoubleValue("networth")));
 			String[] keys = networthData.getJSONObject("types").keySet().toArray(new String[0]);
 			for (String key : keys) {
-				sendMsg.text("\n" + key + ": " + decimalFormat.format((int) networthData.getJSONObject("types").getJSONObject(key).getDoubleValue("total")));
+				String value = NumberFormatUtil.format((long) networthData.getJSONObject("types").getJSONObject(key).getDoubleValue("total"));
+				switch (key) {
+					case "armor" -> key = "护甲";
+					case "equipment" -> key = "装备";
+					case "wardrobe" -> key = "衣橱";
+					case "inventory" -> key = "背包";
+					case "enderchest" -> key = "末影箱";
+					case "accessories" -> key = "饰品";
+					case "personal_vault" -> key = "保险箱";
+					case "storage" -> key = "存储";
+					case "fishing_bag" -> key = "钓鱼袋";
+					case "potion_bag" -> key = "药水袋";
+					case "candy_inventory" -> key = "糖果袋";
+					case "sacks" -> key = "袋子";
+					case "essence" -> key = "精粹";
+					case "pets" -> key = "宠物";
+				}
+				if (value.equals("0")) continue;
+				sendMsg.text("\n" + key + ":\t" + value);
 			}
 			bot.sendGroupMsg(event.getGroupId(), sendMsg.build(), false);
 		} catch (HttpServerErrorException.InternalServerError e) {
-			e.printStackTrace();
-			if (e.getMessage().contains("No user with the name")) {
-				sendMsg = MsgUtils.builder().text("玩家不存在");
-				bot.sendGroupMsg(event.getGroupId(), sendMsg.build(), false);
-				return MESSAGE_BLOCK;
-			}
-			if (e.getMessage().contains("undefined")) {
-				sendMsg = MsgUtils.builder().text("你的数据目前被Hypixel打乱了\n暂时查不出来\n(￣ε(#￣)☆╰╮(￣▽￣///)\n经SkyCrypt确认，此问题由Hypixel更新skyblock数据格式引起\n在数据迁移未完成期间上号会导致此问题\n得等Hypixel修它的API");
-				bot.sendGroupMsg(event.getGroupId(), sendMsg.build(), false);
-				return MESSAGE_BLOCK;
-			}
-			if (e.getMessage().contains("404 Not Found")) {
-				sendMsg = MsgUtils.builder().text("参数格式打错了\n正确格式：/networth <玩家名>");
-				bot.sendGroupMsg(event.getGroupId(), sendMsg.build(), false);
-				return MESSAGE_BLOCK;
-			}
+			new InternalServerErrorProcessor(e, bot, event);
 		}
 		return MESSAGE_BLOCK;
 	}

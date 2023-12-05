@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'com.catand'
-version = '0.1.0'
+version = '0.2.0'
 
 java {
 	sourceCompatibility = '17'
@@ -31,4 +31,13 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation 'org.apache.httpcomponents:httpclient:4.5.14'
 	implementation 'com.alibaba:fastjson:2.0.43'
+}
+bootJar {
+	doFirst {
+		manifest {
+			attributes(
+					'Implementation-Version': "${version}"
+			)
+		}
+	}
 }

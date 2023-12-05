@@ -12,9 +12,10 @@ public class Player {
 
 	public Player(String name) {
 		this.name = name;
+		refreshProfileList();
 	}
 
-	public void refreshProfileList() {
+	private void refreshProfileList() {
 		profileList = new ArrayList<>();
 		//从API获取profileList
 		String rawProfileData = SkyCryptAPIGetUtil.getDataByTags(name, SkyCryptAPIGetUtil.Tags.PROFILE);
