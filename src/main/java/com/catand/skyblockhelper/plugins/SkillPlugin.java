@@ -1,7 +1,7 @@
 package com.catand.skyblockhelper.plugins;
 
 import com.alibaba.fastjson2.JSONObject;
-import com.catand.skyblockhelper.InternalServerErrorProcessor;
+import com.catand.skyblockhelper.ErrorProcessor;
 import com.catand.skyblockhelper.Player;
 import com.catand.skyblockhelper.utils.NumberFormatUtil;
 import com.catand.skyblockhelper.utils.ProfileUtil;
@@ -46,8 +46,8 @@ public class SkillPlugin extends BotPlugin {
 					"\n炼金:" + NumberFormatUtil.format(levelsData.getJSONObject("alchemy").getIntValue("level")) + "\t木工:" + NumberFormatUtil.format(levelsData.getJSONObject("carpentry").getIntValue("level")) +
 					"\n符文:" + NumberFormatUtil.format(levelsData.getJSONObject("runecrafting").getIntValue("level")) + "\t社交:" + NumberFormatUtil.format(levelsData.getJSONObject("social").getIntValue("level")));
 			bot.sendGroupMsg(event.getGroupId(), sendMsg.build(), false);
-		} catch (HttpServerErrorException.InternalServerError e) {
-			new InternalServerErrorProcessor(e, bot, event);
+		} catch (Exception e) {
+			new ErrorProcessor(e, bot, event);
 		}
 		return MESSAGE_BLOCK;
 	}

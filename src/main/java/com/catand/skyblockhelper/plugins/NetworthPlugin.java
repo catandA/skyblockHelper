@@ -1,7 +1,7 @@
 package com.catand.skyblockhelper.plugins;
 
 import com.alibaba.fastjson2.JSONObject;
-import com.catand.skyblockhelper.InternalServerErrorProcessor;
+import com.catand.skyblockhelper.ErrorProcessor;
 import com.catand.skyblockhelper.Player;
 import com.catand.skyblockhelper.utils.NumberFormatUtil;
 import com.catand.skyblockhelper.utils.ProfileUtil;
@@ -63,8 +63,8 @@ public class NetworthPlugin extends BotPlugin {
 				sendMsg.text("\n" + key + ":\t" + value);
 			}
 			bot.sendGroupMsg(event.getGroupId(), sendMsg.build(), false);
-		} catch (HttpServerErrorException.InternalServerError e) {
-			new InternalServerErrorProcessor(e, bot, event);
+		} catch (Exception e) {
+			new ErrorProcessor(e, bot, event);
 		}
 		return MESSAGE_BLOCK;
 	}
