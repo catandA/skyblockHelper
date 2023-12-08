@@ -1,5 +1,6 @@
 package com.catand.skyblockhelper.plugins;
 
+import com.catand.skyblockhelper.SkyblockHelperApplication;
 import com.mikuac.shiro.core.Bot;
 import com.mikuac.shiro.core.BotPlugin;
 import com.mikuac.shiro.dto.event.message.AnyMessageEvent;
@@ -18,7 +19,7 @@ public class InfoPlugin extends BotPlugin {
 		if (!messageRaw.startsWith("信息")) {
 			return MESSAGE_IGNORE;
 		}
-		bot.sendGroupMsg(event.getGroupId(), "skyblockHelper v" + getClass().getPackage().getImplementationVersion(), false);
+		bot.sendGroupMsg(event.getGroupId(), "skyblockHelper v" + SkyblockHelperApplication.VERSION, false);
 		return MESSAGE_BLOCK;
 	}
 }
