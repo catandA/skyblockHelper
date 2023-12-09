@@ -46,12 +46,12 @@ public class NetworthPlugin extends BotPlugin {
 			for (String key : keys) {
 				String value = NumberFormatUtil.format((long) networthTypesData.getJSONObject(key).getDoubleValue("total"));
 				switch (key) {
-					case "armor" -> key = "护甲";
-					case "equipment" -> key = "装备";
+					case "armor" -> key = "装备";
+					case "equipment" -> key = "饰品";
 					case "wardrobe" -> key = "衣橱";
 					case "inventory" -> key = "背包";
 					case "enderchest" -> key = "末影箱";
-					case "accessories" -> key = "饰品";
+					case "accessories" -> key = "护符";
 					case "personal_vault" -> key = "保险箱";
 					case "storage" -> key = "存储";
 					case "fishing_bag" -> key = "钓鱼袋";
