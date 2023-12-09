@@ -38,11 +38,13 @@ public class NetworthPlugin extends BotPlugin {
 		try {
 			Player player = new Player(args[1]);
 			JSONObject networthData = ProfileUtil.getNetworthData(player.getMainProfile());
+			JSONObject networthTypesData = networthData.getJSONObject("types");
+
 			sendMsg = MsgUtils.builder().text(player.name + "在" + ProfileUtil.getProfileName(player.getMainProfile()) + "上的身价:\n" +
 					"总计:" + NumberFormatUtil.format(networthData.getDoubleValue("networth")));
 			String[] keys = networthData.getJSONObject("types").keySet().toArray(new String[0]);
 			for (String key : keys) {
-				String value = NumberFormatUtil.format((long) networthData.getJSONObject("types").getJSONObject(key).getDoubleValue("total"));
+				String value = NumberFormatUtil.format((long) networthTypesData.getJSONObject(key).getDoubleValue("total"));
 				switch (key) {
 					case "armor" -> key = "护甲";
 					case "equipment" -> key = "装备";

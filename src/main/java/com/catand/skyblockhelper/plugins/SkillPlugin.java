@@ -10,7 +10,8 @@ import com.mikuac.shiro.core.Bot;
 import com.mikuac.shiro.core.BotPlugin;
 import com.mikuac.shiro.dto.event.message.GroupMessageEvent;
 import org.springframework.stereotype.Component;
-import org.springframework.web.client.HttpServerErrorException;
+
+import java.text.DecimalFormat;
 
 @Component
 public class SkillPlugin extends BotPlugin {
@@ -36,15 +37,44 @@ public class SkillPlugin extends BotPlugin {
 
 		try {
 			Player player = new Player(args[1]);
-			JSONObject levelsData = ProfileUtil.get_levels_Data(player.getMainProfile());
-			sendMsg = MsgUtils.builder().text(player.name + "在" + ProfileUtil.getProfileName(player.getMainProfile()) + "上的技能(排名:" + ProfileUtil.get_average_level_rank_Data(player.getMainProfile()) + "):\n" +
-					"总经验:" + NumberFormatUtil.format(ProfileUtil.get_total_skill_xp_Data(player.getMainProfile())) + "\t平均等级:" + NumberFormatUtil.format(ProfileUtil.get_average_level_Data(player.getMainProfile())) +
-					"\n战斗:" + NumberFormatUtil.format(levelsData.getJSONObject("combat").getIntValue("level")) + "\t农业:" + NumberFormatUtil.format(levelsData.getJSONObject("farming").getIntValue("level")) +
-					"\n挖矿:" + NumberFormatUtil.format(levelsData.getJSONObject("mining").getIntValue("level")) + "\t砍树:" + NumberFormatUtil.format(levelsData.getJSONObject("foraging").getIntValue("level")) +
-					"\n钓鱼:" + NumberFormatUtil.format(levelsData.getJSONObject("fishing").getIntValue("level")) + "\t附魔:" + NumberFormatUtil.format(levelsData.getJSONObject("enchanting").getIntValue("level")) +
-					"\n驯养:" + NumberFormatUtil.format(levelsData.getJSONObject("taming").getIntValue("level")) + "\t地牢:" + NumberFormatUtil.format(ProfileUtil.getDungeonData(player.getMainProfile()).getJSONObject("catacombs").getJSONObject("level").getIntValue("level")) +
-					"\n炼金:" + NumberFormatUtil.format(levelsData.getJSONObject("alchemy").getIntValue("level")) + "\t木工:" + NumberFormatUtil.format(levelsData.getJSONObject("carpentry").getIntValue("level")) +
-					"\n符文:" + NumberFormatUtil.format(levelsData.getJSONObject("runecrafting").getIntValue("level")) + "\t社交:" + NumberFormatUtil.format(levelsData.getJSONObject("social").getIntValue("level")));
+			JSONObject skillsData = ProfileUtil.get_skills_Data(player.getMainProfile());
+			JSONObject skillsListData = skillsData.getJSONObject("skills");
+			DecimalFormat decimalFormat = new DecimalFormat("#.##");
+			sendMsg = MsgUtils.builder().text(player.name + "在" + ProfileUtil.getProfileName(player.getMainProfile()) + "上的技能:\n" +
+					"总经验:" + NumberFormatUtil.format(skillsData.getDoubleValue("totalSkillXp")) + "\t平均等级:" + decimalFormat.format(skillsData.getDouble("averageSkillLevel")) + "\n");
+
+			String[] keys = skillsListData.keySet().toArray(new String[0]);
+			for (int i = 0; i < keys.length; i++) {
+				String key = keys[i];
+				String value = skillsListData.getJSONObject(key).getIntValue("level") + "";
+				switch (key) {
+					case "combat" -> key = "战斗";
+					case "farming" -> key = "农业";
+					case "mining" -> key = "挖矿";
+					case "foraging" -> key = "砍树";
+					case "fishing" -> key = "钓鱼";
+					case "enchanting" -> key = "附魔";
+					case "taming" -> key = "驯养";
+					case "alchemy" -> key = "炼金";
+					case "carpentry" -> key = "木工";
+					case "runecrafting" -> key = "符文";
+					case "social" -> key = "社交";
+				}
+				sendMsg.text(key + ":\t" + value);
+				if ((i + 1) % 3 == 0) {
+					sendMsg.text("\n");
+				} else {
+					sendMsg.text("\t");
+				}
+			}
+			if (ProfileUtil.getDungeonData(player.getMainProfile()).getJSONObject("catacombs").getBooleanValue("visited")) {
+				sendMsg.text("地牢" + ":\t" + ProfileUtil.getDungeonData(player.getMainProfile()).getJSONObject("catacombs").getJSONObject("level").getIntValue("level"));
+			} else {
+				if (keys.length % 3 != 0) {
+					sendMsg.text("\n");
+				}
+				sendMsg.text("地牢?什么地牢?这位进都没进去过");
+			}
 			bot.sendGroupMsg(event.getGroupId(), sendMsg.build(), false);
 		} catch (Exception e) {
 			new ErrorProcessor(e, bot, event);

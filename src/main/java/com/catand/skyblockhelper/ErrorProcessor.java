@@ -15,6 +15,7 @@ public class ErrorProcessor {
 	Exception exception;
 
 	public ErrorProcessor(Exception exception, Bot bot, GroupMessageEvent event) {
+		exception.printStackTrace();
 		this.bot = bot;
 		this.event = event;
 		this.exception = exception;
