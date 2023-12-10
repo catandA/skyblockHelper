@@ -3,15 +3,37 @@ package com.catand.skyblockhelper.utils;
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
-import java.awt.geom.RoundRectangle2D;
 import java.awt.image.BufferedImage;
-import java.awt.image.ConvolveOp;
-import java.awt.image.Kernel;
 import java.io.*;
 import java.util.Base64;
 import java.util.Random;
 
 public class ImageUtil {
+	public static enum backGround {
+		BG,
+		BURNING_CHINNABER,
+		CANDYCANE,
+		DRACONIC,
+		LIGHT,
+		NIGHTBLUE,
+		SKYLEA,
+		SUNRISE;
+
+		@Override
+		public String toString() {
+			return switch (this){
+				case BG -> "/background/bg.png";
+				case BURNING_CHINNABER -> "/background/burning_chinnaber.png";
+				case CANDYCANE -> "/background/candycane.png";
+				case DRACONIC -> "/background/draconic.png";
+				case LIGHT -> "/background/light.png";
+				case NIGHTBLUE -> "/background/nightblue.png";
+				case SKYLEA -> "/background/skylea.png";
+				case SUNRISE-> "/background/sunrise.png";
+			};
+		}
+	}
+
 	public static BufferedImage getBackground(int width, int height) throws IOException {
 		// 创建一个指定长宽的图片
 		BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
@@ -19,15 +41,10 @@ public class ImageUtil {
 		// 获取 Graphics2D 对象
 		Graphics2D g2d = image.createGraphics();
 
-		// 创建一个File对象，获取该目录下的所有.png文件
-		File dir = new File("src/main/resources/background/");
-		File[] files = dir.listFiles((dir1, name) -> name.endsWith(".png"));
-
-		// 随机选择一个文件
-		File file = files[new Random().nextInt(files.length)];
-
-		// 加载背景图像
-		InputStream bgImageStream = new FileInputStream(file);
+		// 加载一个随机的背景图像
+		Random random = new Random();
+		backGround bg = backGround.values()[random.nextInt(backGround.values().length)];
+		InputStream bgImageStream = ImageUtil.class.getResourceAsStream(bg.toString());
 		BufferedImage bgImage = ImageIO.read(bgImageStream);
 
 		// 计算背景图像的缩放比例和位置
