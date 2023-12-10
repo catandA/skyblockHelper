@@ -10,7 +10,6 @@ import com.mikuac.shiro.core.Bot;
 import com.mikuac.shiro.core.BotPlugin;
 import com.mikuac.shiro.dto.event.message.GroupMessageEvent;
 import org.springframework.stereotype.Component;
-import org.springframework.web.client.HttpServerErrorException;
 
 @Component
 public class NetworthPlugin extends BotPlugin {
@@ -41,9 +40,11 @@ public class NetworthPlugin extends BotPlugin {
 			JSONObject networthTypesData = networthData.getJSONObject("types");
 
 			sendMsg = MsgUtils.builder().text(player.name + "在" + ProfileUtil.getProfileName(player.getMainProfile()) + "上的身价:\n" +
-					"总计:" + NumberFormatUtil.format(networthData.getDoubleValue("networth")));
+					"总计:" + NumberFormatUtil.format(networthData.getDoubleValue("networth")) + "\t");
 			String[] keys = networthData.getJSONObject("types").keySet().toArray(new String[0]);
-			for (String key : keys) {
+
+			for (int i = 0; i < keys.length; i++) {
+				String key = keys[i];
 				String value = NumberFormatUtil.format((long) networthTypesData.getJSONObject(key).getDoubleValue("total"));
 				switch (key) {
 					case "armor" -> key = "装备";
@@ -61,8 +62,12 @@ public class NetworthPlugin extends BotPlugin {
 					case "essence" -> key = "精粹";
 					case "pets" -> key = "宠物";
 				}
-				if (value.equals("0")) continue;
-				sendMsg.text("\n" + key + ":\t" + value);
+				sendMsg.text(key + ":\t" + value);
+				if ((i + 1) % 3 == 2) {
+					sendMsg.text("\n");
+				} else {
+					sendMsg.text("\t");
+				}
 			}
 			bot.sendGroupMsg(event.getGroupId(), sendMsg.build(), false);
 		} catch (Exception e) {
