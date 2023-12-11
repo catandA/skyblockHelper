@@ -14,6 +14,10 @@ public class ProfileUtil {
 		return profile.getJSONObject("data").getJSONObject("skills");
 	}
 
+	public static JSONObject getAccessoriesData(JSONObject profile) {
+		return profile.getJSONObject("data").getJSONObject("accessories");
+	}
+
 	public static String getProfileName(JSONObject profile) {
 		return profile.getString("cute_name");
 	}
