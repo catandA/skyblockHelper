@@ -123,20 +123,32 @@ public class NetworthPlugin extends BotPlugin {
 			roundedRectangle.setRoundRect(startX + bodyWidth / 3f * 2 + 7.5, startY + 7.5, bodyWidth / 3f - 15, rowHeight - 15, 20, 20);
 			g2d.fill(roundedRectangle);
 
+			String data;
+
 			// 绘制总计身价
 			DecimalFormat decimalFormat = new DecimalFormat();
 			decimalFormat.setGroupingUsed(true);
 			decimalFormat.setGroupingSize(3);
-			String networth = decimalFormat.format((long) networthData.getDoubleValue("networth"));
 			g2d.setColor(white);
-			g2d.drawString("总计身价:",
-					startX + bodyWidth / 3 / 2 - g2d.getFontMetrics().stringWidth("总计身价:") / 2f,
+			data = "总计身价:";
+			g2d.drawString(data,
+					startX + bodyWidth / 3 / 2 - g2d.getFontMetrics().stringWidth(data) / 2f,
 					startY + rowHeight / 2 - g2d.getFontMetrics().getHeight() + g2d.getFontMetrics().getAscent());
-			g2d.drawString(networth,
-					startX + bodyWidth / 3 / 2 - g2d.getFontMetrics().stringWidth(networth) / 2f,
+			data = decimalFormat.format((long) networthData.getDoubleValue("networth"));
+			g2d.drawString(data,
+					startX + bodyWidth / 3 / 2 - g2d.getFontMetrics().stringWidth(data) / 2f,
 					startY + rowHeight / 2 + g2d.getFontMetrics().getAscent());
 
-			String data;
+			// 银行和钱包
+			data = "钱包:" + NumberFormatUtil.format((long) networthData.getDoubleValue("purse"));
+			g2d.drawString(data,
+					startX + bodyWidth / 3f + bodyWidth / 3 / 2 - g2d.getFontMetrics().stringWidth(data) / 2f,
+					startY + rowHeight / 2 - g2d.getFontMetrics().getHeight() / 2f + g2d.getFontMetrics().getAscent());
+			data = "银行:" + NumberFormatUtil.format((long) networthData.getDoubleValue("bank"));
+			g2d.drawString(data,
+					startX + bodyWidth / 3f * 2 + bodyWidth / 3 / 2 - g2d.getFontMetrics().stringWidth(data) / 2f,
+					startY + rowHeight / 2 - g2d.getFontMetrics().getHeight() / 2f + g2d.getFontMetrics().getAscent());
+
 			// 遍历每行
 			for (int i = 0; i < rows; i++) {
 				// 遍历每列
