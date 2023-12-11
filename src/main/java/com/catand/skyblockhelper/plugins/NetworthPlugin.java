@@ -16,6 +16,8 @@ import java.awt.*;
 import java.awt.geom.RoundRectangle2D;
 import java.awt.image.BufferedImage;
 import java.text.DecimalFormat;
+import java.util.HashSet;
+import java.util.Set;
 
 @Component
 public class NetworthPlugin extends BotPlugin {
@@ -63,7 +65,7 @@ public class NetworthPlugin extends BotPlugin {
 
 			// 获取 Graphics2D 对象，创建字体实例并设置像素大小
 			Graphics2D g2d = image.createGraphics();
-			Font font = new Font("fonts/NotoSansSC-Bold.ttf", Font.BOLD, ImageUtil.getFontPixelSize(35));
+			Font font = new Font("fonts/NotoSansSC-Bold.ttf", Font.BOLD, ImageUtil.getFontPixelSize(40));
 			g2d.setFont(font);
 
 			// 创建四个圆角矩形
@@ -89,36 +91,52 @@ public class NetworthPlugin extends BotPlugin {
 			startX = 840 - (float) g2d.getFontMetrics().stringWidth("还没做你别急") / 2;
 			g2d.drawString("还没做你别急", startX, startY);
 
-			String[] keys = networthData.getJSONObject("types").keySet().toArray(new String[0]); // 这里应该是你的数据
-			int dataPerRow = 3; // 每行的数据数量
-			int rows = (int) Math.ceil((double) keys.length / dataPerRow); // 计算行数
+			// 现在为边栏的长度
+			startX = 30;
+			startY = 70;
 
-			startX = 20;
-			startY = 90;
-			float rowHeight = (height - startY) / (rows + 1); // 计算每行的高度
-			float columnWidth = (float) (width - 40) / dataPerRow; // 计算每列的宽度
-			String data = null;
+			// body的宽度和高度
+			float bodyWidth = width - startX * 2;
+			float bodyHeight = height - startY;
 
+			Set<String> keys = new HashSet<>(networthTypesData.keySet());
+			// 删除牛毛
+			for (String key : keys) {
+				// 检查值是否小于1000
+				if (networthTypesData.getJSONObject(key).getDoubleValue("total") < 1000) {
+					// 如果值小于1000，从networthTypesData中移除该键值对
+					networthTypesData.remove(key);
+				}
+			}
+			keys = networthTypesData.keySet();
+			int dataPerRow = 4; // 每行的数据数量
+			int rows = (int) Math.ceil((double) keys.size() / dataPerRow); // 计算行数
+			float rowHeight = bodyHeight / (rows + 1); // 计算每行的高度
+			float columnWidth = bodyWidth / dataPerRow; // 计算每列的宽度
 
 			// 绘制圆角矩形
-			roundedRectangle.setRoundRect(startX + 20, startY, 880, rowHeight - 20, 20, 20);
 			g2d.setColor(deeper);
+			roundedRectangle.setRoundRect(startX + 7.5, startY + 7.5, bodyWidth / 3f - 15, rowHeight - 15, 20, 20);
+			g2d.fill(roundedRectangle);
+			roundedRectangle.setRoundRect(startX + bodyWidth / 3f + 7.5, startY + 7.5, bodyWidth / 3f - 15, rowHeight - 15, 20, 20);
+			g2d.fill(roundedRectangle);
+			roundedRectangle.setRoundRect(startX + bodyWidth / 3f * 2 + 7.5, startY + 7.5, bodyWidth / 3f - 15, rowHeight - 15, 20, 20);
 			g2d.fill(roundedRectangle);
 
-			// 在圆角矩形上绘制数据
+			// 绘制总计身价
 			DecimalFormat decimalFormat = new DecimalFormat();
 			decimalFormat.setGroupingUsed(true);
 			decimalFormat.setGroupingSize(3);
-			String networth = "总计身价:" + decimalFormat.format((long) networthData.getDoubleValue("networth"));
+			String networth = decimalFormat.format((long) networthData.getDoubleValue("networth"));
 			g2d.setColor(white);
+			g2d.drawString("总计身价:",
+					startX + bodyWidth / 3 / 2 - g2d.getFontMetrics().stringWidth("总计身价:") / 2f,
+					startY + rowHeight / 2 - g2d.getFontMetrics().getHeight() + g2d.getFontMetrics().getAscent());
 			g2d.drawString(networth,
-					(startX + 20) + 440 - ((float) g2d.getFontMetrics().stringWidth(networth) / 2),
-					startY + rowHeight / 2 - 10 - (float) g2d.getFontMetrics().getHeight() / 2 + g2d.getFontMetrics().getAscent());
+					startX + bodyWidth / 3 / 2 - g2d.getFontMetrics().stringWidth(networth) / 2f,
+					startY + rowHeight / 2 + g2d.getFontMetrics().getAscent());
 
-			// 更新 startY 以便在新的一行开始绘制循环数据
-			startY += rowHeight;
-
-
+			String data;
 			// 遍历每行
 			for (int i = 0; i < rows; i++) {
 				// 遍历每列
@@ -126,44 +144,45 @@ public class NetworthPlugin extends BotPlugin {
 					// 计算当前数据的索引
 					int dataIndex = i * dataPerRow + j;
 					// 如果当前索引小于数据的总数，那么我们就绘制这个数据
-					if (dataIndex < keys.length) {
+					if (dataIndex < keys.size()) {
 						// 计算数据的位置
 						float dataX = j * columnWidth + startX;
-						float dataY = i * rowHeight + startY;
+						float dataY = (i + 1) * rowHeight + startY;
 
 						// 绘制圆角矩形
-						roundedRectangle.setRoundRect(dataX + 20, dataY, columnWidth - 40, rowHeight - 20, 20, 20);
+						roundedRectangle.setRoundRect(dataX + 7.5, dataY + 7.5, columnWidth - 15, rowHeight - 15, 20, 20);
 						g2d.setColor(deeper);
 						g2d.fill(roundedRectangle);
 
 						// 在圆角矩形上绘制数据
-						data = NumberFormatUtil.format((long) networthTypesData.getJSONObject(keys[dataIndex]).getDoubleValue("total"));
-						switch (keys[dataIndex]) {
-							case "armor" -> keys[dataIndex] = "装备";
-							case "equipment" -> keys[dataIndex] = "饰品";
-							case "wardrobe" -> keys[dataIndex] = "衣橱";
-							case "inventory" -> keys[dataIndex] = "背包";
-							case "enderchest" -> keys[dataIndex] = "末影箱";
-							case "accessories" -> keys[dataIndex] = "护符";
-							case "personal_vault" -> keys[dataIndex] = "保险箱";
-							case "storage" -> keys[dataIndex] = "存储";
-							case "fishing_bag" -> keys[dataIndex] = "钓鱼袋";
-							case "potion_bag" -> keys[dataIndex] = "药水袋";
-							case "candy_inventory" -> keys[dataIndex] = "糖果袋";
-							case "sacks" -> keys[dataIndex] = "袋子";
-							case "essence" -> keys[dataIndex] = "精粹";
-							case "pets" -> keys[dataIndex] = "宠物";
+						String key = keys.toArray(new String[0])[dataIndex];
+						data = NumberFormatUtil.format((long) networthTypesData.getJSONObject(key).getDoubleValue("total"));
+						switch (key) {
+							case "armor" -> key = "装备";
+							case "equipment" -> key = "饰品";
+							case "wardrobe" -> key = "衣橱";
+							case "inventory" -> key = "背包";
+							case "enderchest" -> key = "末影箱";
+							case "accessories" -> key = "护符";
+							case "personal_vault" -> key = "保险箱";
+							case "storage" -> key = "存储";
+							case "fishing_bag" -> key = "钓鱼袋";
+							case "potion_bag" -> key = "药水袋";
+							case "candy_inventory" -> key = "糖果袋";
+							case "sacks" -> key = "袋子";
+							case "essence" -> key = "精粹";
+							case "pets" -> key = "宠物";
 						}
-						data = keys[dataIndex] + ":" + data;
-						dataX = dataX + 20 + columnWidth / 2 - 20 - (float) g2d.getFontMetrics().stringWidth(data) / 2;
-						dataY = dataY + rowHeight / 2 - 10 - (float) g2d.getFontMetrics().getHeight() / 2 + g2d.getFontMetrics().getAscent();
+						data = key + ":" + data;
+						dataX = dataX + columnWidth / 2 - g2d.getFontMetrics().stringWidth(data) / 2f;
+						dataY = dataY + rowHeight / 2 - g2d.getFontMetrics().getHeight() / 2f + g2d.getFontMetrics().getAscent();
 						g2d.setColor(white);
 						g2d.drawString(data, dataX, dataY);
 					}
 				}
 			}
 
-
+			// 绘图完成
 			g2d.dispose();
 			sendMsg.img(ImageUtil.ImageToBase64(image));
 			bot.sendGroupMsg(event.getGroupId(), sendMsg.build(), false);
