@@ -67,9 +67,9 @@ public class MissingPlugin extends BotPlugin {
 			accessoriesMissingList.addAll(zeropriceAccessories);
 
 			sendMsg = MsgUtils.builder();
-			sendMsg.text(player.name + "在" + ProfileUtil.getProfileName(player.getMainProfile()) + "的护符补全:\n" + "总mp:" + accessoriesData.getJSONObject("magical_power").getIntValue("price") + "\n");
+			sendMsg.text(player.name + "在" + ProfileUtil.getProfileName(player.getMainProfile()) + "的护符补全:\n" + "总mp:" + accessoriesData.getJSONObject("magical_power").getIntValue("total") + "\n");
 
-			accessoriesMissingList.stream().limit(10).forEach(accessory -> {
+			accessoriesMissingList.stream().limit(7).forEach(accessory -> {
 				long price = accessory.getJSONObject("extra").getLongValue("price");
 				sendMsg.text(accessory.getString("name") + ": " +
 						NumberFormatUtil.format(price) +
