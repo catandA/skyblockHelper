@@ -23,7 +23,7 @@ public class ImageUtil {
 		public String toString() {
 			return switch (this){
 				case BG -> "/background/bg.png";
-				case BURNING_CHINNABER -> "/background/burning_chinnaber.png";
+				case BURNING_CHINNABER -> "/background/burning-cinnabar.png";
 				case CANDYCANE -> "/background/candycane.png";
 				case DRACONIC -> "/background/draconic.png";
 				case LIGHT -> "/background/light.png";
