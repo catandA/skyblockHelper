@@ -37,7 +37,7 @@ public class SkillPlugin extends BotPlugin {
 
 		try {
 			Player player = new Player(args[1]);
-			JSONObject skillsData = ProfileUtil.get_skills_Data(player.getMainProfile());
+			JSONObject skillsData = ProfileUtil.getSkillsData(player.getMainProfile());
 			JSONObject skillsListData = skillsData.getJSONObject("skills");
 			DecimalFormat decimalFormat = new DecimalFormat("#.##");
 			sendMsg = MsgUtils.builder().text(player.name + "在" + ProfileUtil.getProfileName(player.getMainProfile()) + "上的技能:\n" +

@@ -10,7 +10,7 @@ public class ProfileUtil {
 		return profile.getJSONObject("data").getJSONObject("dungeons");
 	}
 
-	public static JSONObject get_skills_Data(JSONObject profile) {
+	public static JSONObject getSkillsData(JSONObject profile) {
 		return profile.getJSONObject("data").getJSONObject("skills");
 	}
 
