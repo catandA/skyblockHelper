@@ -18,6 +18,10 @@ public class ProfileUtil {
 		return profile.getJSONObject("data").getJSONObject("accessories");
 	}
 
+	public static JSONObject getCrimsonIsleData(JSONObject profile) {
+		return profile.getJSONObject("data").getJSONObject("crimson_isle");
+	}
+
 	public static String getProfileName(JSONObject profile) {
 		return profile.getString("cute_name");
 	}

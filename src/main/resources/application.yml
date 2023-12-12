@@ -9,5 +9,6 @@ shiro:
     - com.catand.skyblockhelper.plugins.SkillPlugin
     - com.catand.skyblockhelper.plugins.MissingPlugin
     - com.catand.skyblockhelper.plugins.DungeonPlugin
+    - com.catand.skyblockhelper.plugins.TrophyFishPlugin
     - com.catand.skyblockhelper.plugins.NoSuchCommandPlugin
   interceptor:
