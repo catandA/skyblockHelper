@@ -13,11 +13,12 @@ import com.mikuac.shiro.dto.event.message.GroupMessageEvent;
 import org.springframework.stereotype.Component;
 
 import java.awt.*;
+import java.awt.geom.Rectangle2D;
 import java.awt.geom.RoundRectangle2D;
 import java.awt.image.BufferedImage;
 import java.text.DecimalFormat;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
+import java.util.*;
 
 @Component
 public class NetworthPlugin extends BotPlugin {
@@ -47,6 +48,25 @@ public class NetworthPlugin extends BotPlugin {
 			JSONObject networthData = ProfileUtil.getNetworthData(player.getMainProfile());
 			JSONObject networthTypesData = networthData.getJSONObject("types");
 			String profileName = ProfileUtil.getProfileName(player.getMainProfile());
+
+			// 将 networthTypesData 转换为一个列表
+			List<Map.Entry<String, JSONObject>> networthTypesList = new ArrayList<>();
+			for (Map.Entry<String, Object> entry : networthTypesData.entrySet()) {
+				String json = JSONObject.toJSONString(entry.getValue());
+				JSONObject jsonObject = JSONObject.parseObject(json);
+				networthTypesList.add(new AbstractMap.SimpleEntry<>(entry.getKey(), jsonObject));
+			}
+
+			// 使用自定义的比较器对列表进行排序
+			networthTypesList.sort((o1, o2) -> {
+				double value1 = o1.getValue().getDoubleValue("total");
+				double value2 = o2.getValue().getDoubleValue("total");
+				return Double.compare(value2, value1);
+			});
+			networthTypesData = new JSONObject();
+			for (Map.Entry<String, JSONObject> entry : networthTypesList) {
+				networthTypesData.put(entry.getKey(), entry.getValue());
+			}
 
 			MsgUtils sendMsg = MsgUtils.builder();
 
@@ -136,21 +156,54 @@ public class NetworthPlugin extends BotPlugin {
 			g2d.drawString(data,
 					startX + bodyWidth / 3 / 2 - g2d.getFontMetrics().stringWidth(data) / 2f,
 					startY + rowHeight / 2 - g2d.getFontMetrics().getHeight() + g2d.getFontMetrics().getAscent());
-			data = decimalFormat.format((long) networthData.getDoubleValue("networth"));
+			long totalNetworth = (long) networthData.getDoubleValue("networth");
+			data = decimalFormat.format(totalNetworth);
 			g2d.drawString(data,
 					startX + bodyWidth / 3 / 2 - g2d.getFontMetrics().stringWidth(data) / 2f,
 					startY + rowHeight / 2 + g2d.getFontMetrics().getAscent());
 
+
 			// 银行和钱包
-			data = "钱包:" + NumberFormatUtil.format((long) networthData.getDoubleValue("purse"));
+			long value = (long) networthData.getDoubleValue("purse");
+			float percentage = (float) value / totalNetworth;
+			data = "钱包:" + NumberFormatUtil.format(value);
 			g2d.drawString(data,
 					startX + bodyWidth / 3f + bodyWidth / 3 / 2 - g2d.getFontMetrics().stringWidth(data) / 2f,
-					startY + rowHeight / 2 - g2d.getFontMetrics().getHeight() / 2f + g2d.getFontMetrics().getAscent());
+					startY + (rowHeight - 2 * margin) / 4 + margin - g2d.getFontMetrics().getHeight() / 2f + g2d.getFontMetrics().getAscent());
+
+			g2d.setStroke(new BasicStroke(2));
+			Rectangle2D rectangle = new Rectangle2D.Float(startX + bodyWidth / 3f + 4 * margin, startY + (rowHeight - 4 * margin) / 2 + 4 * margin, (bodyWidth / 3f - 4 * margin) * 2 / 3 - 4 * margin, (rowHeight - 4 * margin) / 2 - 4 * margin);
+			g2d.draw(rectangle);
+
+			data = (int) (percentage * 100) + "%";
+			g2d.drawString(data, startX + bodyWidth / 3f + (bodyWidth / 3f - 2 * margin) / 6 * 5 - g2d.getFontMetrics().stringWidth(data) / 2f, startY + (rowHeight - 2 * margin) / 4 * 3 - g2d.getFontMetrics().getHeight() / 2f + g2d.getFontMetrics().getAscent());
+
+			g2d.setColor(Color.getHSBColor((float) (0.50 * percentage), 1f, 1f));
+			float progressBarWidth = ((columnWidth - 4 * margin) * 2 / 3 - 4 * margin) * percentage;
+			rectangle.setRect(startX + bodyWidth / 3f + 4 * margin, startY + (rowHeight - 4 * margin) / 2 + 4 * margin, progressBarWidth, (rowHeight - 4 * margin) / 2 - 4 * margin);
+			g2d.fill(rectangle);
+
 			data = "银行:" + NumberFormatUtil.format((long) networthData.getDoubleValue("bank"));
+			value = (long) networthData.getDoubleValue("bank");
+			percentage = (float) value / totalNetworth;
+			g2d.setColor(white);
 			g2d.drawString(data,
 					startX + bodyWidth / 3f * 2 + bodyWidth / 3 / 2 - g2d.getFontMetrics().stringWidth(data) / 2f,
-					startY + rowHeight / 2 - g2d.getFontMetrics().getHeight() / 2f + g2d.getFontMetrics().getAscent());
+					startY + (rowHeight - 2 * margin) / 4 + margin - g2d.getFontMetrics().getHeight() / 2f + g2d.getFontMetrics().getAscent());
 
+			g2d.setStroke(new BasicStroke(2));
+			rectangle = new Rectangle2D.Float(startX + bodyWidth / 3f * 2 + 4 * margin, startY + (rowHeight - 4 * margin) / 2 + 4 * margin, (bodyWidth / 3f - 4 * margin) * 2 / 3 - 4 * margin, (rowHeight - 4 * margin) / 2 - 4 * margin);
+			g2d.draw(rectangle);
+
+			data = (int) (percentage * 100) + "%";
+			g2d.drawString(data, startX + bodyWidth / 3f * 2 + (bodyWidth / 3f - 2 * margin) / 6 * 5 - g2d.getFontMetrics().stringWidth(data) / 2f, startY + (rowHeight - 2 * margin) / 4 * 3 - g2d.getFontMetrics().getHeight() / 2f + g2d.getFontMetrics().getAscent());
+
+			g2d.setColor(Color.getHSBColor((float) (0.50 * percentage), 1f, 1f));
+			progressBarWidth = ((columnWidth - 4 * margin) * 2 / 3 - 4 * margin) * percentage;
+			rectangle.setRect(startX + bodyWidth / 3f * 2 + 4 * margin, startY + (rowHeight - 4 * margin) / 2 + 4 * margin, progressBarWidth, (rowHeight - 4 * margin) / 2 - 4 * margin);
+			g2d.fill(rectangle);
+
+			// 其他数据
 			// 遍历每行
 			for (int i = 0; i < rows; i++) {
 				// 遍历每列
@@ -170,7 +223,16 @@ public class NetworthPlugin extends BotPlugin {
 
 						// 在圆角矩形上绘制数据
 						String key = keys.toArray(new String[0])[dataIndex];
-						data = NumberFormatUtil.format((long) networthTypesData.getJSONObject(key).getDoubleValue("total"));
+						value = (long) networthTypesData.getJSONObject(key).getDoubleValue("total");
+						data = NumberFormatUtil.format(value);
+						percentage = (float) value / totalNetworth;
+
+						// 绘制进度条边框
+						g2d.setColor(white);
+						g2d.setStroke(new BasicStroke(2));
+						rectangle = new Rectangle2D.Float(dataX + 4 * margin, dataY + (rowHeight - 4 * margin) / 2 + 4 * margin, (columnWidth - 4 * margin) * 2 / 3 - 4 * margin, (rowHeight - 4 * margin) / 2 - 4 * margin);
+						g2d.draw(rectangle);
+
 						switch (key) {
 							case "armor" -> key = "装备";
 							case "equipment" -> key = "饰品";
@@ -188,10 +250,17 @@ public class NetworthPlugin extends BotPlugin {
 							case "pets" -> key = "宠物";
 						}
 						data = key + ":" + data;
-						dataX = dataX + columnWidth / 2 - g2d.getFontMetrics().stringWidth(data) / 2f;
-						dataY = dataY + rowHeight / 2 - g2d.getFontMetrics().getHeight() / 2f + g2d.getFontMetrics().getAscent();
-						g2d.setColor(white);
-						g2d.drawString(data, dataX, dataY);
+						g2d.drawString(data, dataX + columnWidth / 2 - g2d.getFontMetrics().stringWidth(data) / 2f, dataY + (rowHeight - 2 * margin) / 4 + margin - g2d.getFontMetrics().getHeight() / 2f + g2d.getFontMetrics().getAscent());
+
+						// 百分比
+						data = (int) (percentage * 100) + "%";
+						g2d.drawString(data, dataX + (columnWidth - 2 * margin) / 6 * 5 - g2d.getFontMetrics().stringWidth(data) / 2f, dataY + (rowHeight - 2 * margin) / 4 * 3 - g2d.getFontMetrics().getHeight() / 2f + g2d.getFontMetrics().getAscent());
+
+						// 绘制进度条
+						g2d.setColor(Color.getHSBColor((float) (0.50 * percentage), 1f, 1f));
+						progressBarWidth = ((columnWidth - 4 * margin) * 2 / 3 - 4 * margin) * percentage;
+						rectangle.setRect(dataX + 4 * margin, dataY + (rowHeight - 4 * margin) / 2 + 4 * margin, progressBarWidth, (rowHeight - 4 * margin) / 2 - 4 * margin);
+						g2d.fill(rectangle);
 					}
 				}
 			}
