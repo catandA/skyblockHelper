@@ -94,6 +94,8 @@ public class NetworthPlugin extends BotPlugin {
 			// 现在为边栏的长度
 			startX = 30;
 			startY = 70;
+			// 边距大小
+			float margin = 7.5f;
 
 			// body的宽度和高度
 			float bodyWidth = width - startX * 2;
@@ -116,11 +118,11 @@ public class NetworthPlugin extends BotPlugin {
 
 			// 绘制圆角矩形
 			g2d.setColor(deeper);
-			roundedRectangle.setRoundRect(startX + 7.5, startY + 7.5, bodyWidth / 3f - 15, rowHeight - 15, 20, 20);
+			roundedRectangle.setRoundRect(startX + margin, startY + margin, bodyWidth / 3f - 15, rowHeight - 2 * margin, 20, 20);
 			g2d.fill(roundedRectangle);
-			roundedRectangle.setRoundRect(startX + bodyWidth / 3f + 7.5, startY + 7.5, bodyWidth / 3f - 15, rowHeight - 15, 20, 20);
+			roundedRectangle.setRoundRect(startX + bodyWidth / 3f + margin, startY + margin, bodyWidth / 3f - 2 * margin, rowHeight - 15, 20, 20);
 			g2d.fill(roundedRectangle);
-			roundedRectangle.setRoundRect(startX + bodyWidth / 3f * 2 + 7.5, startY + 7.5, bodyWidth / 3f - 15, rowHeight - 15, 20, 20);
+			roundedRectangle.setRoundRect(startX + bodyWidth / 3f * 2 + margin, startY + margin, bodyWidth / 3f - 2 * margin, rowHeight - 15, 20, 20);
 			g2d.fill(roundedRectangle);
 
 			String data;
@@ -162,7 +164,7 @@ public class NetworthPlugin extends BotPlugin {
 						float dataY = (i + 1) * rowHeight + startY;
 
 						// 绘制圆角矩形
-						roundedRectangle.setRoundRect(dataX + 7.5, dataY + 7.5, columnWidth - 15, rowHeight - 15, 20, 20);
+						roundedRectangle.setRoundRect(dataX + margin, dataY + margin, columnWidth - 2 * margin, rowHeight - 2 * margin, 20, 20);
 						g2d.setColor(deeper);
 						g2d.fill(roundedRectangle);
 
