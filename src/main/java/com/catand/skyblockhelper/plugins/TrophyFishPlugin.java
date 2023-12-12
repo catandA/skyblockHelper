@@ -52,7 +52,7 @@ public class TrophyFishPlugin extends BotPlugin {
 					case "bronze" -> tier = "铜\uD83E\uDD49";
 					case "silver" -> tier = "银\uD83E\uDD48";
 					case "gold" -> tier = "金\uD83E\uDD47";
-					case "diamond" -> tier = "钻\uD83C\uDFC5";
+					case "diamond" -> tier = "钻石\uD83D\uDC8E";
 				}
 				sendMsg.text(trophyFIsh.getString("display_name") + ":\t" + tier);
 				counter[0]++;
