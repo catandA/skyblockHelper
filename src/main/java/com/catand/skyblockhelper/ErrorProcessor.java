@@ -33,6 +33,8 @@ public class ErrorProcessor {
 			}
 		}else if (exception instanceof ResourceAccessException) {
 			sendMsg = MsgUtils.builder().text("网络错误,再来一次!");
+		}else if (exception instanceof HttpServerErrorException.GatewayTimeout) {
+			sendMsg = MsgUtils.builder().text("网络错误,再来一次!");
 		}else {
 			sendMsg = MsgUtils.builder().text("未知错误,爆!");
 		}
