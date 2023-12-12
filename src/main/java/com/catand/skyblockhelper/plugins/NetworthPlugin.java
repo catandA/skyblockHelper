@@ -3,6 +3,7 @@ package com.catand.skyblockhelper.plugins;
 import com.alibaba.fastjson2.JSONObject;
 import com.catand.skyblockhelper.ErrorProcessor;
 import com.catand.skyblockhelper.Player;
+import com.catand.skyblockhelper.utils.CustomPieSectionLabelGenerator;
 import com.catand.skyblockhelper.utils.ImageUtil;
 import com.catand.skyblockhelper.utils.NumberFormatUtil;
 import com.catand.skyblockhelper.utils.ProfileUtil;
@@ -10,6 +11,10 @@ import com.mikuac.shiro.common.utils.MsgUtils;
 import com.mikuac.shiro.core.Bot;
 import com.mikuac.shiro.core.BotPlugin;
 import com.mikuac.shiro.dto.event.message.GroupMessageEvent;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PiePlot;
+import org.jfree.data.general.DefaultPieDataset;
 import org.springframework.stereotype.Component;
 
 import java.awt.*;
@@ -68,6 +73,7 @@ public class NetworthPlugin extends BotPlugin {
 				networthTypesData.put(entry.getKey(), entry.getValue());
 			}
 
+			DefaultPieDataset dataSet = new DefaultPieDataset();
 			MsgUtils sendMsg = MsgUtils.builder();
 
 			// 获取原始 BufferedImage 对象的宽度和高度
@@ -131,10 +137,11 @@ public class NetworthPlugin extends BotPlugin {
 				}
 			}
 			keys = networthTypesData.keySet();
-			int dataPerRow = 4; // 每行的数据数量
+			int dataPerRow = 2; // 每行的数据数量
 			int rows = (int) Math.ceil((double) keys.size() / dataPerRow); // 计算行数
-			float rowHeight = bodyHeight / (rows + 1); // 计算每行的高度
-			float columnWidth = bodyWidth / dataPerRow; // 计算每列的宽度
+			float firstRowHeight = 100; // 第一行高
+			float rowHeight = firstRowHeight; // 行高
+			float columnWidth = bodyWidth / dataPerRow / 2; // 列宽
 
 			// 绘制圆角矩形
 			g2d.setColor(deeper);
@@ -165,6 +172,7 @@ public class NetworthPlugin extends BotPlugin {
 
 			// 银行和钱包
 			long value = (long) networthData.getDoubleValue("purse");
+			dataSet.setValue("钱包", value);
 			float percentage = (float) value / totalNetworth;
 			data = "钱包:" + NumberFormatUtil.format(value);
 			g2d.drawString(data,
@@ -172,19 +180,20 @@ public class NetworthPlugin extends BotPlugin {
 					startY + (rowHeight - 2 * margin) / 4 + margin - g2d.getFontMetrics().getHeight() / 2f + g2d.getFontMetrics().getAscent());
 
 			g2d.setStroke(new BasicStroke(2));
-			Rectangle2D rectangle = new Rectangle2D.Float(startX + bodyWidth / 3f + 4 * margin, startY + (rowHeight - 4 * margin) / 2 + 4 * margin, (bodyWidth / 3f - 4 * margin) * 2 / 3 - 4 * margin, (rowHeight - 4 * margin) / 2 - 4 * margin);
+			Rectangle2D rectangle = new Rectangle2D.Float(startX + bodyWidth / 3f + 3 * margin, startY + (rowHeight - 3 * margin) / 2 + 3 * margin, (bodyWidth / 3f - 3 * margin) * 2 / 3 - 3 * margin, (rowHeight - 3 * margin) / 2 - 3 * margin);
 			g2d.draw(rectangle);
 
 			data = (int) (percentage * 100) + "%";
 			g2d.drawString(data, startX + bodyWidth / 3f + (bodyWidth / 3f - 2 * margin) / 6 * 5 - g2d.getFontMetrics().stringWidth(data) / 2f, startY + (rowHeight - 2 * margin) / 4 * 3 - g2d.getFontMetrics().getHeight() / 2f + g2d.getFontMetrics().getAscent());
 
 			g2d.setColor(Color.getHSBColor((float) (0.50 * percentage), 1f, 1f));
-			float progressBarWidth = ((columnWidth - 4 * margin) * 2 / 3 - 4 * margin) * percentage;
-			rectangle.setRect(startX + bodyWidth / 3f + 4 * margin, startY + (rowHeight - 4 * margin) / 2 + 4 * margin, progressBarWidth, (rowHeight - 4 * margin) / 2 - 4 * margin);
+			float progressBarWidth = ((columnWidth - 3 * margin) * 2 / 3 - 3 * margin) * percentage;
+			rectangle.setRect(startX + bodyWidth / 3f + 3 * margin, startY + (rowHeight - 3 * margin) / 2 + 3 * margin, progressBarWidth, (rowHeight - 3 * margin) / 2 - 3 * margin);
 			g2d.fill(rectangle);
 
 			data = "银行:" + NumberFormatUtil.format((long) networthData.getDoubleValue("bank"));
 			value = (long) networthData.getDoubleValue("bank");
+			dataSet.setValue("银行", value);
 			percentage = (float) value / totalNetworth;
 			g2d.setColor(white);
 			g2d.drawString(data,
@@ -192,17 +201,22 @@ public class NetworthPlugin extends BotPlugin {
 					startY + (rowHeight - 2 * margin) / 4 + margin - g2d.getFontMetrics().getHeight() / 2f + g2d.getFontMetrics().getAscent());
 
 			g2d.setStroke(new BasicStroke(2));
-			rectangle = new Rectangle2D.Float(startX + bodyWidth / 3f * 2 + 4 * margin, startY + (rowHeight - 4 * margin) / 2 + 4 * margin, (bodyWidth / 3f - 4 * margin) * 2 / 3 - 4 * margin, (rowHeight - 4 * margin) / 2 - 4 * margin);
+			rectangle.setRect(startX + bodyWidth / 3f * 2 + 3 * margin, startY + (rowHeight - 3 * margin) / 2 + 3 * margin, (bodyWidth / 3f - 3 * margin) * 2 / 3 - 3 * margin, (rowHeight - 3 * margin) / 2 - 3 * margin);
 			g2d.draw(rectangle);
 
 			data = (int) (percentage * 100) + "%";
 			g2d.drawString(data, startX + bodyWidth / 3f * 2 + (bodyWidth / 3f - 2 * margin) / 6 * 5 - g2d.getFontMetrics().stringWidth(data) / 2f, startY + (rowHeight - 2 * margin) / 4 * 3 - g2d.getFontMetrics().getHeight() / 2f + g2d.getFontMetrics().getAscent());
 
 			g2d.setColor(Color.getHSBColor((float) (0.50 * percentage), 1f, 1f));
-			progressBarWidth = ((columnWidth - 4 * margin) * 2 / 3 - 4 * margin) * percentage;
-			rectangle.setRect(startX + bodyWidth / 3f * 2 + 4 * margin, startY + (rowHeight - 4 * margin) / 2 + 4 * margin, progressBarWidth, (rowHeight - 4 * margin) / 2 - 4 * margin);
+			progressBarWidth = ((columnWidth - 3 * margin) * 2 / 3 - 3 * margin) * percentage;
+			rectangle.setRect(startX + bodyWidth / 3f * 2 + 3 * margin, startY + (rowHeight - 3 * margin) / 2 + 3 * margin, progressBarWidth, (rowHeight - 3 * margin) / 2 - 3 * margin);
 			g2d.fill(rectangle);
 
+			font = new Font("fonts/NotoSansSC-Bold.ttf", Font.BOLD, ImageUtil.getFontPixelSize(30));
+			g2d.setFont(font);
+			startX = width / 2;
+			startY = startY + firstRowHeight;
+			rowHeight = (bodyHeight - firstRowHeight) / rows;
 			// 其他数据
 			// 遍历每行
 			for (int i = 0; i < rows; i++) {
@@ -214,7 +228,7 @@ public class NetworthPlugin extends BotPlugin {
 					if (dataIndex < keys.size()) {
 						// 计算数据的位置
 						float dataX = j * columnWidth + startX;
-						float dataY = (i + 1) * rowHeight + startY;
+						float dataY = i * rowHeight + startY;
 
 						// 绘制圆角矩形
 						roundedRectangle.setRoundRect(dataX + margin, dataY + margin, columnWidth - 2 * margin, rowHeight - 2 * margin, 20, 20);
@@ -230,7 +244,7 @@ public class NetworthPlugin extends BotPlugin {
 						// 绘制进度条边框
 						g2d.setColor(white);
 						g2d.setStroke(new BasicStroke(2));
-						rectangle = new Rectangle2D.Float(dataX + 4 * margin, dataY + (rowHeight - 4 * margin) / 2 + 4 * margin, (columnWidth - 4 * margin) * 2 / 3 - 4 * margin, (rowHeight - 4 * margin) / 2 - 4 * margin);
+						rectangle = new Rectangle2D.Float(dataX + 2 * margin, dataY + (rowHeight - 2 * margin) / 2 + 2 * margin, (columnWidth - 2 * margin) * 2 / 3 - 2 * margin, (rowHeight - 2 * margin) / 2 - 2 * margin);
 						g2d.draw(rectangle);
 
 						switch (key) {
@@ -249,6 +263,7 @@ public class NetworthPlugin extends BotPlugin {
 							case "essence" -> key = "精粹";
 							case "pets" -> key = "宠物";
 						}
+						dataSet.setValue(key, value);
 						data = key + ":" + data;
 						g2d.drawString(data, dataX + columnWidth / 2 - g2d.getFontMetrics().stringWidth(data) / 2f, dataY + (rowHeight - 2 * margin) / 4 + margin - g2d.getFontMetrics().getHeight() / 2f + g2d.getFontMetrics().getAscent());
 
@@ -258,12 +273,24 @@ public class NetworthPlugin extends BotPlugin {
 
 						// 绘制进度条
 						g2d.setColor(Color.getHSBColor((float) (0.50 * percentage), 1f, 1f));
-						progressBarWidth = ((columnWidth - 4 * margin) * 2 / 3 - 4 * margin) * percentage;
-						rectangle.setRect(dataX + 4 * margin, dataY + (rowHeight - 4 * margin) / 2 + 4 * margin, progressBarWidth, (rowHeight - 4 * margin) / 2 - 4 * margin);
+						progressBarWidth = ((columnWidth - 2 * margin) * 2 / 3 - 2 * margin) * percentage;
+						rectangle.setRect(dataX + 2 * margin, dataY + (rowHeight - 2 * margin) / 2 + 2 * margin, progressBarWidth, (rowHeight - 2 * margin) / 2 - 2 * margin);
 						g2d.fill(rectangle);
 					}
 				}
 			}
+
+			// 饼状图
+			startX = 30;
+			rowHeight = firstRowHeight;
+			JFreeChart pieChart = ChartFactory.createPieChart(
+					"身价占比", dataSet, false, false, false);
+			pieChart.getTitle().setFont(font);
+			font = new Font("fonts/NotoSansSC-Bold.ttf", Font.BOLD, ImageUtil.getFontPixelSize(25));
+			((PiePlot<?>) pieChart.getPlot()).setLabelFont(font);
+			((PiePlot<?>) pieChart.getPlot()).setLabelGenerator(new CustomPieSectionLabelGenerator(0.05));
+			BufferedImage pieImage = pieChart.createBufferedImage((int) (bodyWidth / 2 - 2 * margin), (int) (bodyHeight - rowHeight - 2 * margin));
+			g2d.drawImage(pieImage, (int) (startX + margin), (int) (startY + margin), null);
 
 			// 绘图完成
 			g2d.dispose();

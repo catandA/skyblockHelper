@@ -31,6 +31,7 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation 'org.apache.httpcomponents:httpclient:4.5.14'
 	implementation 'com.alibaba:fastjson:2.0.43'
+	implementation 'org.jfree:jfreechart:1.5.3'
 }
 bootJar {
 	archiveFileName = "${archiveBaseName.get()}.${archiveExtension.get()}"
