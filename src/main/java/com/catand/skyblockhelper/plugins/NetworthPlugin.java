@@ -2,6 +2,7 @@ package com.catand.skyblockhelper.plugins;
 
 import com.alibaba.fastjson2.JSONObject;
 import com.catand.skyblockhelper.ErrorProcessor;
+import com.catand.skyblockhelper.FontManager;
 import com.catand.skyblockhelper.Player;
 import com.catand.skyblockhelper.utils.CustomPieSectionLabelGenerator;
 import com.catand.skyblockhelper.utils.ImageUtil;
@@ -93,7 +94,9 @@ public class NetworthPlugin extends BotPlugin {
 
 			// 获取 Graphics2D 对象，创建字体实例并设置像素大小
 			Graphics2D g2d = image.createGraphics();
-			Font font = new Font("fonts/NotoSansSC-Bold.ttf", Font.BOLD, ImageUtil.getFontPixelSize(40));
+			g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+			Font notoSansSC_Bold = FontManager.getInstance().getFont("NotoSansSC-Bold.ttf",Font.PLAIN);
+			Font font = notoSansSC_Bold.deriveFont(Font.PLAIN, ImageUtil.getFontPixelSize(40));
 			g2d.setFont(font);
 
 			// 创建四个圆角矩形
@@ -219,7 +222,7 @@ public class NetworthPlugin extends BotPlugin {
 			g2d.setColor(deeper);
 			g2d.fill(roundedRectangle);
 
-			font = new Font("fonts/NotoSansSC-Bold.ttf", Font.BOLD, ImageUtil.getFontPixelSize(30));
+			font = notoSansSC_Bold.deriveFont( Font.PLAIN, ImageUtil.getFontPixelSize(30));
 			g2d.setFont(font);
 			startX = width / 2;
 			rowHeight = (bodyHeight - firstRowHeight) / rows;
@@ -292,10 +295,10 @@ public class NetworthPlugin extends BotPlugin {
 			JFreeChart pieChart = ChartFactory.createPieChart(
 					"身价占比", dataSet, false, false, false);
 			TextTitle title = pieChart.getTitle();
-			font = new Font("fonts/NotoSansSC-Bold.ttf", Font.BOLD, ImageUtil.getFontPixelSize(45));
+			font = notoSansSC_Bold.deriveFont( Font.PLAIN, ImageUtil.getFontPixelSize(45));
 			title.setFont(font);
 			title.setPaint(Color.WHITE);
-			font = new Font("fonts/NotoSansSC-Bold.ttf", Font.BOLD, ImageUtil.getFontPixelSize(25));
+			font = notoSansSC_Bold.deriveFont( Font.PLAIN, ImageUtil.getFontPixelSize(25));
 			PiePlot plot = (PiePlot) pieChart.getPlot();
 			plot.setLabelFont(font);
 			plot.setLabelPaint(Color.black);
