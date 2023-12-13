@@ -1,27 +1,32 @@
 package com.catand.skyblockhelper;
 
-import java.awt.Font;
-import java.awt.FontFormatException;
+import java.awt.*;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
 public class FontManager {
+    public enum FontType {
+        NOTO_SANS_SC_BOLD("/fonts/NotoSansSC-Bold.ttf");
+
+        private final String fileName;
+
+        FontType(String fileName) {
+            this.fileName = fileName;
+        }
+
+        public String getFileName() {
+            return fileName;
+        }
+    }
+
     private static FontManager instance;
     private Map<String, Font> fonts;
 
     private FontManager() {
         fonts = new HashMap<>();
-        try {
-            Files.walk(Paths.get("src/main/resources/fonts"))
-                    .filter(Files::isRegularFile)
-                    .forEach(this::loadFont);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        loadFonts();
     }
 
     public static FontManager getInstance() {
@@ -31,16 +36,22 @@ public class FontManager {
         return instance;
     }
 
-    private void loadFont(Path file) {
+    private void loadFonts() {
         try {
-            Font font = Font.createFont(Font.TRUETYPE_FONT, file.toFile());
-            fonts.put(file.getFileName().toString(), font);
+            for (FontType fontType : FontType.values()) {
+                InputStream is = getClass().getResourceAsStream(fontType.getFileName());
+                if (is != null) {
+                    Font font = Font.createFont(Font.TRUETYPE_FONT, is);
+                    fonts.put(fontType.name(), font);
+                }
+            }
         } catch (FontFormatException | IOException e) {
             e.printStackTrace();
         }
     }
 
-    public Font getFont(String name, float size) {
+    public Font getFont(FontType fontType, float size) {
+        String name = fontType.toString();
         if (fonts.containsKey(name)) {
             return fonts.get(name).deriveFont(size);
         } else {

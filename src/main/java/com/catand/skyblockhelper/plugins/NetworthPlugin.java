@@ -94,8 +94,9 @@ public class NetworthPlugin extends BotPlugin {
 
 			// 获取 Graphics2D 对象，创建字体实例并设置像素大小
 			Graphics2D g2d = image.createGraphics();
+			FontManager fontManager = FontManager.getInstance();
 			g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-			Font notoSansSC_Bold = FontManager.getInstance().getFont("NotoSansSC-Bold.ttf",Font.PLAIN);
+			Font notoSansSC_Bold = fontManager.getFont(FontManager.FontType.NOTO_SANS_SC_BOLD,Font.PLAIN);
 			Font font = notoSansSC_Bold.deriveFont(Font.PLAIN, ImageUtil.getFontPixelSize(40));
 			g2d.setFont(font);
 
