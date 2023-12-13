@@ -13,7 +13,9 @@ import com.mikuac.shiro.core.BotPlugin;
 import com.mikuac.shiro.dto.event.message.GroupMessageEvent;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PieLabelLinkStyle;
 import org.jfree.chart.plot.PiePlot;
+import org.jfree.chart.title.TextTitle;
 import org.jfree.data.general.DefaultPieDataset;
 import org.springframework.stereotype.Component;
 
@@ -187,7 +189,7 @@ public class NetworthPlugin extends BotPlugin {
 			g2d.drawString(data, startX + bodyWidth / 3f + (bodyWidth / 3f - 2 * margin) / 6 * 5 - g2d.getFontMetrics().stringWidth(data) / 2f, startY + (rowHeight - 2 * margin) / 4 * 3 - g2d.getFontMetrics().getHeight() / 2f + g2d.getFontMetrics().getAscent());
 
 			g2d.setColor(Color.getHSBColor((float) (0.50 * percentage), 1f, 1f));
-			float progressBarWidth = ((columnWidth - 3 * margin) * 2 / 3 - 3 * margin) * percentage;
+			float progressBarWidth = ((bodyWidth / 3f - 3 * margin) * 2 / 3 - 3 * margin) * percentage;
 			rectangle.setRect(startX + bodyWidth / 3f + 3 * margin, startY + (rowHeight - 3 * margin) / 2 + 3 * margin, progressBarWidth, (rowHeight - 3 * margin) / 2 - 3 * margin);
 			g2d.fill(rectangle);
 
@@ -208,14 +210,18 @@ public class NetworthPlugin extends BotPlugin {
 			g2d.drawString(data, startX + bodyWidth / 3f * 2 + (bodyWidth / 3f - 2 * margin) / 6 * 5 - g2d.getFontMetrics().stringWidth(data) / 2f, startY + (rowHeight - 2 * margin) / 4 * 3 - g2d.getFontMetrics().getHeight() / 2f + g2d.getFontMetrics().getAscent());
 
 			g2d.setColor(Color.getHSBColor((float) (0.50 * percentage), 1f, 1f));
-			progressBarWidth = ((columnWidth - 3 * margin) * 2 / 3 - 3 * margin) * percentage;
+			progressBarWidth = ((bodyWidth / 3f - 3 * margin) * 2 / 3 - 3 * margin) * percentage;
 			rectangle.setRect(startX + bodyWidth / 3f * 2 + 3 * margin, startY + (rowHeight - 3 * margin) / 2 + 3 * margin, progressBarWidth, (rowHeight - 3 * margin) / 2 - 3 * margin);
 			g2d.fill(rectangle);
+
+			startY = startY + firstRowHeight;
+			roundedRectangle.setRoundRect(startX + margin, startY + margin, bodyWidth / 2 - 2 * margin, bodyHeight - rowHeight - 2 * margin, 20, 20);
+			g2d.setColor(deeper);
+			g2d.fill(roundedRectangle);
 
 			font = new Font("fonts/NotoSansSC-Bold.ttf", Font.BOLD, ImageUtil.getFontPixelSize(30));
 			g2d.setFont(font);
 			startX = width / 2;
-			startY = startY + firstRowHeight;
 			rowHeight = (bodyHeight - firstRowHeight) / rows;
 			// 其他数据
 			// 遍历每行
@@ -285,10 +291,25 @@ public class NetworthPlugin extends BotPlugin {
 			rowHeight = firstRowHeight;
 			JFreeChart pieChart = ChartFactory.createPieChart(
 					"身价占比", dataSet, false, false, false);
-			pieChart.getTitle().setFont(font);
+			TextTitle title = pieChart.getTitle();
+			font = new Font("fonts/NotoSansSC-Bold.ttf", Font.BOLD, ImageUtil.getFontPixelSize(45));
+			title.setFont(font);
+			title.setPaint(Color.WHITE);
 			font = new Font("fonts/NotoSansSC-Bold.ttf", Font.BOLD, ImageUtil.getFontPixelSize(25));
-			((PiePlot<?>) pieChart.getPlot()).setLabelFont(font);
-			((PiePlot<?>) pieChart.getPlot()).setLabelGenerator(new CustomPieSectionLabelGenerator(0.05));
+			PiePlot plot = (PiePlot) pieChart.getPlot();
+			plot.setLabelFont(font);
+			plot.setLabelPaint(Color.black);
+			plot.setLabelGenerator(new CustomPieSectionLabelGenerator(0.05));
+			plot.setLabelLinkPaint(Color.white);
+			plot.setLabelLinkStroke(new BasicStroke(3.0f));
+			plot.setLabelShadowPaint(null);
+			plot.setLabelBackgroundPaint(white);
+			plot.setLabelOutlinePaint(Color.black);
+			plot.setLabelLinkStyle(PieLabelLinkStyle.STANDARD);
+			plot.setShadowPaint(null);
+			plot.setBackgroundPaint(null);
+			plot.setOutlinePaint(null);
+			pieChart.setBackgroundPaint(null);
 			BufferedImage pieImage = pieChart.createBufferedImage((int) (bodyWidth / 2 - 2 * margin), (int) (bodyHeight - rowHeight - 2 * margin));
 			g2d.drawImage(pieImage, (int) (startX + margin), (int) (startY + margin), null);
 
