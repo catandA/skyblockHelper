@@ -51,9 +51,9 @@ public class HOTMPlugin extends BotPlugin {
 
 			sendMsg = MsgUtils.builder().text(player.name + "在" + ProfileUtil.getProfileName(player.getMainProfile()) + "的山心:\n" +
 					"山心等级:" + hotmLevel + "\n" +
-					"任务里程碑" + commissionsLevel + "\n" +
-					"秘银粉\uD83D\uDFE3:" + NumberFormatUtil.format(mithrilPowder) + "\n" +
-					"宝石粉\uD83D\uDFE2:" + NumberFormatUtil.format(gemstonePowder)
+					"任务里程碑:" + commissionsLevel + "\n" +
+					"秘银粉\uD83D\uDFE2:" + NumberFormatUtil.format(mithrilPowder) + "\n" +
+					"宝石粉\uD83D\uDFE3:" + NumberFormatUtil.format(gemstonePowder)
 			);
 			if (isMaxedMining) {
 				sendMsg.text("\nwtfff 满配矿批");
