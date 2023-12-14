@@ -26,6 +26,10 @@ public class ProfileUtil {
 		return profile.getJSONObject("data").getJSONObject("slayer");
 	}
 
+	public static JSONObject getMiningData(JSONObject profile) {
+		return profile.getJSONObject("data").getJSONObject("mining");
+	}
+
 	public static String getProfileName(JSONObject profile) {
 		return profile.getString("cute_name");
 	}
