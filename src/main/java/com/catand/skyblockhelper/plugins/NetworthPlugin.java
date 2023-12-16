@@ -114,8 +114,8 @@ public class NetworthPlugin extends BotPlugin {
 			// 计算字符串的起始位置，使其居中到圆角矩形
 			g2d.setColor(Color.gray);
 			float startY = 35 - (float) g2d.getFontMetrics().getHeight() / 2 + g2d.getFontMetrics().getAscent();
-			float startX = 120 - (float) g2d.getFontMetrics().stringWidth(player.name) / 2;
-			g2d.drawString(player.name, startX, startY);
+			float startX = 120 - (float) g2d.getFontMetrics().stringWidth(ProfileUtil.getDisplayNameData(player.getMainProfile())) / 2;
+			g2d.drawString(ProfileUtil.getDisplayNameData(player.getMainProfile()), startX, startY);
 			startX = 360 - (float) g2d.getFontMetrics().stringWidth(profileName) / 2;
 			g2d.drawString(profileName, startX, startY);
 			startX = 600 - (float) g2d.getFontMetrics().stringWidth("还没做你别急") / 2;

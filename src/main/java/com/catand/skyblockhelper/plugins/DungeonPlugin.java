@@ -39,7 +39,7 @@ public class DungeonPlugin extends BotPlugin {
 			Player player = new Player(args[1]);
 			JSONObject dungeonData = ProfileUtil.getDungeonData(player.getMainProfile());
 			if (!dungeonData.getJSONObject("catacombs").getBooleanValue("visited")) {
-				sendMsg.text(player.name + "不玩地牢,注定只能度过一个相对失败的人生");
+				sendMsg.text(ProfileUtil.getDisplayNameData(player.getMainProfile()) + "不玩地牢,注定只能度过一个相对失败的人生");
 				bot.sendGroupMsg(event.getGroupId(), sendMsg.build(), false);
 				return MESSAGE_BLOCK;
 			}
@@ -48,7 +48,7 @@ public class DungeonPlugin extends BotPlugin {
 			DecimalFormat decimalFormat = new DecimalFormat("#.##");
 
 
-			sendMsg = sendMsg.text(player.name + "在" + ProfileUtil.getProfileName(player.getMainProfile()) + "的地牢:\n" +
+			sendMsg = sendMsg.text(ProfileUtil.getDisplayNameData(player.getMainProfile()) + "在" + ProfileUtil.getProfileName(player.getMainProfile()) + "的地牢:\n" +
 					"地牢等级:" + ProfileUtil.getDungeonData(player.getMainProfile()).getJSONObject("catacombs").getJSONObject("level").getIntValue("level") + "\t平均职业等级:" + decimalFormat.format(averageLevel) + "\n");
 
 			String[] keys = classesData.keySet().toArray(new String[0]);

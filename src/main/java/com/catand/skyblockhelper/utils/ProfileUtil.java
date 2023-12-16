@@ -10,6 +10,10 @@ public class ProfileUtil {
 		return profile.getJSONObject("data").getJSONObject("dungeons");
 	}
 
+	public static String getDisplayNameData(JSONObject profile) {
+		return profile.getJSONObject("data").getString("display_name");
+	}
+
 	public static JSONObject getSkillsData(JSONObject profile) {
 		return profile.getJSONObject("data").getJSONObject("skills");
 	}

@@ -40,7 +40,7 @@ public class SkillPlugin extends BotPlugin {
 			JSONObject skillsData = ProfileUtil.getSkillsData(player.getMainProfile());
 			JSONObject skillsListData = skillsData.getJSONObject("skills");
 			DecimalFormat decimalFormat = new DecimalFormat("#.##");
-			sendMsg = MsgUtils.builder().text(player.name + "在" + ProfileUtil.getProfileName(player.getMainProfile()) + "上的技能:\n" +
+			sendMsg = MsgUtils.builder().text(ProfileUtil.getDisplayNameData(player.getMainProfile()) + "在" + ProfileUtil.getProfileName(player.getMainProfile()) + "上的技能:\n" +
 					"总经验:" + NumberFormatUtil.format(skillsData.getDoubleValue("totalSkillXp")) + "\t平均等级:" + decimalFormat.format(skillsData.getDouble("averageSkillLevel")) + "\n");
 
 			String[] keys = skillsListData.keySet().toArray(new String[0]);

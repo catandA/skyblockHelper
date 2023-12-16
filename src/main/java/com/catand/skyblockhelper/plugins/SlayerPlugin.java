@@ -43,7 +43,7 @@ public class SlayerPlugin extends BotPlugin {
 			JSONObject slayersData = slayerData.getJSONObject("slayers");
 
 
-			sendMsg = sendMsg.text(player.name + "在" + ProfileUtil.getProfileName(player.getMainProfile()) + "的杀手:\n" +
+			sendMsg = sendMsg.text(ProfileUtil.getDisplayNameData(player.getMainProfile()) + "在" + ProfileUtil.getProfileName(player.getMainProfile()) + "的杀手:\n" +
 					"总经验:" + NumberFormatUtil.format(totalSlayerXp) + "\n");
 
 			String[] keys = slayersData.keySet().toArray(new String[0]);
