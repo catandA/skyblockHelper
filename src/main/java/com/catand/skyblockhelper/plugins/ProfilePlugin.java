@@ -38,7 +38,7 @@ public class ProfilePlugin extends BotPlugin {
 			sendMsg = MsgUtils.builder();
 			Player player = new Player(args[1]);
 
-			sendMsg.text(ProfileUtil.getDisplayNameData(player.getMainProfile()) + "的存档:\n当前存档:" + "[" + ProfileUtil.getSkyblockLevel(player.getMainProfile()) + "]" + player.getMainProfile().getString("cute_name") + Gamemode.getGamemode(player.getMainProfile()).getIcon() + "\n其他存档:\n");
+			sendMsg.text(ProfileUtil.getDisplayNameData(player.getMainProfile()) + "的档案:\n当前档案:" + "[" + ProfileUtil.getSkyblockLevel(player.getMainProfile()) + "]" + player.getMainProfile().getString("cute_name") + Gamemode.getGamemode(player.getMainProfile()).getIcon() + "\n其他档案:\n");
 			int counter = 0;
 			for (JSONObject profile : player.profileList) {
 				if (counter == 0) {
