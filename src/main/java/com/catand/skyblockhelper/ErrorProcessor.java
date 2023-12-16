@@ -26,16 +26,16 @@ public class ErrorProcessor {
 				sendMsg = MsgUtils.builder().text("你的数据目前被Hypixel打乱了\n暂时查不出来\n(￣ε(#￣)☆╰╮(￣▽￣///)\n经SkyCrypt确认，此问题由Hypixel更新skyblock数据格式引起\n在数据迁移未完成期间上号会导致此问题\n得等Hypixel修它的API");
 			} else if (exception.getMessage().contains("404 Not Found")) {
 				sendMsg = MsgUtils.builder().text("参数格式打错了\n正确格式：/networth <玩家名>");
-			}else if (exception.getMessage().contains("Player has no SkyBlock profiles")) {
+			} else if (exception.getMessage().contains("Player has no SkyBlock profiles")) {
 				sendMsg = MsgUtils.builder().text("此玩家没有skyblock档案");
-			}else{
+			} else {
 				sendMsg = MsgUtils.builder().text("未知错误,爆!");
 			}
-		}else if (exception instanceof ResourceAccessException) {
+		} else if (exception instanceof ResourceAccessException) {
 			sendMsg = MsgUtils.builder().text("网络错误,再来一次!");
-		}else if (exception instanceof HttpServerErrorException.GatewayTimeout) {
+		} else if (exception instanceof HttpServerErrorException.GatewayTimeout) {
 			sendMsg = MsgUtils.builder().text("网络错误,再来一次!");
-		}else {
+		} else {
 			sendMsg = MsgUtils.builder().text("未知错误,爆!");
 		}
 		log.error("Error: " + exception.getMessage());

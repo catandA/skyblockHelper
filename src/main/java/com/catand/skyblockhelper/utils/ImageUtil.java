@@ -4,7 +4,9 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
-import java.io.*;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Base64;
 import java.util.Random;
 
@@ -21,7 +23,7 @@ public class ImageUtil {
 
 		@Override
 		public String toString() {
-			return switch (this){
+			return switch (this) {
 				case BG -> "/background/bg.png";
 				case BURNING_CHINNABER -> "/background/burning-cinnabar.png";
 				case CANDYCANE -> "/background/candycane.png";
@@ -29,7 +31,7 @@ public class ImageUtil {
 				case LIGHT -> "/background/light.png";
 				case NIGHTBLUE -> "/background/nightblue.png";
 				case SKYLEA -> "/background/skylea.png";
-				case SUNRISE-> "/background/sunrise.png";
+				case SUNRISE -> "/background/sunrise.png";
 			};
 		}
 	}

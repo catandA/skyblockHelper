@@ -36,6 +36,14 @@ public class ProfileUtil {
 		return profile.getJSONObject("data").getJSONObject("mining");
 	}
 
+	public static JSONObject getSkyblockLevelData(JSONObject profile) {
+		return profile.getJSONObject("data").getJSONObject("skyblock_level");
+	}
+
+	public static int getSkyblockLevel(JSONObject profile) {
+		return getSkyblockLevelData(profile).getIntValue("level");
+	}
+
 	public static JSONObject getProfileData(JSONObject profile) {
 		return profile.getJSONObject("data").getJSONObject("profile");
 	}

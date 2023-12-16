@@ -96,7 +96,7 @@ public class NetworthPlugin extends BotPlugin {
 			Graphics2D g2d = image.createGraphics();
 			FontManager fontManager = FontManager.getInstance();
 			g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-			Font notoSansSC_Bold = fontManager.getFont(FontManager.FontType.NOTO_SANS_SC_BOLD,Font.PLAIN);
+			Font notoSansSC_Bold = fontManager.getFont(FontManager.FontType.NOTO_SANS_SC_BOLD, Font.PLAIN);
 			Font font = notoSansSC_Bold.deriveFont(Font.PLAIN, ImageUtil.getFontPixelSize(40));
 			g2d.setFont(font);
 
@@ -223,7 +223,7 @@ public class NetworthPlugin extends BotPlugin {
 			g2d.setColor(deeper);
 			g2d.fill(roundedRectangle);
 
-			font = notoSansSC_Bold.deriveFont( Font.PLAIN, ImageUtil.getFontPixelSize(30));
+			font = notoSansSC_Bold.deriveFont(Font.PLAIN, ImageUtil.getFontPixelSize(30));
 			g2d.setFont(font);
 			startX = width / 2;
 			rowHeight = (bodyHeight - firstRowHeight) / rows;
@@ -296,10 +296,10 @@ public class NetworthPlugin extends BotPlugin {
 			JFreeChart pieChart = ChartFactory.createPieChart(
 					"身价占比", dataSet, false, false, false);
 			TextTitle title = pieChart.getTitle();
-			font = notoSansSC_Bold.deriveFont( Font.PLAIN, ImageUtil.getFontPixelSize(45));
+			font = notoSansSC_Bold.deriveFont(Font.PLAIN, ImageUtil.getFontPixelSize(45));
 			title.setFont(font);
 			title.setPaint(Color.WHITE);
-			font = notoSansSC_Bold.deriveFont( Font.PLAIN, ImageUtil.getFontPixelSize(25));
+			font = notoSansSC_Bold.deriveFont(Font.PLAIN, ImageUtil.getFontPixelSize(25));
 			PiePlot plot = (PiePlot) pieChart.getPlot();
 			plot.setLabelFont(font);
 			plot.setLabelPaint(Color.black);

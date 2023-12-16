@@ -3,7 +3,6 @@ package com.catand.skyblockhelper.plugins;
 import com.catand.skyblockhelper.SkyblockHelperApplication;
 import com.mikuac.shiro.core.Bot;
 import com.mikuac.shiro.core.BotPlugin;
-import com.mikuac.shiro.dto.event.message.AnyMessageEvent;
 import com.mikuac.shiro.dto.event.message.GroupMessageEvent;
 import org.springframework.stereotype.Component;
 

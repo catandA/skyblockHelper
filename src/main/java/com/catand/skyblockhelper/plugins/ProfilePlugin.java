@@ -37,13 +37,15 @@ public class ProfilePlugin extends BotPlugin {
 		try {
 			sendMsg = MsgUtils.builder();
 			Player player = new Player(args[1]);
-			JSONObject profileData = ProfileUtil.getProfileData(player.getMainProfile());
-			JSONObject profilesData = ProfileUtil.getProfilesData(player.getMainProfile());
 
-			sendMsg.text(ProfileUtil.getDisplayNameData(player.getMainProfile()) + "的存档:\n当前存档:" + profileData.getString("cute_name") + Gamemode.getGamemode(profileData).getIcon() + "\n其他存档:\n");
-			for (String key : profilesData.keySet()) {
-				JSONObject profile = profilesData.getJSONObject(key);
-				sendMsg.text(profile.getString("cute_name") + Gamemode.getGamemode(profile).getIcon() + "\n");
+			sendMsg.text(ProfileUtil.getDisplayNameData(player.getMainProfile()) + "的存档:\n当前存档:" + "[" + ProfileUtil.getSkyblockLevel(player.getMainProfile()) + "]" + player.getMainProfile().getString("cute_name") + Gamemode.getGamemode(player.getMainProfile()).getIcon() + "\n其他存档:\n");
+			int counter = 0;
+			for (JSONObject profile : player.profileList) {
+				if (counter == 0) {
+					counter++;
+					continue;
+				}
+				sendMsg.text("[" + ProfileUtil.getSkyblockLevel(profile) + "]" + profile.getString("cute_name") + Gamemode.getGamemode(profile).getIcon() + "\n");
 			}
 
 			bot.sendGroupMsg(event.getGroupId(), sendMsg.build(), false);

@@ -42,7 +42,7 @@ public class TrophyFishPlugin extends BotPlugin {
 			ArrayList<JSONObject> trophyFishList = (ArrayList<JSONObject>) trophyFishData.getJSONArray("fish").toJavaList(JSONObject.class);
 			trophyFishList.removeIf(fish -> !fish.containsKey("highest_tier"));
 
-			sendMsg = sendMsg.text(ProfileUtil.getDisplayNameData(player.getMainProfile()) + "在" + ProfileUtil.getProfileName(player.getMainProfile()) + "的奖杯鱼:\n" +
+			sendMsg = sendMsg.text(ProfileUtil.getDisplayNameData(player.getMainProfile()) + "在" + "[" + ProfileUtil.getSkyblockLevel(player.getMainProfile()) + "]" + ProfileUtil.getProfileName(player.getMainProfile()) + "的奖杯鱼:\n" +
 					"总计:" + totalCaught + "\n");
 
 			final int[] counter = {0};

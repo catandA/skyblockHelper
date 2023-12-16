@@ -6,6 +6,7 @@ import java.util.TreeMap;
 
 public class NumberFormatUtil {
 	private static final NavigableMap<Long, String> suffixes = new TreeMap<>();
+
 	static {
 		suffixes.put(1_000L, "k");
 		suffixes.put(1_000_000L, "M");
@@ -16,6 +17,7 @@ public class NumberFormatUtil {
 	public static String format(double value) {
 		return format((long) value);
 	}
+
 	public static String format(int value) {
 		return format((long) value);
 	}

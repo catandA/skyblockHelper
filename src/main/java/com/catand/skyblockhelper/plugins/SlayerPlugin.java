@@ -11,8 +11,6 @@ import com.mikuac.shiro.core.BotPlugin;
 import com.mikuac.shiro.dto.event.message.GroupMessageEvent;
 import org.springframework.stereotype.Component;
 
-import java.text.DecimalFormat;
-
 @Component
 public class SlayerPlugin extends BotPlugin {
 	MsgUtils sendMsg;
@@ -43,7 +41,7 @@ public class SlayerPlugin extends BotPlugin {
 			JSONObject slayersData = slayerData.getJSONObject("slayers");
 
 
-			sendMsg = sendMsg.text(ProfileUtil.getDisplayNameData(player.getMainProfile()) + "在" + ProfileUtil.getProfileName(player.getMainProfile()) + "的杀手:\n" +
+			sendMsg = sendMsg.text(ProfileUtil.getDisplayNameData(player.getMainProfile()) + "在" + "[" + ProfileUtil.getSkyblockLevel(player.getMainProfile()) + "]" + ProfileUtil.getProfileName(player.getMainProfile()) + "的杀手:\n" +
 					"总经验:" + NumberFormatUtil.format(totalSlayerXp) + "\n");
 
 			String[] keys = slayersData.keySet().toArray(new String[0]);
