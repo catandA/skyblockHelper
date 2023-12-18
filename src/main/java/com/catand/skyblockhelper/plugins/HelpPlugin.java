@@ -17,10 +17,10 @@ public class HelpPlugin extends BotPlugin {
 		if (!messageRaw.startsWith("帮助")) {
 			return MESSAGE_IGNORE;
 		}
-		bot.sendGroupMsg(event.getGroupId(), "/帮助 查看机器人指令列表" +
-				"\n/身价 查询指定玩家身价信息" +
-				"\n/技能 查询指定玩家技能信息" +
-				"\n/信息 查看SkyblockHelper基本信息", false);
+		bot.sendGroupMsg(event.getGroupId(), "/帮助 /身价 /信息 /技能\n" +
+				"/护符补全 /地牢 /奖杯鱼 /杀手\n" +
+				"/山心 /档案 /宾果\n" +
+				"180901798", false);
 		return MESSAGE_BLOCK;
 	}
 

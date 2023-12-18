@@ -18,7 +18,9 @@ public class InfoPlugin extends BotPlugin {
 		if (!messageRaw.startsWith("信息")) {
 			return MESSAGE_IGNORE;
 		}
-		bot.sendGroupMsg(event.getGroupId(), "skyblockHelper v" + SkyblockHelperApplication.VERSION, false);
+		bot.sendGroupMsg(event.getGroupId(), "skyblockHelper v" + SkyblockHelperApplication.VERSION +
+				"\ndeveloped by catand" +
+				"\nbot群:180901798", false);
 		return MESSAGE_BLOCK;
 	}
 }
