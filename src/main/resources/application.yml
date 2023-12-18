@@ -13,5 +13,6 @@ shiro:
     - com.catand.skyblockhelper.plugins.SlayerPlugin
     - com.catand.skyblockhelper.plugins.HOTMPlugin
     - com.catand.skyblockhelper.plugins.ProfilePlugin
+    - com.catand.skyblockhelper.plugins.BingoPlugin
     - com.catand.skyblockhelper.plugins.NoSuchCommandPlugin
   interceptor:
