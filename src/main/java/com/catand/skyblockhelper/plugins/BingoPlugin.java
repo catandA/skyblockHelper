@@ -39,6 +39,11 @@ public class BingoPlugin extends BotPlugin {
 		try {
 			Player player = new Player(args[1]);
 			JSONObject bingoData = ProfileUtil.getBingoData(player.getMainProfile());
+			if (bingoData == null) {
+				sendMsg.text(ProfileUtil.getDisplayNameData(player.getMainProfile()) + "不玩宾果,\nskb界又少了一双弹簧鞋");
+				bot.sendGroupMsg(event.getGroupId(), sendMsg.build(), false);
+				return MESSAGE_BLOCK;
+			}
 			JSONArray bingoCardItems = ProfileUtil.getBingoCardItems(player.getMainProfile());
 			ArrayList<JSONObject> bingoCardItemsList = (ArrayList<JSONObject>) bingoCardItems.toJavaList(JSONObject.class);
 			sendMsg.text(ProfileUtil.getDisplayNameData(player.getMainProfile()) + "的宾果:\n" +

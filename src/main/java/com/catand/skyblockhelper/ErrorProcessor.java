@@ -27,7 +27,7 @@ public class ErrorProcessor {
 			} else if (exception.getMessage().contains("404 Not Found")) {
 				sendMsg = MsgUtils.builder().text("参数格式打错了\n正确格式：/networth <玩家名>");
 			} else if (exception.getMessage().contains("Player has no SkyBlock profiles")) {
-				sendMsg = MsgUtils.builder().text("此玩家没有skyblock档案");
+				sendMsg = MsgUtils.builder().text("wiped. R.I.P");
 			} else {
 				sendMsg = MsgUtils.builder().text("未知错误,爆!");
 			}
