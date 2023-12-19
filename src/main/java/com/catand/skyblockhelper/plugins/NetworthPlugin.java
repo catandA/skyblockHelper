@@ -14,6 +14,7 @@ import com.mikuac.shiro.core.BotPlugin;
 import com.mikuac.shiro.dto.event.message.GroupMessageEvent;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.DrawingSupplier;
 import org.jfree.chart.plot.PieLabelLinkStyle;
 import org.jfree.chart.plot.PiePlot;
 import org.jfree.chart.title.TextTitle;
@@ -49,6 +50,22 @@ public class NetworthPlugin extends BotPlugin {
 			bot.sendGroupMsg(event.getGroupId(), sendMsg.build(), false);
 			return MESSAGE_BLOCK;
 		}
+		// 初始化
+		DefaultPieDataset dataSet = new DefaultPieDataset();
+		sendMsg = MsgUtils.builder();
+		Rectangle2D rectangle = new Rectangle2D.Float();
+		RoundRectangle2D roundedRectangle = new RoundRectangle2D.Float();
+		long value;
+		float percentage;
+		String data;
+		PiePlot plot;
+		FontManager fontManager = FontManager.getInstance();
+		Font notoSansSC_Bold = fontManager.getFont(FontManager.FontType.NOTO_SANS_SC_BOLD, Font.PLAIN);
+		Font font;
+		Color grey = new Color(40, 40, 40);
+		Color white = new Color(212, 212, 212);
+		Color deeper = new Color(30, 30, 30, 200);
+		Color dataColor;
 
 		//获取networth
 		try {
@@ -56,13 +73,34 @@ public class NetworthPlugin extends BotPlugin {
 			JSONObject networthData = ProfileUtil.getNetworthData(player.getMainProfile());
 			JSONObject networthTypesData = networthData.getJSONObject("types");
 			String profileName = ProfileUtil.getProfileName(player.getMainProfile());
+			long bank = (long) networthData.getDoubleValue("bank");
+			long purse = (long) networthData.getDoubleValue("purse");
 
 			// 将 networthTypesData 转换为一个列表
 			List<Map.Entry<String, JSONObject>> networthTypesList = new ArrayList<>();
 			for (Map.Entry<String, Object> entry : networthTypesData.entrySet()) {
-				String json = JSONObject.toJSONString(entry.getValue());
-				JSONObject jsonObject = JSONObject.parseObject(json);
-				networthTypesList.add(new AbstractMap.SimpleEntry<>(entry.getKey(), jsonObject));
+				String key = entry.getKey();
+				JSONObject value1 = (JSONObject) entry.getValue();
+				// 使用switch语句来更改键的名称
+				switch (key) {
+					case "armor" -> key = "装备";
+					case "equipment" -> key = "饰品";
+					case "wardrobe" -> key = "衣橱";
+					case "inventory" -> key = "背包";
+					case "enderchest" -> key = "末影箱";
+					case "accessories" -> key = "护符";
+					case "personal_vault" -> key = "保险箱";
+					case "storage" -> key = "存储";
+					case "fishing_bag" -> key = "钓鱼袋";
+					case "potion_bag" -> key = "药水袋";
+					case "candy_inventory" -> key = "糖果袋";
+					case "sacks" -> key = "袋子";
+					case "essence" -> key = "精粹";
+					case "pets" -> key = "宠物";
+				}
+				// 设置饼图数据集
+				dataSet.setValue(key, (long) value1.getDoubleValue("total"));
+				networthTypesList.add(new AbstractMap.SimpleEntry<>(key, value1));
 			}
 
 			// 使用自定义的比较器对列表进行排序
@@ -75,17 +113,41 @@ public class NetworthPlugin extends BotPlugin {
 			for (Map.Entry<String, JSONObject> entry : networthTypesList) {
 				networthTypesData.put(entry.getKey(), entry.getValue());
 			}
+			dataSet.setValue("钱包", purse);
+			dataSet.setValue("银行", bank);
 
-			DefaultPieDataset dataSet = new DefaultPieDataset();
-			MsgUtils sendMsg = MsgUtils.builder();
+			// 创建饼状图
+			JFreeChart pieChart = ChartFactory.createPieChart(
+					"身价占比", dataSet, false, false, false);
+			plot = (PiePlot) pieChart.getPlot();
+			TextTitle title = pieChart.getTitle();
+			font = notoSansSC_Bold.deriveFont(Font.PLAIN, ImageUtil.getFontPixelSize(45));
+			title.setFont(font);
+			title.setPaint(Color.WHITE);
+			font = notoSansSC_Bold.deriveFont(Font.PLAIN, ImageUtil.getFontPixelSize(25));
+			plot.setLabelFont(font);
+			plot.setLabelPaint(Color.black);
+			plot.setLabelGenerator(new CustomPieSectionLabelGenerator(0.05));
+			plot.setLabelLinkPaint(Color.white);
+			plot.setLabelLinkStroke(new BasicStroke(3.0f));
+			plot.setLabelShadowPaint(null);
+			plot.setLabelBackgroundPaint(white);
+			plot.setLabelOutlinePaint(Color.black);
+			plot.setLabelLinkStyle(PieLabelLinkStyle.STANDARD);
+			plot.setShadowPaint(null);
+			plot.setBackgroundPaint(null);
+			plot.setOutlinePaint(null);
+			pieChart.setBackgroundPaint(null);
+			DrawingSupplier drawingSupplier = plot.getDrawingSupplier();
+
+			// 设置每个部分的颜色
+			for (Object key : dataSet.getKeys()) {
+				plot.setSectionPaint((String) key, drawingSupplier.getNextPaint());
+			}
 
 			// 获取原始 BufferedImage 对象的宽度和高度
 			int width = 960;
 			int height = 500;
-
-			Color grey = new Color(40, 40, 40);
-			Color white = new Color(212, 212, 212);
-			Color deeper = new Color(30, 30, 30, 200);
 
 			// 创建随机背景底图，添加上边栏
 			BufferedImage image = ImageUtil.getBackground(width, height);
@@ -94,15 +156,13 @@ public class NetworthPlugin extends BotPlugin {
 
 			// 获取 Graphics2D 对象，创建字体实例并设置像素大小
 			Graphics2D g2d = image.createGraphics();
-			FontManager fontManager = FontManager.getInstance();
 			g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-			Font notoSansSC_Bold = fontManager.getFont(FontManager.FontType.NOTO_SANS_SC_BOLD, Font.PLAIN);
-			Font font = notoSansSC_Bold.deriveFont(Font.PLAIN, ImageUtil.getFontPixelSize(40));
+			font = notoSansSC_Bold.deriveFont(Font.PLAIN, ImageUtil.getFontPixelSize(40));
 			g2d.setFont(font);
 
 			// 创建四个圆角矩形
 			g2d.setColor(white);
-			RoundRectangle2D roundedRectangle = new RoundRectangle2D.Float(15, 15, 210, 40, 20, 20);
+			roundedRectangle.setRoundRect(15, 15, 210, 40, 20, 20);
 			g2d.fill(roundedRectangle);
 			roundedRectangle.setRoundRect(255, 15, 210, 40, 20, 20);
 			g2d.fill(roundedRectangle);
@@ -158,8 +218,6 @@ public class NetworthPlugin extends BotPlugin {
 			roundedRectangle.setRoundRect(startX + bodyWidth / 3f * 2 + margin, startY + margin, bodyWidth / 3f - 2 * margin, rowHeight - 15, 20, 20);
 			g2d.fill(roundedRectangle);
 
-			String data;
-
 			// 绘制总计身价
 			DecimalFormat decimalFormat = new DecimalFormat();
 			decimalFormat.setGroupingUsed(true);
@@ -177,49 +235,84 @@ public class NetworthPlugin extends BotPlugin {
 
 
 			// 银行和钱包
-			long value = (long) networthData.getDoubleValue("purse");
-			dataSet.setValue("钱包", value);
-			float percentage = (float) value / totalNetworth;
+			value = purse;
+			percentage = (float) value / totalNetworth;
+			dataColor = (Color) plot.getSectionPaint("钱包");
 			data = "钱包:" + NumberFormatUtil.format(value);
-			g2d.drawString(data,
-					startX + bodyWidth / 3f + bodyWidth / 3 / 2 - g2d.getFontMetrics().stringWidth(data) / 2f,
-					startY + (rowHeight - 2 * margin) / 4 + margin - g2d.getFontMetrics().getHeight() / 2f + g2d.getFontMetrics().getAscent());
 
-			g2d.setStroke(new BasicStroke(2));
-			Rectangle2D rectangle = new Rectangle2D.Float(startX + bodyWidth / 3f + 3 * margin, startY + (rowHeight - 3 * margin) / 2 + 3 * margin, (bodyWidth / 3f - 3 * margin) * 2 / 3 - 3 * margin, (rowHeight - 3 * margin) / 2 - 3 * margin);
-			g2d.draw(rectangle);
-
-			data = (int) (percentage * 100) + "%";
-			g2d.drawString(data, startX + bodyWidth / 3f + (bodyWidth / 3f - 2 * margin) / 6 * 5 - g2d.getFontMetrics().stringWidth(data) / 2f, startY + (rowHeight - 2 * margin) / 4 * 3 - g2d.getFontMetrics().getHeight() / 2f + g2d.getFontMetrics().getAscent());
-
-			g2d.setColor(Color.getHSBColor((float) (0.50 * percentage), 1f, 1f));
-			float progressBarWidth = ((bodyWidth / 3f - 3 * margin) * 2 / 3 - 3 * margin) * percentage;
-			rectangle.setRect(startX + bodyWidth / 3f + 3 * margin, startY + (rowHeight - 3 * margin) / 2 + 3 * margin, progressBarWidth, (rowHeight - 3 * margin) / 2 - 3 * margin);
+			g2d.setColor(dataColor);
+			rectangle.setRect(startX + bodyWidth / 3f + bodyWidth / 3 / 2 - (g2d.getFontMetrics().stringWidth(data) + 2 * margin + g2d.getFontMetrics().getHeight()) / 2f,
+					startY + (rowHeight - 2 * margin) / 4 + margin - (g2d.getFontMetrics().getHeight() - 2 * margin) / 2f,
+					g2d.getFontMetrics().getHeight() - 2 * margin,
+					g2d.getFontMetrics().getHeight() - 2 * margin);
 			g2d.fill(rectangle);
 
-			data = "银行:" + NumberFormatUtil.format((long) networthData.getDoubleValue("bank"));
-			value = (long) networthData.getDoubleValue("bank");
-			dataSet.setValue("银行", value);
-			percentage = (float) value / totalNetworth;
 			g2d.setColor(white);
 			g2d.drawString(data,
-					startX + bodyWidth / 3f * 2 + bodyWidth / 3 / 2 - g2d.getFontMetrics().stringWidth(data) / 2f,
+					startX + bodyWidth / 3f + bodyWidth / 3 / 2 - (g2d.getFontMetrics().stringWidth(data) + 2 * margin + g2d.getFontMetrics().getHeight()) / 2f + g2d.getFontMetrics().getHeight() + margin,
 					startY + (rowHeight - 2 * margin) / 4 + margin - g2d.getFontMetrics().getHeight() / 2f + g2d.getFontMetrics().getAscent());
 
 			g2d.setStroke(new BasicStroke(2));
-			rectangle.setRect(startX + bodyWidth / 3f * 2 + 3 * margin, startY + (rowHeight - 3 * margin) / 2 + 3 * margin, (bodyWidth / 3f - 3 * margin) * 2 / 3 - 3 * margin, (rowHeight - 3 * margin) / 2 - 3 * margin);
+			rectangle.setRect(startX + bodyWidth / 3f + 3 * margin,
+					startY + (rowHeight - 3 * margin) / 2 + 3 * margin,
+					(bodyWidth / 3f - 3 * margin) * 2 / 3 - 3 * margin,
+					(rowHeight - 3 * margin) / 2 - 3 * margin);
 			g2d.draw(rectangle);
 
 			data = (int) (percentage * 100) + "%";
-			g2d.drawString(data, startX + bodyWidth / 3f * 2 + (bodyWidth / 3f - 2 * margin) / 6 * 5 - g2d.getFontMetrics().stringWidth(data) / 2f, startY + (rowHeight - 2 * margin) / 4 * 3 - g2d.getFontMetrics().getHeight() / 2f + g2d.getFontMetrics().getAscent());
+			g2d.drawString(data,
+					startX + bodyWidth / 3f + (bodyWidth / 3f - 2 * margin) / 6 * 5 - g2d.getFontMetrics().stringWidth(data) / 2f,
+					startY + (rowHeight - 2 * margin) / 4 * 3 - g2d.getFontMetrics().getHeight() / 2f + g2d.getFontMetrics().getAscent());
 
 			g2d.setColor(Color.getHSBColor((float) (0.50 * percentage), 1f, 1f));
-			progressBarWidth = ((bodyWidth / 3f - 3 * margin) * 2 / 3 - 3 * margin) * percentage;
-			rectangle.setRect(startX + bodyWidth / 3f * 2 + 3 * margin, startY + (rowHeight - 3 * margin) / 2 + 3 * margin, progressBarWidth, (rowHeight - 3 * margin) / 2 - 3 * margin);
+			rectangle.setRect(startX + bodyWidth / 3f + 3 * margin,
+					startY + (rowHeight - 3 * margin) / 2 + 3 * margin,
+					((bodyWidth / 3f - 3 * margin) * 2 / 3 - 3 * margin) * percentage,
+					(rowHeight - 3 * margin) / 2 - 3 * margin);
+			g2d.fill(rectangle);
+
+
+			value = bank;
+			percentage = (float) value / totalNetworth;
+			dataColor = (Color) plot.getSectionPaint("银行");
+			data = "银行:" + NumberFormatUtil.format(value);
+
+			g2d.setColor(dataColor);
+			rectangle.setRect(startX + bodyWidth / 3f * 2 + bodyWidth / 3 / 2 - (g2d.getFontMetrics().stringWidth(data) + 2 * margin + g2d.getFontMetrics().getHeight()) / 2f,
+					startY + (rowHeight - 2 * margin) / 4 + margin - (g2d.getFontMetrics().getHeight() - 2 * margin) / 2f,
+					g2d.getFontMetrics().getHeight() - 2 * margin,
+					g2d.getFontMetrics().getHeight() - 2 * margin);
+			g2d.fill(rectangle);
+
+			g2d.setColor(white);
+			g2d.drawString(data,
+					startX + bodyWidth / 3f * 2 + bodyWidth / 3 / 2 - (g2d.getFontMetrics().stringWidth(data) + 2 * margin + g2d.getFontMetrics().getHeight()) / 2f + g2d.getFontMetrics().getHeight() + margin,
+					startY + (rowHeight - 2 * margin) / 4 + margin - g2d.getFontMetrics().getHeight() / 2f + g2d.getFontMetrics().getAscent());
+
+			g2d.setStroke(new BasicStroke(2));
+			rectangle.setRect(startX + bodyWidth / 3f * 2 + 3 * margin,
+					startY + (rowHeight - 3 * margin) / 2 + 3 * margin,
+					(bodyWidth / 3f - 3 * margin) * 2 / 3 - 3 * margin,
+					(rowHeight - 3 * margin) / 2 - 3 * margin);
+			g2d.draw(rectangle);
+
+			data = (int) (percentage * 100) + "%";
+			g2d.drawString(data,
+					startX + bodyWidth / 3f * 2 + (bodyWidth / 3f - 2 * margin) / 6 * 5 - g2d.getFontMetrics().stringWidth(data) / 2f,
+					startY + (rowHeight - 2 * margin) / 4 * 3 - g2d.getFontMetrics().getHeight() / 2f + g2d.getFontMetrics().getAscent());
+
+			g2d.setColor(Color.getHSBColor((float) (0.50 * percentage), 1f, 1f));
+			rectangle.setRect(startX + bodyWidth / 3f * 2 + 3 * margin,
+					startY + (rowHeight - 3 * margin) / 2 + 3 * margin,
+					((bodyWidth / 3f - 3 * margin) * 2 / 3 - 3 * margin) * percentage,
+					(rowHeight - 3 * margin) / 2 - 3 * margin);
 			g2d.fill(rectangle);
 
 			startY = startY + firstRowHeight;
-			roundedRectangle.setRoundRect(startX + margin, startY + margin, bodyWidth / 2 - 2 * margin, bodyHeight - rowHeight - 2 * margin, 20, 20);
+			roundedRectangle.setRoundRect(startX + margin,
+					startY + margin,
+					bodyWidth / 2 - 2 * margin,
+					bodyHeight - rowHeight - 2 * margin, 20, 20);
 			g2d.setColor(deeper);
 			g2d.fill(roundedRectangle);
 
@@ -241,7 +334,10 @@ public class NetworthPlugin extends BotPlugin {
 						float dataY = i * rowHeight + startY;
 
 						// 绘制圆角矩形
-						roundedRectangle.setRoundRect(dataX + margin, dataY + margin, columnWidth - 2 * margin, rowHeight - 2 * margin, 20, 20);
+						roundedRectangle.setRoundRect(dataX + margin,
+								dataY + margin,
+								columnWidth - 2 * margin,
+								rowHeight - 2 * margin, 20, 20);
 						g2d.setColor(deeper);
 						g2d.fill(roundedRectangle);
 
@@ -254,66 +350,47 @@ public class NetworthPlugin extends BotPlugin {
 						// 绘制进度条边框
 						g2d.setColor(white);
 						g2d.setStroke(new BasicStroke(2));
-						rectangle = new Rectangle2D.Float(dataX + 2 * margin, dataY + (rowHeight - 2 * margin) / 2 + 2 * margin, (columnWidth - 2 * margin) * 2 / 3 - 2 * margin, (rowHeight - 2 * margin) / 2 - 2 * margin);
+						rectangle = new Rectangle2D.Float(dataX + 2 * margin,
+								dataY + (rowHeight - 2 * margin) / 2 + 2 * margin,
+								(columnWidth - 2 * margin) * 2 / 3 - 2 * margin,
+								(rowHeight - 2 * margin) / 2 - 2 * margin);
 						g2d.draw(rectangle);
 
-						switch (key) {
-							case "armor" -> key = "装备";
-							case "equipment" -> key = "饰品";
-							case "wardrobe" -> key = "衣橱";
-							case "inventory" -> key = "背包";
-							case "enderchest" -> key = "末影箱";
-							case "accessories" -> key = "护符";
-							case "personal_vault" -> key = "保险箱";
-							case "storage" -> key = "存储";
-							case "fishing_bag" -> key = "钓鱼袋";
-							case "potion_bag" -> key = "药水袋";
-							case "candy_inventory" -> key = "糖果袋";
-							case "sacks" -> key = "袋子";
-							case "essence" -> key = "精粹";
-							case "pets" -> key = "宠物";
-						}
-						dataSet.setValue(key, value);
 						data = key + ":" + data;
-						g2d.drawString(data, dataX + columnWidth / 2 - g2d.getFontMetrics().stringWidth(data) / 2f, dataY + (rowHeight - 2 * margin) / 4 + margin - g2d.getFontMetrics().getHeight() / 2f + g2d.getFontMetrics().getAscent());
+
+						dataColor = (Color) plot.getSectionPaint(key);
+						g2d.setColor(dataColor);
+						rectangle.setRect(dataX + columnWidth / 2 - (g2d.getFontMetrics().stringWidth(data) + margin + g2d.getFontMetrics().getHeight()) / 2f,
+								dataY + (rowHeight - 2 * margin) / 4 + margin - (g2d.getFontMetrics().getHeight() - 2 * margin) / 2f,
+								g2d.getFontMetrics().getHeight() - 2 * margin,
+								g2d.getFontMetrics().getHeight() - 2 * margin);
+						g2d.fill(rectangle);
+
+						g2d.setColor(white);
+						g2d.drawString(data,
+								dataX + columnWidth / 2 - (g2d.getFontMetrics().stringWidth(data) + margin + g2d.getFontMetrics().getHeight()) / 2f + g2d.getFontMetrics().getHeight() + margin,
+								dataY + (rowHeight - 2 * margin) / 4 + margin - g2d.getFontMetrics().getHeight() / 2f + g2d.getFontMetrics().getAscent());
 
 						// 百分比
 						data = (int) (percentage * 100) + "%";
-						g2d.drawString(data, dataX + (columnWidth - 2 * margin) / 6 * 5 - g2d.getFontMetrics().stringWidth(data) / 2f, dataY + (rowHeight - 2 * margin) / 4 * 3 - g2d.getFontMetrics().getHeight() / 2f + g2d.getFontMetrics().getAscent());
+						g2d.drawString(data,
+								dataX + (columnWidth - 2 * margin) / 6 * 5 - g2d.getFontMetrics().stringWidth(data) / 2f,
+								dataY + (rowHeight - 2 * margin) / 4 * 3 - g2d.getFontMetrics().getHeight() / 2f + g2d.getFontMetrics().getAscent());
 
 						// 绘制进度条
 						g2d.setColor(Color.getHSBColor((float) (0.50 * percentage), 1f, 1f));
-						progressBarWidth = ((columnWidth - 2 * margin) * 2 / 3 - 2 * margin) * percentage;
-						rectangle.setRect(dataX + 2 * margin, dataY + (rowHeight - 2 * margin) / 2 + 2 * margin, progressBarWidth, (rowHeight - 2 * margin) / 2 - 2 * margin);
+						rectangle.setRect(dataX + 2 * margin,
+								dataY + (rowHeight - 2 * margin) / 2 + 2 * margin,
+								((columnWidth - 2 * margin) * 2 / 3 - 2 * margin) * percentage,
+								(rowHeight - 2 * margin) / 2 - 2 * margin);
 						g2d.fill(rectangle);
 					}
 				}
 			}
 
-			// 饼状图
+			// 绘制饼状图
 			startX = 30;
 			rowHeight = firstRowHeight;
-			JFreeChart pieChart = ChartFactory.createPieChart(
-					"身价占比", dataSet, false, false, false);
-			TextTitle title = pieChart.getTitle();
-			font = notoSansSC_Bold.deriveFont(Font.PLAIN, ImageUtil.getFontPixelSize(45));
-			title.setFont(font);
-			title.setPaint(Color.WHITE);
-			font = notoSansSC_Bold.deriveFont(Font.PLAIN, ImageUtil.getFontPixelSize(25));
-			PiePlot plot = (PiePlot) pieChart.getPlot();
-			plot.setLabelFont(font);
-			plot.setLabelPaint(Color.black);
-			plot.setLabelGenerator(new CustomPieSectionLabelGenerator(0.05));
-			plot.setLabelLinkPaint(Color.white);
-			plot.setLabelLinkStroke(new BasicStroke(3.0f));
-			plot.setLabelShadowPaint(null);
-			plot.setLabelBackgroundPaint(white);
-			plot.setLabelOutlinePaint(Color.black);
-			plot.setLabelLinkStyle(PieLabelLinkStyle.STANDARD);
-			plot.setShadowPaint(null);
-			plot.setBackgroundPaint(null);
-			plot.setOutlinePaint(null);
-			pieChart.setBackgroundPaint(null);
 			BufferedImage pieImage = pieChart.createBufferedImage((int) (bodyWidth / 2 - 2 * margin), (int) (bodyHeight - rowHeight - 2 * margin));
 			g2d.drawImage(pieImage, (int) (startX + margin), (int) (startY + margin), null);
 
