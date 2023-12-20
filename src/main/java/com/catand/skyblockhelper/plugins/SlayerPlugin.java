@@ -29,7 +29,7 @@ public class SlayerPlugin extends BotPlugin {
 		String[] args = messageRaw.split(" ");
 		if (args.length < 2) {
 			sendMsg = MsgUtils.builder().text("参数错误，\n正确格式：/杀手 <玩家名>");
-			bot.sendGroupMsg(event.getGroupId(), sendMsg.build(), false);
+			bot.sendGroupMsg(event.getGroupId(), event.getUserId(), sendMsg.build(), false);
 			return MESSAGE_BLOCK;
 		}
 		sendMsg = MsgUtils.builder();
@@ -63,7 +63,7 @@ public class SlayerPlugin extends BotPlugin {
 					sendMsg.text("\t");
 				}
 			}
-			bot.sendGroupMsg(event.getGroupId(), sendMsg.build(), false);
+			bot.sendGroupMsg(event.getGroupId(), event.getUserId(), sendMsg.build(), false);
 		} catch (Exception e) {
 			new ErrorProcessor(e, bot, event);
 		}

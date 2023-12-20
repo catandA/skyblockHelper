@@ -31,7 +31,7 @@ public class BingoPlugin extends BotPlugin {
 		String[] args = messageRaw.split(" ");
 		if (args.length < 2) {
 			sendMsg = MsgUtils.builder().text("参数错误，\n正确格式：/宾果 <玩家名>");
-			bot.sendGroupMsg(event.getGroupId(), sendMsg.build(), false);
+			bot.sendGroupMsg(event.getGroupId(), event.getUserId(), sendMsg.build(), false);
 			return MESSAGE_BLOCK;
 		}
 		sendMsg = MsgUtils.builder();
@@ -41,7 +41,7 @@ public class BingoPlugin extends BotPlugin {
 			JSONObject bingoData = ProfileUtil.getBingoData(player.getMainProfile());
 			if (bingoData == null) {
 				sendMsg.text(ProfileUtil.getDisplayNameData(player.getMainProfile()) + "不玩宾果,\nskb界又少了一双弹簧鞋");
-				bot.sendGroupMsg(event.getGroupId(), sendMsg.build(), false);
+				bot.sendGroupMsg(event.getGroupId(), event.getUserId(), sendMsg.build(), false);
 				return MESSAGE_BLOCK;
 			}
 			JSONArray bingoCardItems = ProfileUtil.getBingoCardItems(player.getMainProfile());
@@ -84,7 +84,7 @@ public class BingoPlugin extends BotPlugin {
 				}
 				sendMsg.text("\n");
 			}
-			bot.sendGroupMsg(event.getGroupId(), sendMsg.build(), false);
+			bot.sendGroupMsg(event.getGroupId(), event.getUserId(), sendMsg.build(), false);
 		} catch (Exception e) {
 			new ErrorProcessor(e, bot, event);
 		}

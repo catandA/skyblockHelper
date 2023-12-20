@@ -16,13 +16,13 @@ public class NoSuchCommandPlugin extends BotPlugin {
 		String messageRaw = event.getRawMessage();
 		if (!messageRaw.contains("/")) {
 			sendMsg = MsgUtils.builder().text("请在指令前添加/");
-			bot.sendGroupMsg(event.getGroupId(), sendMsg.build(), false);
+			bot.sendGroupMsg(event.getGroupId(), event.getUserId(), sendMsg.build(), false);
 			return MESSAGE_BLOCK;
 		}
 		messageRaw = messageRaw.split("/")[1];
 		String[] args = messageRaw.split(" ");
 		sendMsg = MsgUtils.builder().text("不存在名为\"" + args[0] + "\"的指令，输入/help查看帮助");
-		bot.sendGroupMsg(event.getGroupId(), sendMsg.build(), false);
+		bot.sendGroupMsg(event.getGroupId(), event.getUserId(), sendMsg.build(), false);
 		return MESSAGE_BLOCK;
 	}
 }

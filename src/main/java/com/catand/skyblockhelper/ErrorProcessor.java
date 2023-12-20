@@ -28,6 +28,8 @@ public class ErrorProcessor {
 				sendMsg = MsgUtils.builder().text("参数格式打错了\n正确格式：/networth <玩家名>");
 			} else if (exception.getMessage().contains("Player has no SkyBlock profiles")) {
 				sendMsg = MsgUtils.builder().text("wiped. R.I.P");
+			} else if (exception.getMessage().contains("Failed resolving username")) {
+				sendMsg = MsgUtils.builder().text("玩家不存在");
 			} else {
 				sendMsg = MsgUtils.builder().text("未知错误,爆!");
 			}
@@ -40,6 +42,6 @@ public class ErrorProcessor {
 		}
 		log.error("Error: " + exception.getMessage());
 
-		bot.sendGroupMsg(event.getGroupId(), sendMsg.build(), false);
+		bot.sendGroupMsg(event.getGroupId(), event.getUserId(), sendMsg.build(), false);
 	}
 }

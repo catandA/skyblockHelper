@@ -30,7 +30,7 @@ public class DungeonPlugin extends BotPlugin {
 		String[] args = messageRaw.split(" ");
 		if (args.length < 2) {
 			sendMsg = MsgUtils.builder().text("参数错误，\n正确格式：/地牢 <玩家名>");
-			bot.sendGroupMsg(event.getGroupId(), sendMsg.build(), false);
+			bot.sendGroupMsg(event.getGroupId(), event.getUserId(), sendMsg.build(), false);
 			return MESSAGE_BLOCK;
 		}
 		sendMsg = MsgUtils.builder();
@@ -40,7 +40,7 @@ public class DungeonPlugin extends BotPlugin {
 			JSONObject dungeonData = ProfileUtil.getDungeonData(player.getMainProfile());
 			if (!dungeonData.getJSONObject("catacombs").getBooleanValue("visited")) {
 				sendMsg.text(ProfileUtil.getDisplayNameData(player.getMainProfile()) + "不玩地牢,注定只能度过一个相对失败的人生");
-				bot.sendGroupMsg(event.getGroupId(), sendMsg.build(), false);
+				bot.sendGroupMsg(event.getGroupId(), event.getUserId(), sendMsg.build(), false);
 				return MESSAGE_BLOCK;
 			}
 			double averageLevel = dungeonData.getJSONObject("classes").getDoubleValue("average_level_with_progress");
@@ -69,7 +69,7 @@ public class DungeonPlugin extends BotPlugin {
 					sendMsg.text("\t");
 				}
 			}
-			bot.sendGroupMsg(event.getGroupId(), sendMsg.build(), false);
+			bot.sendGroupMsg(event.getGroupId(), event.getUserId(), sendMsg.build(), false);
 		} catch (Exception e) {
 			new ErrorProcessor(e, bot, event);
 		}

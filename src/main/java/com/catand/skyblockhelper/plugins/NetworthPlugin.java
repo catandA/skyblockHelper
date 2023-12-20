@@ -47,7 +47,7 @@ public class NetworthPlugin extends BotPlugin {
 		String[] args = messageRaw.split(" ");
 		if (args.length < 2) {
 			sendMsg = MsgUtils.builder().text("参数错误，\n正确格式：/身价 <玩家名>");
-			bot.sendGroupMsg(event.getGroupId(), sendMsg.build(), false);
+			bot.sendGroupMsg(event.getGroupId(), event.getUserId(), sendMsg.build(), false);
 			return MESSAGE_BLOCK;
 		}
 		// 初始化
@@ -397,7 +397,7 @@ public class NetworthPlugin extends BotPlugin {
 			// 绘图完成
 			g2d.dispose();
 			sendMsg.img(ImageUtil.ImageToBase64(image));
-			bot.sendGroupMsg(event.getGroupId(), sendMsg.build(), false);
+			bot.sendGroupMsg(event.getGroupId(), event.getUserId(), sendMsg.build(), false);
 		} catch (Exception e) {
 			new ErrorProcessor(e, bot, event);
 		}

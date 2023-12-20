@@ -32,7 +32,7 @@ public class MissingPlugin extends BotPlugin {
 		String[] args = messageRaw.split(" ");
 		if (args.length < 2) {
 			sendMsg = MsgUtils.builder().text("参数错误，\n正确格式：/护符补全 <玩家名>");
-			bot.sendGroupMsg(event.getGroupId(), sendMsg.build(), false);
+			bot.sendGroupMsg(event.getGroupId(), event.getUserId(), sendMsg.build(), false);
 			return MESSAGE_BLOCK;
 		}
 
@@ -76,7 +76,7 @@ public class MissingPlugin extends BotPlugin {
 						"(" + NumberFormatUtil.format(price / getMagicpowerFromRarity(accessory.getString("tier"))) + "每mp)\n");
 			});
 
-			bot.sendGroupMsg(event.getGroupId(), sendMsg.build(), false);
+			bot.sendGroupMsg(event.getGroupId(), event.getUserId(), sendMsg.build(), false);
 		} catch (Exception e) {
 			new ErrorProcessor(e, bot, event);
 		}

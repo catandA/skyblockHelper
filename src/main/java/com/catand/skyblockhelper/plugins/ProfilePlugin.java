@@ -29,7 +29,7 @@ public class ProfilePlugin extends BotPlugin {
 		String[] args = messageRaw.split(" ");
 		if (args.length < 2) {
 			sendMsg = MsgUtils.builder().text("参数错误，\n正确格式：/档案 <玩家名>");
-			bot.sendGroupMsg(event.getGroupId(), sendMsg.build(), false);
+			bot.sendGroupMsg(event.getGroupId(), event.getUserId(), sendMsg.build(), false);
 			return MESSAGE_BLOCK;
 		}
 
@@ -48,7 +48,7 @@ public class ProfilePlugin extends BotPlugin {
 				sendMsg.text("[" + ProfileUtil.getSkyblockLevel(profile) + "]" + profile.getString("cute_name") + Gamemode.getGamemode(profile).getIcon() + "\n");
 			}
 
-			bot.sendGroupMsg(event.getGroupId(), sendMsg.build(), false);
+			bot.sendGroupMsg(event.getGroupId(), event.getUserId(), sendMsg.build(), false);
 		} catch (Exception e) {
 			new ErrorProcessor(e, bot, event);
 		}
