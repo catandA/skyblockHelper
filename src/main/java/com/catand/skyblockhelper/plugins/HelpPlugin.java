@@ -18,8 +18,8 @@ public class HelpPlugin extends BotPlugin {
 		if (!messageRaw.startsWith("帮助")) {
 			return MESSAGE_IGNORE;
 		}
-		bot.sendGroupMsg(event.getGroupId(), "skyblockHelper v" + "\n" + SkyblockHelperApplication.VERSION +
-				"\ndeveloped by catand" +
+		bot.sendGroupMsg(event.getGroupId(), "skyblockHelper v" + SkyblockHelperApplication.VERSION +
+				"\ndeveloped by catand\n\n" +
 				"/帮助 /身价 /信息 /技能\n" +
 				"/护符补全 /地牢 /奖杯鱼 /杀手\n" +
 				"/山心 /档案 /宾果\n" +
