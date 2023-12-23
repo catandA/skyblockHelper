@@ -1,5 +1,6 @@
 package com.catand.skyblockhelper.plugins;
 
+import com.catand.skyblockhelper.SkyblockHelperApplication;
 import com.mikuac.shiro.core.Bot;
 import com.mikuac.shiro.core.BotPlugin;
 import com.mikuac.shiro.dto.event.message.GroupMessageEvent;
@@ -17,10 +18,12 @@ public class HelpPlugin extends BotPlugin {
 		if (!messageRaw.startsWith("帮助")) {
 			return MESSAGE_IGNORE;
 		}
-		bot.sendGroupMsg(event.getGroupId(), "/帮助 /身价 /信息 /技能\n" +
+		bot.sendGroupMsg(event.getGroupId(), "skyblockHelper v" + "\n" + SkyblockHelperApplication.VERSION +
+				"\ndeveloped by catand" +
+				"/帮助 /身价 /信息 /技能\n" +
 				"/护符补全 /地牢 /奖杯鱼 /杀手\n" +
 				"/山心 /档案 /宾果\n" +
-				"180901798", false);
+				"Bot交流群:180901798", false);
 		return MESSAGE_BLOCK;
 	}
 

@@ -4,7 +4,6 @@ shiro:
   plugin-list:
     - com.catand.skyblockhelper.plugins.LogPlugin
     - com.catand.skyblockhelper.plugins.HelpPlugin
-    - com.catand.skyblockhelper.plugins.InfoPlugin
     - com.catand.skyblockhelper.plugins.NetworthPlugin
     - com.catand.skyblockhelper.plugins.SkillPlugin
     - com.catand.skyblockhelper.plugins.MissingPlugin
