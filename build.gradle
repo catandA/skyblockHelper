@@ -30,7 +30,7 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation 'org.apache.httpcomponents:httpclient:4.5.14'
-	implementation 'com.alibaba:fastjson:2.0.43'
+	implementation 'com.alibaba:fastjson:2.0.44'
 	implementation 'org.jfree:jfreechart:1.5.4'
 }
 bootJar {
