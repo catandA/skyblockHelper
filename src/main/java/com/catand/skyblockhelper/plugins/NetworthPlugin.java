@@ -1,10 +1,7 @@
 package com.catand.skyblockhelper.plugins;
 
 import com.alibaba.fastjson2.JSONObject;
-import com.catand.skyblockhelper.ErrorProcessor;
-import com.catand.skyblockhelper.FontManager;
-import com.catand.skyblockhelper.Gamemode;
-import com.catand.skyblockhelper.Player;
+import com.catand.skyblockhelper.*;
 import com.catand.skyblockhelper.utils.CustomPieSectionLabelGenerator;
 import com.catand.skyblockhelper.utils.ImageUtil;
 import com.catand.skyblockhelper.utils.NumberFormatUtil;
@@ -63,7 +60,7 @@ public class NetworthPlugin extends BotPlugin {
 		FontManager fontManager = FontManager.getInstance();
 		Font notoSansSC_Bold = fontManager.getFont(FontManager.FontType.NOTO_SANS_SC_BOLD, Font.PLAIN);
 		Font font;
-		Color grey = new Color(40, 40, 40);
+		Color gray = new Color(40, 40, 40);
 		Color white = new Color(212, 212, 212);
 		Color deeper = new Color(30, 30, 30, 200);
 		Color dataColor;
@@ -152,7 +149,7 @@ public class NetworthPlugin extends BotPlugin {
 
 			// 创建随机背景底图，添加上边栏
 			BufferedImage image = ImageUtil.getBackground(width, height);
-			image = ImageUtil.addHeader(image, 70, grey);
+			image = ImageUtil.addHeader(image, 70, gray);
 			height = height + 70;
 
 			// 获取 Graphics2D 对象，创建字体实例并设置像素大小
@@ -173,15 +170,40 @@ public class NetworthPlugin extends BotPlugin {
 			g2d.fill(roundedRectangle);
 
 			// 计算字符串的起始位置，使其居中到圆角矩形
-			g2d.setColor(Color.gray);
+			g2d.setColor(gray);
 			float startY = 35 - (float) g2d.getFontMetrics().getHeight() / 2 + g2d.getFontMetrics().getAscent();
 			float startX = 120 - (float) g2d.getFontMetrics().stringWidth(ProfileUtil.getDisplayNameData(player.getMainProfile())) / 2;
 			g2d.drawString(ProfileUtil.getDisplayNameData(player.getMainProfile()), startX, startY);
 			startX = 360 - (float) g2d.getFontMetrics().stringWidth(profileName) / 2;
 			g2d.drawString(profileName, startX, startY);
-			data = "[" + ProfileUtil.getSkyblockLevel(player.getMainProfile()) + "]" + Gamemode.getGamemode(player.getMainProfile()).getChineseName() + Gamemode.getGamemode(player.getMainProfile()).getIcon();
-			startX = 600 - (float) g2d.getFontMetrics().stringWidth(data) / 2;
+
+			//<editor-fold desc="存档类型">
+			int skbLevel = ProfileUtil.getSkyblockLevel(player.getMainProfile());
+			Gamemode gamemode = Gamemode.getGamemode(player.getMainProfile());
+			data = "[" + skbLevel + "]" + gamemode.getChineseName() + gamemode.getIcon();
+			startX = 600 - ((float) g2d.getFontMetrics().stringWidth(data) + 10) / 2;
+
+			data = "[";
+			g2d.setColor(MinecraftColorCode.DARK_GRAY.getColor());
 			g2d.drawString(data, startX, startY);
+			startX = startX + (float) g2d.getFontMetrics().stringWidth(data) / 2 + 5;
+
+			data = skbLevel + "";
+			g2d.setColor(SkyblockLevelColorCode.getLevelColor(skbLevel).getColor());
+			g2d.drawString(data, startX, startY);
+			startX = startX + (float) g2d.getFontMetrics().stringWidth(data);
+
+			data = "]";
+			g2d.setColor(MinecraftColorCode.DARK_GRAY.getColor());
+			g2d.drawString(data, startX, startY);
+			startX = startX + (float) g2d.getFontMetrics().stringWidth(data) / 2 + 5;
+
+			data = gamemode.getChineseName() + gamemode.getIcon();
+			g2d.setColor(gamemode.getColor());
+			g2d.drawString(data, startX, startY);
+			//</editor-fold>
+
+			g2d.setColor(gray);
 			startX = 840 - (float) g2d.getFontMetrics().stringWidth("还没做你别急") / 2;
 			g2d.drawString("还没做你别急", startX, startY);
 
