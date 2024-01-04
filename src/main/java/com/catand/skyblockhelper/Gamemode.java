@@ -42,7 +42,7 @@ public enum Gamemode {
 		return switch (profile.getString("game_mode")) {
 			case "normal" -> Gamemode.NORMAL;
 			case "ironman" -> Gamemode.IRONMAN;
-			case "stranded" -> Gamemode.STRANDED;
+			case "island" -> Gamemode.STRANDED;
 			case "bingo" -> Gamemode.BINGO;
 			default -> Gamemode.NORMAL;
 		};
