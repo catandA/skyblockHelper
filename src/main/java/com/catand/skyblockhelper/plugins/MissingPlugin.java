@@ -3,6 +3,7 @@ package com.catand.skyblockhelper.plugins;
 import com.alibaba.fastjson2.JSONArray;
 import com.alibaba.fastjson2.JSONObject;
 import com.catand.skyblockhelper.ErrorProcessor;
+import com.catand.skyblockhelper.Gamemode;
 import com.catand.skyblockhelper.Player;
 import com.catand.skyblockhelper.utils.NumberFormatUtil;
 import com.catand.skyblockhelper.utils.ProfileUtil;
@@ -67,7 +68,7 @@ public class MissingPlugin extends BotPlugin {
 			accessoriesMissingList.addAll(zeropriceAccessories);
 
 			sendMsg = MsgUtils.builder();
-			sendMsg.text(ProfileUtil.getDisplayNameData(player.getMainProfile()) + "在" + "[" + ProfileUtil.getSkyblockLevel(player.getMainProfile()) + "]" + ProfileUtil.getProfileName(player.getMainProfile()) + "的护符补全:\n" + "总mp:" + accessoriesData.getJSONObject("magical_power").getIntValue("total") + "\n");
+			sendMsg.text(ProfileUtil.getDisplayNameData(player.getMainProfile()) + "在" + "[" + ProfileUtil.getSkyblockLevel(player.getMainProfile()) + "]" + ProfileUtil.getProfileName(player.getMainProfile()) + Gamemode.getGamemode(player.getMainProfile()).getIcon() + "的护符补全:\n" + "总mp:" + accessoriesData.getJSONObject("magical_power").getIntValue("total") + "\n");
 
 			accessoriesMissingList.stream().limit(7).forEach(accessory -> {
 				long price = accessory.getJSONObject("extra").getLongValue("price");

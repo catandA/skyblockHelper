@@ -3,6 +3,7 @@ package com.catand.skyblockhelper.plugins;
 import com.alibaba.fastjson2.JSONObject;
 import com.catand.skyblockhelper.ErrorProcessor;
 import com.catand.skyblockhelper.FontManager;
+import com.catand.skyblockhelper.Gamemode;
 import com.catand.skyblockhelper.Player;
 import com.catand.skyblockhelper.utils.CustomPieSectionLabelGenerator;
 import com.catand.skyblockhelper.utils.ImageUtil;
@@ -178,8 +179,9 @@ public class NetworthPlugin extends BotPlugin {
 			g2d.drawString(ProfileUtil.getDisplayNameData(player.getMainProfile()), startX, startY);
 			startX = 360 - (float) g2d.getFontMetrics().stringWidth(profileName) / 2;
 			g2d.drawString(profileName, startX, startY);
-			startX = 600 - (float) g2d.getFontMetrics().stringWidth("还没做你别急") / 2;
-			g2d.drawString("还没做你别急", startX, startY);
+			data = "[" + ProfileUtil.getSkyblockLevel(player.getMainProfile()) + "]" + Gamemode.getGamemode(player.getMainProfile()).getChineseName() + Gamemode.getGamemode(player.getMainProfile()).getIcon();
+			startX = 600 - (float) g2d.getFontMetrics().stringWidth(data) / 2;
+			g2d.drawString(data, startX, startY);
 			startX = 840 - (float) g2d.getFontMetrics().stringWidth("还没做你别急") / 2;
 			g2d.drawString("还没做你别急", startX, startY);
 

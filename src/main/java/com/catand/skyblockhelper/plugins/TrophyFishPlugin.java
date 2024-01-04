@@ -2,6 +2,7 @@ package com.catand.skyblockhelper.plugins;
 
 import com.alibaba.fastjson2.JSONObject;
 import com.catand.skyblockhelper.ErrorProcessor;
+import com.catand.skyblockhelper.Gamemode;
 import com.catand.skyblockhelper.Player;
 import com.catand.skyblockhelper.utils.ProfileUtil;
 import com.mikuac.shiro.common.utils.MsgUtils;
@@ -42,7 +43,7 @@ public class TrophyFishPlugin extends BotPlugin {
 			ArrayList<JSONObject> trophyFishList = (ArrayList<JSONObject>) trophyFishData.getJSONArray("fish").toJavaList(JSONObject.class);
 			trophyFishList.removeIf(fish -> !fish.containsKey("highest_tier"));
 
-			sendMsg = sendMsg.text(ProfileUtil.getDisplayNameData(player.getMainProfile()) + "在" + "[" + ProfileUtil.getSkyblockLevel(player.getMainProfile()) + "]" + ProfileUtil.getProfileName(player.getMainProfile()) + "的奖杯鱼:\n" +
+			sendMsg = sendMsg.text(ProfileUtil.getDisplayNameData(player.getMainProfile()) + "在" + "[" + ProfileUtil.getSkyblockLevel(player.getMainProfile()) + "]" + ProfileUtil.getProfileName(player.getMainProfile()) + Gamemode.getGamemode(player.getMainProfile()).getIcon() + "的奖杯鱼:\n" +
 					"总计:" + totalCaught + "\n");
 
 			final int[] counter = {0};

@@ -2,6 +2,7 @@ package com.catand.skyblockhelper.plugins;
 
 import com.alibaba.fastjson2.JSONObject;
 import com.catand.skyblockhelper.ErrorProcessor;
+import com.catand.skyblockhelper.Gamemode;
 import com.catand.skyblockhelper.Player;
 import com.catand.skyblockhelper.utils.NumberFormatUtil;
 import com.catand.skyblockhelper.utils.ProfileUtil;
@@ -41,7 +42,7 @@ public class SlayerPlugin extends BotPlugin {
 			JSONObject slayersData = slayerData.getJSONObject("slayers");
 
 
-			sendMsg = sendMsg.text(ProfileUtil.getDisplayNameData(player.getMainProfile()) + "在" + "[" + ProfileUtil.getSkyblockLevel(player.getMainProfile()) + "]" + ProfileUtil.getProfileName(player.getMainProfile()) + "的杀手:\n" +
+			sendMsg = sendMsg.text(ProfileUtil.getDisplayNameData(player.getMainProfile()) + "在" + "[" + ProfileUtil.getSkyblockLevel(player.getMainProfile()) + "]" + ProfileUtil.getProfileName(player.getMainProfile()) + Gamemode.getGamemode(player.getMainProfile()).getIcon() + "的杀手:\n" +
 					"总经验:" + NumberFormatUtil.format(totalSlayerXp) + "\n");
 
 			String[] keys = slayersData.keySet().toArray(new String[0]);

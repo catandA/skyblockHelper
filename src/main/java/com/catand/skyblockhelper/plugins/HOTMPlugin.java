@@ -2,6 +2,7 @@ package com.catand.skyblockhelper.plugins;
 
 import com.alibaba.fastjson2.JSONObject;
 import com.catand.skyblockhelper.ErrorProcessor;
+import com.catand.skyblockhelper.Gamemode;
 import com.catand.skyblockhelper.Player;
 import com.catand.skyblockhelper.utils.NumberFormatUtil;
 import com.catand.skyblockhelper.utils.ProfileUtil;
@@ -49,7 +50,7 @@ public class HOTMPlugin extends BotPlugin {
 				isMaxedMining = true;
 			}
 
-			sendMsg = MsgUtils.builder().text(ProfileUtil.getDisplayNameData(player.getMainProfile()) + "在" + "[" + ProfileUtil.getSkyblockLevel(player.getMainProfile()) + "]" + ProfileUtil.getProfileName(player.getMainProfile()) + "的山心:\n" +
+			sendMsg = MsgUtils.builder().text(ProfileUtil.getDisplayNameData(player.getMainProfile()) + "在" + "[" + ProfileUtil.getSkyblockLevel(player.getMainProfile()) + "]" + ProfileUtil.getProfileName(player.getMainProfile()) + Gamemode.getGamemode(player.getMainProfile()).getIcon() + "的山心:\n" +
 					"山心等级:" + hotmLevel + "\n" +
 					"任务里程碑:" + commissionsLevel + "\n" +
 					"秘银粉\uD83D\uDFE2:" + NumberFormatUtil.format(mithrilPowder) + "\n" +

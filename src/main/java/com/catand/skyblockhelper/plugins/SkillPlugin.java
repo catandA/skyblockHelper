@@ -2,6 +2,7 @@ package com.catand.skyblockhelper.plugins;
 
 import com.alibaba.fastjson2.JSONObject;
 import com.catand.skyblockhelper.ErrorProcessor;
+import com.catand.skyblockhelper.Gamemode;
 import com.catand.skyblockhelper.Player;
 import com.catand.skyblockhelper.utils.NumberFormatUtil;
 import com.catand.skyblockhelper.utils.ProfileUtil;
@@ -40,7 +41,7 @@ public class SkillPlugin extends BotPlugin {
 			JSONObject skillsData = ProfileUtil.getSkillsData(player.getMainProfile());
 			JSONObject skillsListData = skillsData.getJSONObject("skills");
 			DecimalFormat decimalFormat = new DecimalFormat("#.##");
-			sendMsg = MsgUtils.builder().text(ProfileUtil.getDisplayNameData(player.getMainProfile()) + "在" + "[" + ProfileUtil.getSkyblockLevel(player.getMainProfile()) + "]" + ProfileUtil.getProfileName(player.getMainProfile()) + "上的技能:\n" +
+			sendMsg = MsgUtils.builder().text(ProfileUtil.getDisplayNameData(player.getMainProfile()) + "在" + "[" + ProfileUtil.getSkyblockLevel(player.getMainProfile()) + "]" + ProfileUtil.getProfileName(player.getMainProfile()) + Gamemode.getGamemode(player.getMainProfile()).getIcon() + "上的技能:\n" +
 					"总经验:" + NumberFormatUtil.format(skillsData.getDoubleValue("totalSkillXp")) + "\t平均等级:" + decimalFormat.format(skillsData.getDouble("averageSkillLevel")) + "\n");
 
 			String[] keys = skillsListData.keySet().toArray(new String[0]);
