@@ -4,6 +4,7 @@ import com.alibaba.fastjson2.JSONObject;
 import com.catand.skyblockhelper.ErrorProcessor;
 import com.catand.skyblockhelper.data.Gamemode;
 import com.catand.skyblockhelper.Player;
+import com.catand.skyblockhelper.data.SkyblockProfile;
 import com.catand.skyblockhelper.utils.NumberFormatUtil;
 import com.catand.skyblockhelper.utils.ProfileUtil;
 import com.mikuac.shiro.common.utils.MsgUtils;
@@ -34,15 +35,35 @@ public class SlayerPlugin extends BotPlugin {
 			return MESSAGE_BLOCK;
 		}
 		sendMsg = MsgUtils.builder();
+		JSONObject profile;
+		String playerName;
 
 		try {
 			Player player = new Player(args[1]);
-			JSONObject slayerData = ProfileUtil.getSlayerData(player.getMainProfile());
+			profile = player.getMainProfile();
+			playerName = ProfileUtil.getDisplayNameData(profile);
+			if (args.length > 2) {
+				// 如果指定了存档名，那么就获取指定存档的数据
+				String profileName = SkyblockProfile.getProfile(args[2]).getJsonName();
+				JSONObject profile1 = player.getProfile(profileName);
+				// 未找到指定存档
+				if (profile1 == null) {
+					sendMsg = MsgUtils.builder().text("俺没瞅见" + playerName + "有个啥" + profileName + "啊\n俺只知道他有这些:\n");
+					for (JSONObject profile2 : player.getProfileList()) {
+						sendMsg.text("[" + ProfileUtil.getSkyblockLevel(profile2) + "]" + profile2.getString("cute_name") + Gamemode.getGamemode(profile2).getIcon() + "\n");
+					}
+					bot.sendGroupMsg(event.getGroupId(), event.getUserId(), sendMsg.build(), false);
+					return MESSAGE_BLOCK;
+				}
+				profile = profile1;
+			}
+
+			JSONObject slayerData = ProfileUtil.getSlayerData(profile);
 			long totalSlayerXp = slayerData.getLong("total_slayer_xp");
 			JSONObject slayersData = slayerData.getJSONObject("slayers");
 
 
-			sendMsg = sendMsg.text(ProfileUtil.getDisplayNameData(player.getMainProfile()) + "在" + "[" + ProfileUtil.getSkyblockLevel(player.getMainProfile()) + "]" + ProfileUtil.getProfileName(player.getMainProfile()) + Gamemode.getGamemode(player.getMainProfile()).getIcon() + "的杀手:\n" +
+			sendMsg = sendMsg.text(ProfileUtil.getDisplayNameData(profile) + "在" + "[" + ProfileUtil.getSkyblockLevel(profile) + "]" + ProfileUtil.getProfileName(profile) + Gamemode.getGamemode(profile).getIcon() + "的杀手:\n" +
 					"总经验:" + NumberFormatUtil.format(totalSlayerXp) + "\n");
 
 			String[] keys = slayersData.keySet().toArray(new String[0]);
