@@ -30,6 +30,8 @@ public class ErrorProcessor {
 				sendMsg = MsgUtils.builder().text("wiped. R.I.P");
 			} else if (exception.getMessage().contains("Failed resolving username")) {
 				sendMsg = MsgUtils.builder().text("玩家不存在");
+			} else if (exception.getMessage().contains("Invalid format for the UUID")) {
+				sendMsg = MsgUtils.builder().text("非法ID格式");
 			} else {
 				sendMsg = MsgUtils.builder().text("未知错误,爆!");
 			}

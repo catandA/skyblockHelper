@@ -5,6 +5,7 @@ import com.catand.skyblockhelper.*;
 import com.catand.skyblockhelper.data.Gamemode;
 import com.catand.skyblockhelper.data.MinecraftColorCode;
 import com.catand.skyblockhelper.data.SkyblockLevelColorCode;
+import com.catand.skyblockhelper.data.SkyblockProfile;
 import com.catand.skyblockhelper.utils.CustomPieSectionLabelGenerator;
 import com.catand.skyblockhelper.utils.ImageUtil;
 import com.catand.skyblockhelper.utils.NumberFormatUtil;
@@ -52,8 +53,10 @@ public class NetworthPlugin extends BotPlugin {
 			return MESSAGE_BLOCK;
 		}
 		// 初始化
-		DefaultPieDataset dataSet = new DefaultPieDataset();
 		sendMsg = MsgUtils.builder();
+		JSONObject profile;
+		String playerName;
+		DefaultPieDataset dataSet = new DefaultPieDataset();
 		Rectangle2D rectangle = new Rectangle2D.Float();
 		RoundRectangle2D roundedRectangle = new RoundRectangle2D.Float();
 		long value;
@@ -71,9 +74,27 @@ public class NetworthPlugin extends BotPlugin {
 		//获取networth
 		try {
 			Player player = new Player(args[1]);
-			JSONObject networthData = ProfileUtil.getNetworthData(player.getMainProfile());
+			profile = player.getMainProfile();
+			playerName = ProfileUtil.getDisplayNameData(profile);
+			if (args.length > 2) {
+				// 如果指定了存档名，那么就获取指定存档的数据
+				String profileName = SkyblockProfile.getProfile(args[2]).getJsonName();
+				JSONObject profile1 = player.getProfile(profileName);
+				// 未找到指定存档
+				if (profile1 == null) {
+					sendMsg = MsgUtils.builder().text("俺没瞅见" + playerName + "有个啥" + profileName + "啊\n俺只知道他有这些:\n");
+					for (JSONObject profile2 : player.getProfileList()) {
+						sendMsg.text("[" + ProfileUtil.getSkyblockLevel(profile2) + "]" + profile2.getString("cute_name") + Gamemode.getGamemode(profile2).getIcon() + "\n");
+					}
+					bot.sendGroupMsg(event.getGroupId(), event.getUserId(), sendMsg.build(), false);
+					return MESSAGE_BLOCK;
+				}
+				profile = profile1;
+			}
+
+			JSONObject networthData = ProfileUtil.getNetworthData(profile);
 			JSONObject networthTypesData = networthData.getJSONObject("types");
-			String profileName = ProfileUtil.getProfileName(player.getMainProfile());
+			String profileName = ProfileUtil.getProfileName(profile);
 			long bank = (long) networthData.getDoubleValue("bank");
 			long purse = (long) networthData.getDoubleValue("purse");
 
@@ -175,14 +196,14 @@ public class NetworthPlugin extends BotPlugin {
 			// 计算字符串的起始位置，使其居中到圆角矩形
 			g2d.setColor(gray);
 			float startY = 35 - (float) g2d.getFontMetrics().getHeight() / 2 + g2d.getFontMetrics().getAscent();
-			float startX = 120 - (float) g2d.getFontMetrics().stringWidth(ProfileUtil.getDisplayNameData(player.getMainProfile())) / 2;
-			g2d.drawString(ProfileUtil.getDisplayNameData(player.getMainProfile()), startX, startY);
+			float startX = 120 - (float) g2d.getFontMetrics().stringWidth(ProfileUtil.getDisplayNameData(profile)) / 2;
+			g2d.drawString(ProfileUtil.getDisplayNameData(profile), startX, startY);
 			startX = 360 - (float) g2d.getFontMetrics().stringWidth(profileName) / 2;
 			g2d.drawString(profileName, startX, startY);
 
 			//<editor-fold desc="存档类型">
-			int skbLevel = ProfileUtil.getSkyblockLevel(player.getMainProfile());
-			Gamemode gamemode = Gamemode.getGamemode(player.getMainProfile());
+			int skbLevel = ProfileUtil.getSkyblockLevel(profile);
+			Gamemode gamemode = Gamemode.getGamemode(profile);
 			data = "[" + skbLevel + "]" + gamemode.getChineseName() + gamemode.getIcon();
 			startX = 600 - ((float) g2d.getFontMetrics().stringWidth(data) + 10) / 2;
 

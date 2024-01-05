@@ -40,7 +40,7 @@ public class ProfilePlugin extends BotPlugin {
 
 			sendMsg.text(ProfileUtil.getDisplayNameData(player.getMainProfile()) + "的档案:\n当前档案:" + "[" + ProfileUtil.getSkyblockLevel(player.getMainProfile()) + "]" + player.getMainProfile().getString("cute_name") + Gamemode.getGamemode(player.getMainProfile()).getIcon() + "\n其他档案:\n");
 			int counter = 0;
-			for (JSONObject profile : player.profileList) {
+			for (JSONObject profile : player.getProfileList()) {
 				if (counter == 0) {
 					counter++;
 					continue;

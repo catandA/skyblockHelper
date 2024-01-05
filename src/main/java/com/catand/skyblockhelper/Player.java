@@ -3,12 +3,15 @@ package com.catand.skyblockhelper;
 import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONObject;
 import com.catand.skyblockhelper.utils.SkyCryptAPIGetUtil;
+import lombok.Getter;
 
 import java.util.ArrayList;
 
 public class Player {
-	public String name;
-	public ArrayList<JSONObject> profileList;
+	@Getter
+	private String name;
+	@Getter
+	private ArrayList<JSONObject> profileList;
 
 	public Player(String name) {
 		this.name = name;
@@ -35,5 +38,14 @@ public class Player {
 
 	public JSONObject getMainProfile() {
 		return profileList.get(0);
+	}
+
+	public JSONObject getProfile(String jsonName) {
+		for (JSONObject profile : profileList) {
+			if (profile.getString("cute_name").equals(jsonName)) {
+				return profile;
+			}
+		}
+		return null;
 	}
 }
