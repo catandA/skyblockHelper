@@ -30,7 +30,7 @@ public class SlayerPlugin extends BotPlugin {
 		}
 		String[] args = messageRaw.split(" ");
 		if (args.length < 2) {
-			sendMsg = MsgUtils.builder().text("参数错误，\n正确格式：/杀手 <玩家名>");
+			sendMsg = MsgUtils.builder().text("参数错误，\n正确格式：/杀手 <玩家名> [档案名]");
 			bot.sendGroupMsg(event.getGroupId(), event.getUserId(), sendMsg.build(), false);
 			return MESSAGE_BLOCK;
 		}
