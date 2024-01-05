@@ -48,8 +48,12 @@ public enum SkyblockProfile {
 					return profile;
 				}
 			}
-			int distance = Math.min(getLevenshteinDistance(name, profile.getJsonName()),
-					getMinLevenshteinDistance(name, profile.getChineseName()));
+			for (String chineseName : profile.getChineseName()) {
+				if (name.equals(chineseName)) {
+					return profile;
+				}
+			}
+			int distance = getLevenshteinDistance(name, profile.getJsonName());
 			if (distance < closestDistance) {
 				closestDistance = distance;
 				closestProfile = profile;
