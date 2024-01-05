@@ -2,7 +2,7 @@ package com.catand.skyblockhelper.utils;
 
 import com.alibaba.fastjson2.JSONArray;
 import com.alibaba.fastjson2.JSONObject;
-import com.catand.skyblockhelper.Gamemode;
+import com.catand.skyblockhelper.data.Gamemode;
 
 public class ProfileUtil {
 	public static JSONObject getNetworthData(JSONObject profile) {

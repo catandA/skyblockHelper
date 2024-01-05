@@ -2,6 +2,9 @@ package com.catand.skyblockhelper.plugins;
 
 import com.alibaba.fastjson2.JSONObject;
 import com.catand.skyblockhelper.*;
+import com.catand.skyblockhelper.data.Gamemode;
+import com.catand.skyblockhelper.data.MinecraftColorCode;
+import com.catand.skyblockhelper.data.SkyblockLevelColorCode;
 import com.catand.skyblockhelper.utils.CustomPieSectionLabelGenerator;
 import com.catand.skyblockhelper.utils.ImageUtil;
 import com.catand.skyblockhelper.utils.NumberFormatUtil;

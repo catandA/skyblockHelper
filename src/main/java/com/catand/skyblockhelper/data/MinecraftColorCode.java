@@ -1,4 +1,4 @@
-package com.catand.skyblockhelper;
+package com.catand.skyblockhelper.data;
 
 import lombok.Getter;
 
