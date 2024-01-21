@@ -36,7 +36,7 @@ public class ImageUtil {
 		}
 	}
 
-	public static BufferedImage getBackground(int width, int height) throws IOException {
+	public static BufferedImage getBufferedImageBackground(int width, int height) throws IOException {
 		// 创建一个指定长宽的图片
 		BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
 
@@ -56,12 +56,8 @@ public class ImageUtil {
 		int left = (width - scaledWidth) / 2;
 		int top = (height - scaledHeight) / 2;
 
-		// 创建源矩形和目标矩形
-		Rectangle2D srcRect = new Rectangle2D.Float(0, 0, bgImage.getWidth(), bgImage.getHeight());
-		Rectangle2D dstRect = new Rectangle2D.Float(left, top, scaledWidth, scaledHeight);
-
 		// 绘制背景图像
-		g2d.drawImage(bgImage, (int) dstRect.getX(), (int) dstRect.getY(), (int) dstRect.getWidth(), (int) dstRect.getHeight(), null);
+		g2d.drawImage(bgImage, left, top, scaledWidth, scaledHeight, null);
 
 		g2d.dispose();
 

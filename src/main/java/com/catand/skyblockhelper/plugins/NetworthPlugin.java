@@ -172,7 +172,7 @@ public class NetworthPlugin extends BotPlugin {
 			int height = 500;
 
 			// 创建随机背景底图，添加上边栏
-			BufferedImage image = ImageUtil.getBackground(width, height);
+			BufferedImage image = ImageUtil.getBufferedImageBackground(width, height);
 			image = ImageUtil.addHeader(image, 70, gray);
 			height = height + 70;
 
