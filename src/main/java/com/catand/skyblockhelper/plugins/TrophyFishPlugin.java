@@ -185,10 +185,10 @@ public class TrophyFishPlugin extends BotPlugin {
 				HBox hbox = (HBox) scene.lookup("#" + name);
 				String css = "-fx-background-color: rgba(30, 30, 30, 0.784); -fx-background-radius: 20; -fx-border-radius: 15; -fx-border-width: 5; -fx-border-color: ";
 				switch (tier) {
-					case "bronze" -> hbox.setStyle(css + "#ffc800" + ";");
-					case "silver" -> hbox.setStyle(css + "#c0c0c0" + ";");
-					case "gold" -> hbox.setStyle(css + "#ffff00" + ";");
-					case "diamond" -> hbox.setStyle(css + "#00ffff" + ";");
+					case "bronze" -> hbox.setStyle(css + "#964a0c" + ";");
+					case "silver" -> hbox.setStyle(css + "#757f89" + ";");
+					case "gold" -> hbox.setStyle(css + "#e49b23" + ";");
+					case "diamond" -> hbox.setStyle(css + "#1cffff" + ";");
 				}
 
 				// 设置鱼的图像

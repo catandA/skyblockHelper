@@ -151,12 +151,12 @@
                                     <children>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                                             <children>
-                                                <Text fill="#ffc800" strokeType="OUTSIDE" strokeWidth="0.0" text="铜🥉:">
+                                                <Text fill="#964a0c" strokeType="OUTSIDE" strokeWidth="0.0" text="铜🥉:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="blobfish_bronze" fill="#ffc800" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="blobfish_bronze" fill="#964a0c" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -165,12 +165,12 @@
                                         </HBox>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
                                             <children>
-                                                <Text fill="YELLOW" strokeType="OUTSIDE" strokeWidth="0.0" text="金🥇:">
+                                                <Text fill="#e49b23" strokeType="OUTSIDE" strokeWidth="0.0" text="金🥇:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="blobfish_gold" fill="YELLOW" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="blobfish_gold" fill="#e49b23" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -179,12 +179,12 @@
                                         </HBox>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
                                             <children>
-                                                <Text fill="SILVER" strokeType="OUTSIDE" strokeWidth="0.0" text="银🥈:">
+                                                <Text fill="#757f89" strokeType="OUTSIDE" strokeWidth="0.0" text="银🥈:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="blobfish_silver" fill="SILVER" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="blobfish_silver" fill="#757f89" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -193,12 +193,12 @@
                                         </HBox>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                             <children>
-                                                <Text fill="AQUA" strokeType="OUTSIDE" strokeWidth="0.0" text="钻💎:">
+                                                <Text fill="#1cffff" strokeType="OUTSIDE" strokeWidth="0.0" text="钻💎:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="blobfish_diamond" fill="AQUA" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="blobfish_diamond" fill="#1cffff" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -227,12 +227,12 @@
                                     <children>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                                             <children>
-                                                <Text fill="#ffc800" strokeType="OUTSIDE" strokeWidth="0.0" text="铜🥉:">
+                                                <Text fill="#964a0c" strokeType="OUTSIDE" strokeWidth="0.0" text="铜🥉:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="flyfish_bronze" fill="#ffc800" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="flyfish_bronze" fill="#964a0c" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -241,12 +241,12 @@
                                         </HBox>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
                                             <children>
-                                                <Text fill="YELLOW" strokeType="OUTSIDE" strokeWidth="0.0" text="金🥇:">
+                                                <Text fill="#e49b23" strokeType="OUTSIDE" strokeWidth="0.0" text="金🥇:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="flyfish_gold" fill="YELLOW" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="flyfish_gold" fill="#e49b23" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -255,12 +255,12 @@
                                         </HBox>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
                                             <children>
-                                                <Text fill="SILVER" strokeType="OUTSIDE" strokeWidth="0.0" text="银🥈:">
+                                                <Text fill="#757f89" strokeType="OUTSIDE" strokeWidth="0.0" text="银🥈:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="flyfish_silver" fill="SILVER" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="flyfish_silver" fill="#757f89" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -269,12 +269,12 @@
                                         </HBox>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                             <children>
-                                                <Text fill="AQUA" strokeType="OUTSIDE" strokeWidth="0.0" text="钻💎:">
+                                                <Text fill="#1cffff" strokeType="OUTSIDE" strokeWidth="0.0" text="钻💎:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="flyfish_diamond" fill="AQUA" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="flyfish_diamond" fill="#1cffff" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -303,12 +303,12 @@
                                     <children>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                                             <children>
-                                                <Text fill="#ffc800" strokeType="OUTSIDE" strokeWidth="0.0" text="铜🥉:">
+                                                <Text fill="#964a0c" strokeType="OUTSIDE" strokeWidth="0.0" text="铜🥉:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="golden_fish_bronze" fill="#ffc800" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="golden_fish_bronze" fill="#964a0c" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -317,12 +317,12 @@
                                         </HBox>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
                                             <children>
-                                                <Text fill="YELLOW" strokeType="OUTSIDE" strokeWidth="0.0" text="金🥇:">
+                                                <Text fill="#e49b23" strokeType="OUTSIDE" strokeWidth="0.0" text="金🥇:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="golden_fish_gold" fill="YELLOW" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="golden_fish_gold" fill="#e49b23" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -331,12 +331,12 @@
                                         </HBox>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
                                             <children>
-                                                <Text fill="SILVER" strokeType="OUTSIDE" strokeWidth="0.0" text="银🥈:">
+                                                <Text fill="#757f89" strokeType="OUTSIDE" strokeWidth="0.0" text="银🥈:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="golden_fish_silver" fill="SILVER" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="golden_fish_silver" fill="#757f89" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -345,12 +345,12 @@
                                         </HBox>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                             <children>
-                                                <Text fill="AQUA" strokeType="OUTSIDE" strokeWidth="0.0" text="钻💎:">
+                                                <Text fill="#1cffff" strokeType="OUTSIDE" strokeWidth="0.0" text="钻💎:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="golden_fish_diamond" fill="AQUA" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="golden_fish_diamond" fill="#1cffff" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -379,12 +379,12 @@
                                     <children>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                                             <children>
-                                                <Text fill="#ffc800" strokeType="OUTSIDE" strokeWidth="0.0" text="铜🥉:">
+                                                <Text fill="#964a0c" strokeType="OUTSIDE" strokeWidth="0.0" text="铜🥉:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="gusher_bronze" fill="#ffc800" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="gusher_bronze" fill="#964a0c" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -393,12 +393,12 @@
                                         </HBox>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
                                             <children>
-                                                <Text fill="YELLOW" strokeType="OUTSIDE" strokeWidth="0.0" text="金🥇:">
+                                                <Text fill="#e49b23" strokeType="OUTSIDE" strokeWidth="0.0" text="金🥇:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="gusher_gold" fill="YELLOW" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="gusher_gold" fill="#e49b23" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -407,12 +407,12 @@
                                         </HBox>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
                                             <children>
-                                                <Text fill="SILVER" strokeType="OUTSIDE" strokeWidth="0.0" text="银🥈:">
+                                                <Text fill="#757f89" strokeType="OUTSIDE" strokeWidth="0.0" text="银🥈:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="gusher_silver" fill="SILVER" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="gusher_silver" fill="#757f89" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -421,12 +421,12 @@
                                         </HBox>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                             <children>
-                                                <Text fill="AQUA" strokeType="OUTSIDE" strokeWidth="0.0" text="钻💎:">
+                                                <Text fill="#1cffff" strokeType="OUTSIDE" strokeWidth="0.0" text="钻💎:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="gusher_diamond" fill="AQUA" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="gusher_diamond" fill="#1cffff" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -455,12 +455,12 @@
                                     <children>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                                             <children>
-                                                <Text fill="#ffc800" strokeType="OUTSIDE" strokeWidth="0.0" text="铜🥉:">
+                                                <Text fill="#964a0c" strokeType="OUTSIDE" strokeWidth="0.0" text="铜🥉:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="karate_fish_bronze" fill="#ffc800" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="karate_fish_bronze" fill="#964a0c" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -469,12 +469,12 @@
                                         </HBox>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
                                             <children>
-                                                <Text fill="YELLOW" strokeType="OUTSIDE" strokeWidth="0.0" text="金🥇:">
+                                                <Text fill="#e49b23" strokeType="OUTSIDE" strokeWidth="0.0" text="金🥇:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="karate_fish_gold" fill="YELLOW" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="karate_fish_gold" fill="#e49b23" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -483,12 +483,12 @@
                                         </HBox>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
                                             <children>
-                                                <Text fill="SILVER" strokeType="OUTSIDE" strokeWidth="0.0" text="银🥈:">
+                                                <Text fill="#757f89" strokeType="OUTSIDE" strokeWidth="0.0" text="银🥈:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="karate_fish_silver" fill="SILVER" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="karate_fish_silver" fill="#757f89" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -497,12 +497,12 @@
                                         </HBox>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                             <children>
-                                                <Text fill="AQUA" strokeType="OUTSIDE" strokeWidth="0.0" text="钻💎:">
+                                                <Text fill="#1cffff" strokeType="OUTSIDE" strokeWidth="0.0" text="钻💎:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="karate_fish_diamond" fill="AQUA" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="karate_fish_diamond" fill="#1cffff" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -531,12 +531,12 @@
                                     <children>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                                             <children>
-                                                <Text fill="#ffc800" strokeType="OUTSIDE" strokeWidth="0.0" text="铜🥉:">
+                                                <Text fill="#964a0c" strokeType="OUTSIDE" strokeWidth="0.0" text="铜🥉:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="lavahorse_bronze" fill="#ffc800" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="lavahorse_bronze" fill="#964a0c" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -545,12 +545,12 @@
                                         </HBox>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
                                             <children>
-                                                <Text fill="YELLOW" strokeType="OUTSIDE" strokeWidth="0.0" text="金🥇:">
+                                                <Text fill="#e49b23" strokeType="OUTSIDE" strokeWidth="0.0" text="金🥇:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="lavahorse_gold" fill="YELLOW" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="lavahorse_gold" fill="#e49b23" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -559,12 +559,12 @@
                                         </HBox>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
                                             <children>
-                                                <Text fill="SILVER" strokeType="OUTSIDE" strokeWidth="0.0" text="银🥈:">
+                                                <Text fill="#757f89" strokeType="OUTSIDE" strokeWidth="0.0" text="银🥈:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="lavahorse_silver" fill="SILVER" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="lavahorse_silver" fill="#757f89" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -573,12 +573,12 @@
                                         </HBox>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                             <children>
-                                                <Text fill="AQUA" strokeType="OUTSIDE" strokeWidth="0.0" text="钻💎:">
+                                                <Text fill="#1cffff" strokeType="OUTSIDE" strokeWidth="0.0" text="钻💎:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="lavahorse_diamond" fill="AQUA" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="lavahorse_diamond" fill="#1cffff" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -607,12 +607,12 @@
                                     <children>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                                             <children>
-                                                <Text fill="#ffc800" strokeType="OUTSIDE" strokeWidth="0.0" text="铜🥉:">
+                                                <Text fill="#964a0c" strokeType="OUTSIDE" strokeWidth="0.0" text="铜🥉:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="mana_ray_bronze" fill="#ffc800" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="mana_ray_bronze" fill="#964a0c" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -621,12 +621,12 @@
                                         </HBox>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
                                             <children>
-                                                <Text fill="YELLOW" strokeType="OUTSIDE" strokeWidth="0.0" text="金🥇:">
+                                                <Text fill="#e49b23" strokeType="OUTSIDE" strokeWidth="0.0" text="金🥇:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="mana_ray_gold" fill="YELLOW" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="mana_ray_gold" fill="#e49b23" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -635,12 +635,12 @@
                                         </HBox>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
                                             <children>
-                                                <Text fill="SILVER" strokeType="OUTSIDE" strokeWidth="0.0" text="银🥈:">
+                                                <Text fill="#757f89" strokeType="OUTSIDE" strokeWidth="0.0" text="银🥈:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="mana_ray_silver" fill="SILVER" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="mana_ray_silver" fill="#757f89" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -649,12 +649,12 @@
                                         </HBox>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                             <children>
-                                                <Text fill="AQUA" strokeType="OUTSIDE" strokeWidth="0.0" text="钻💎:">
+                                                <Text fill="#1cffff" strokeType="OUTSIDE" strokeWidth="0.0" text="钻💎:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="mana_ray_diamond" fill="AQUA" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="mana_ray_diamond" fill="#1cffff" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -683,12 +683,12 @@
                                     <children>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                                             <children>
-                                                <Text fill="#ffc800" strokeType="OUTSIDE" strokeWidth="0.0" text="铜🥉:">
+                                                <Text fill="#964a0c" strokeType="OUTSIDE" strokeWidth="0.0" text="铜🥉:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="moldfin_bronze" fill="#ffc800" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="moldfin_bronze" fill="#964a0c" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -697,12 +697,12 @@
                                         </HBox>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
                                             <children>
-                                                <Text fill="YELLOW" strokeType="OUTSIDE" strokeWidth="0.0" text="金🥇:">
+                                                <Text fill="#e49b23" strokeType="OUTSIDE" strokeWidth="0.0" text="金🥇:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="moldfin_gold" fill="YELLOW" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="moldfin_gold" fill="#e49b23" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -711,12 +711,12 @@
                                         </HBox>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
                                             <children>
-                                                <Text fill="SILVER" strokeType="OUTSIDE" strokeWidth="0.0" text="银🥈:">
+                                                <Text fill="#757f89" strokeType="OUTSIDE" strokeWidth="0.0" text="银🥈:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="moldfin_silver" fill="SILVER" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="moldfin_silver" fill="#757f89" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -725,12 +725,12 @@
                                         </HBox>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                             <children>
-                                                <Text fill="AQUA" strokeType="OUTSIDE" strokeWidth="0.0" text="钻💎:">
+                                                <Text fill="#1cffff" strokeType="OUTSIDE" strokeWidth="0.0" text="钻💎:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="moldfin_diamond" fill="AQUA" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="moldfin_diamond" fill="#1cffff" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -759,12 +759,12 @@
                                     <children>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                                             <children>
-                                                <Text fill="#ffc800" strokeType="OUTSIDE" strokeWidth="0.0" text="铜🥉:">
+                                                <Text fill="#964a0c" strokeType="OUTSIDE" strokeWidth="0.0" text="铜🥉:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="obfuscated_1_fish_bronze" fill="#ffc800" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="obfuscated_1_fish_bronze" fill="#964a0c" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -773,12 +773,12 @@
                                         </HBox>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
                                             <children>
-                                                <Text fill="YELLOW" strokeType="OUTSIDE" strokeWidth="0.0" text="金🥇:">
+                                                <Text fill="#e49b23" strokeType="OUTSIDE" strokeWidth="0.0" text="金🥇:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="obfuscated_1_fish_gold" fill="YELLOW" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="obfuscated_1_fish_gold" fill="#e49b23" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -787,12 +787,12 @@
                                         </HBox>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
                                             <children>
-                                                <Text fill="SILVER" strokeType="OUTSIDE" strokeWidth="0.0" text="银🥈:">
+                                                <Text fill="#757f89" strokeType="OUTSIDE" strokeWidth="0.0" text="银🥈:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="obfuscated_1_fish_silver" fill="SILVER" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="obfuscated_1_fish_silver" fill="#757f89" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -801,12 +801,12 @@
                                         </HBox>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                             <children>
-                                                <Text fill="AQUA" strokeType="OUTSIDE" strokeWidth="0.0" text="钻💎:">
+                                                <Text fill="#1cffff" strokeType="OUTSIDE" strokeWidth="0.0" text="钻💎:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="obfuscated_1_fish_diamond" fill="AQUA" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="obfuscated_1_fish_diamond" fill="#1cffff" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -835,12 +835,12 @@
                                     <children>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                                             <children>
-                                                <Text fill="#ffc800" strokeType="OUTSIDE" strokeWidth="0.0" text="铜🥉:">
+                                                <Text fill="#964a0c" strokeType="OUTSIDE" strokeWidth="0.0" text="铜🥉:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="obfuscated_2_fish_bronze" fill="#ffc800" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="obfuscated_2_fish_bronze" fill="#964a0c" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -849,12 +849,12 @@
                                         </HBox>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
                                             <children>
-                                                <Text fill="YELLOW" strokeType="OUTSIDE" strokeWidth="0.0" text="金🥇:">
+                                                <Text fill="#e49b23" strokeType="OUTSIDE" strokeWidth="0.0" text="金🥇:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="obfuscated_2_fish_gold" fill="YELLOW" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="obfuscated_2_fish_gold" fill="#e49b23" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -863,12 +863,12 @@
                                         </HBox>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
                                             <children>
-                                                <Text fill="SILVER" strokeType="OUTSIDE" strokeWidth="0.0" text="银🥈:">
+                                                <Text fill="#757f89" strokeType="OUTSIDE" strokeWidth="0.0" text="银🥈:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="obfuscated_2_fish_silver" fill="SILVER" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="obfuscated_2_fish_silver" fill="#757f89" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -877,12 +877,12 @@
                                         </HBox>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                             <children>
-                                                <Text fill="AQUA" strokeType="OUTSIDE" strokeWidth="0.0" text="钻💎:">
+                                                <Text fill="#1cffff" strokeType="OUTSIDE" strokeWidth="0.0" text="钻💎:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="obfuscated_2_fish_diamond" fill="AQUA" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="obfuscated_2_fish_diamond" fill="#1cffff" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -911,12 +911,12 @@
                                     <children>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                                             <children>
-                                                <Text fill="#ffc800" strokeType="OUTSIDE" strokeWidth="0.0" text="铜🥉:">
+                                                <Text fill="#964a0c" strokeType="OUTSIDE" strokeWidth="0.0" text="铜🥉:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="obfuscated_3_fish_bronze" fill="#ffc800" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="obfuscated_3_fish_bronze" fill="#964a0c" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -925,12 +925,12 @@
                                         </HBox>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
                                             <children>
-                                                <Text fill="YELLOW" strokeType="OUTSIDE" strokeWidth="0.0" text="金🥇:">
+                                                <Text fill="#e49b23" strokeType="OUTSIDE" strokeWidth="0.0" text="金🥇:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="obfuscated_3_fish_gold" fill="YELLOW" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="obfuscated_3_fish_gold" fill="#e49b23" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -939,12 +939,12 @@
                                         </HBox>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
                                             <children>
-                                                <Text fill="SILVER" strokeType="OUTSIDE" strokeWidth="0.0" text="银🥈:">
+                                                <Text fill="#757f89" strokeType="OUTSIDE" strokeWidth="0.0" text="银🥈:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="obfuscated_3_fish_silver" fill="SILVER" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="obfuscated_3_fish_silver" fill="#757f89" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -953,12 +953,12 @@
                                         </HBox>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                             <children>
-                                                <Text fill="AQUA" strokeType="OUTSIDE" strokeWidth="0.0" text="钻💎:">
+                                                <Text fill="#1cffff" strokeType="OUTSIDE" strokeWidth="0.0" text="钻💎:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="obfuscated_3_fish_diamond" fill="AQUA" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="obfuscated_3_fish_diamond" fill="#1cffff" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -987,12 +987,12 @@
                                     <children>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                                             <children>
-                                                <Text fill="#ffc800" strokeType="OUTSIDE" strokeWidth="0.0" text="铜🥉:">
+                                                <Text fill="#964a0c" strokeType="OUTSIDE" strokeWidth="0.0" text="铜🥉:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="skeleton_fish_bronze" fill="#ffc800" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="skeleton_fish_bronze" fill="#964a0c" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -1001,12 +1001,12 @@
                                         </HBox>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
                                             <children>
-                                                <Text fill="YELLOW" strokeType="OUTSIDE" strokeWidth="0.0" text="金🥇:">
+                                                <Text fill="#e49b23" strokeType="OUTSIDE" strokeWidth="0.0" text="金🥇:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="skeleton_fish_gold" fill="YELLOW" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="skeleton_fish_gold" fill="#e49b23" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -1015,12 +1015,12 @@
                                         </HBox>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
                                             <children>
-                                                <Text fill="SILVER" strokeType="OUTSIDE" strokeWidth="0.0" text="银🥈:">
+                                                <Text fill="#757f89" strokeType="OUTSIDE" strokeWidth="0.0" text="银🥈:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="skeleton_fish_silver" fill="SILVER" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="skeleton_fish_silver" fill="#757f89" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -1029,12 +1029,12 @@
                                         </HBox>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                             <children>
-                                                <Text fill="AQUA" strokeType="OUTSIDE" strokeWidth="0.0" text="钻💎:">
+                                                <Text fill="#1cffff" strokeType="OUTSIDE" strokeWidth="0.0" text="钻💎:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="skeleton_fish_diamond" fill="AQUA" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="skeleton_fish_diamond" fill="#1cffff" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -1063,12 +1063,12 @@
                                     <children>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                                             <children>
-                                                <Text fill="#ffc800" strokeType="OUTSIDE" strokeWidth="0.0" text="铜🥉:">
+                                                <Text fill="#964a0c" strokeType="OUTSIDE" strokeWidth="0.0" text="铜🥉:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="slugfish_bronze" fill="#ffc800" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="slugfish_bronze" fill="#964a0c" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -1077,12 +1077,12 @@
                                         </HBox>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
                                             <children>
-                                                <Text fill="YELLOW" strokeType="OUTSIDE" strokeWidth="0.0" text="金🥇:">
+                                                <Text fill="#e49b23" strokeType="OUTSIDE" strokeWidth="0.0" text="金🥇:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="slugfish_gold" fill="YELLOW" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="slugfish_gold" fill="#e49b23" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -1091,12 +1091,12 @@
                                         </HBox>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
                                             <children>
-                                                <Text fill="SILVER" strokeType="OUTSIDE" strokeWidth="0.0" text="银🥈:">
+                                                <Text fill="#757f89" strokeType="OUTSIDE" strokeWidth="0.0" text="银🥈:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="slugfish_silver" fill="SILVER" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="slugfish_silver" fill="#757f89" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -1105,12 +1105,12 @@
                                         </HBox>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                             <children>
-                                                <Text fill="AQUA" strokeType="OUTSIDE" strokeWidth="0.0" text="钻💎:">
+                                                <Text fill="#1cffff" strokeType="OUTSIDE" strokeWidth="0.0" text="钻💎:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="slugfish_diamond" fill="AQUA" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="slugfish_diamond" fill="#1cffff" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -1139,12 +1139,12 @@
                                     <children>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                                             <children>
-                                                <Text fill="#ffc800" strokeType="OUTSIDE" strokeWidth="0.0" text="铜🥉:">
+                                                <Text fill="#964a0c" strokeType="OUTSIDE" strokeWidth="0.0" text="铜🥉:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="soul_fish_bronze" fill="#ffc800" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="soul_fish_bronze" fill="#964a0c" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -1153,12 +1153,12 @@
                                         </HBox>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
                                             <children>
-                                                <Text fill="YELLOW" strokeType="OUTSIDE" strokeWidth="0.0" text="金🥇:">
+                                                <Text fill="#e49b23" strokeType="OUTSIDE" strokeWidth="0.0" text="金🥇:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="soul_fish_gold" fill="YELLOW" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="soul_fish_gold" fill="#e49b23" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -1167,12 +1167,12 @@
                                         </HBox>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
                                             <children>
-                                                <Text fill="SILVER" strokeType="OUTSIDE" strokeWidth="0.0" text="银🥈:">
+                                                <Text fill="#757f89" strokeType="OUTSIDE" strokeWidth="0.0" text="银🥈:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="soul_fish_silver" fill="SILVER" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="soul_fish_silver" fill="#757f89" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -1181,12 +1181,12 @@
                                         </HBox>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                             <children>
-                                                <Text fill="AQUA" strokeType="OUTSIDE" strokeWidth="0.0" text="钻💎:">
+                                                <Text fill="#1cffff" strokeType="OUTSIDE" strokeWidth="0.0" text="钻💎:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="soul_fish_diamond" fill="AQUA" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="soul_fish_diamond" fill="#1cffff" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -1215,12 +1215,12 @@
                                     <children>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                                             <children>
-                                                <Text fill="#ffc800" strokeType="OUTSIDE" strokeWidth="0.0" text="铜🥉:">
+                                                <Text fill="#964a0c" strokeType="OUTSIDE" strokeWidth="0.0" text="铜🥉:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="steaming_hot_flounder_bronze" fill="#ffc800" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="steaming_hot_flounder_bronze" fill="#964a0c" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -1229,12 +1229,12 @@
                                         </HBox>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
                                             <children>
-                                                <Text fill="YELLOW" strokeType="OUTSIDE" strokeWidth="0.0" text="金🥇:">
+                                                <Text fill="#e49b23" strokeType="OUTSIDE" strokeWidth="0.0" text="金🥇:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="steaming_hot_flounder_gold" fill="YELLOW" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="steaming_hot_flounder_gold" fill="#e49b23" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -1243,12 +1243,12 @@
                                         </HBox>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
                                             <children>
-                                                <Text fill="SILVER" strokeType="OUTSIDE" strokeWidth="0.0" text="银🥈:">
+                                                <Text fill="#757f89" strokeType="OUTSIDE" strokeWidth="0.0" text="银🥈:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="steaming_hot_flounder_silver" fill="SILVER" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="steaming_hot_flounder_silver" fill="#757f89" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -1257,12 +1257,12 @@
                                         </HBox>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                             <children>
-                                                <Text fill="AQUA" strokeType="OUTSIDE" strokeWidth="0.0" text="钻💎:">
+                                                <Text fill="#1cffff" strokeType="OUTSIDE" strokeWidth="0.0" text="钻💎:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="steaming_hot_flounder_diamond" fill="AQUA" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="steaming_hot_flounder_diamond" fill="#1cffff" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -1291,12 +1291,12 @@
                                     <children>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                                             <children>
-                                                <Text fill="#ffc800" strokeType="OUTSIDE" strokeWidth="0.0" text="铜🥉:">
+                                                <Text fill="#964a0c" strokeType="OUTSIDE" strokeWidth="0.0" text="铜🥉:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="sulphur_skitter_bronze" fill="#ffc800" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="sulphur_skitter_bronze" fill="#964a0c" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -1305,12 +1305,12 @@
                                         </HBox>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
                                             <children>
-                                                <Text fill="YELLOW" strokeType="OUTSIDE" strokeWidth="0.0" text="金🥇:">
+                                                <Text fill="#e49b23" strokeType="OUTSIDE" strokeWidth="0.0" text="金🥇:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="sulphur_skitter_gold" fill="YELLOW" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="sulphur_skitter_gold" fill="#e49b23" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -1319,12 +1319,12 @@
                                         </HBox>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
                                             <children>
-                                                <Text fill="SILVER" strokeType="OUTSIDE" strokeWidth="0.0" text="银🥈:">
+                                                <Text fill="#757f89" strokeType="OUTSIDE" strokeWidth="0.0" text="银🥈:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="sulphur_skitter_silver" fill="SILVER" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="sulphur_skitter_silver" fill="#757f89" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -1333,12 +1333,12 @@
                                         </HBox>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                             <children>
-                                                <Text fill="AQUA" strokeType="OUTSIDE" strokeWidth="0.0" text="钻💎:">
+                                                <Text fill="#1cffff" strokeType="OUTSIDE" strokeWidth="0.0" text="钻💎:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="sulphur_skitter_diamond" fill="AQUA" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="sulphur_skitter_diamond" fill="#1cffff" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -1367,12 +1367,12 @@
                                     <children>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                                             <children>
-                                                <Text fill="#ffc800" strokeType="OUTSIDE" strokeWidth="0.0" text="铜🥉:">
+                                                <Text fill="#964a0c" strokeType="OUTSIDE" strokeWidth="0.0" text="铜🥉:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="vanille_bronze" fill="#ffc800" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="vanille_bronze" fill="#964a0c" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -1381,12 +1381,12 @@
                                         </HBox>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
                                             <children>
-                                                <Text fill="YELLOW" strokeType="OUTSIDE" strokeWidth="0.0" text="金🥇:">
+                                                <Text fill="#e49b23" strokeType="OUTSIDE" strokeWidth="0.0" text="金🥇:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="vanille_gold" fill="YELLOW" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="vanille_gold" fill="#e49b23" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -1395,12 +1395,12 @@
                                         </HBox>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
                                             <children>
-                                                <Text fill="SILVER" strokeType="OUTSIDE" strokeWidth="0.0" text="银🥈:">
+                                                <Text fill="#757f89" strokeType="OUTSIDE" strokeWidth="0.0" text="银🥈:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="vanille_silver" fill="SILVER" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="vanille_silver" fill="#757f89" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -1409,12 +1409,12 @@
                                         </HBox>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                             <children>
-                                                <Text fill="AQUA" strokeType="OUTSIDE" strokeWidth="0.0" text="钻💎:">
+                                                <Text fill="#1cffff" strokeType="OUTSIDE" strokeWidth="0.0" text="钻💎:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="vanille_diamond" fill="AQUA" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="vanille_diamond" fill="#1cffff" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -1443,12 +1443,12 @@
                                     <children>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                                             <children>
-                                                <Text fill="#ffc800" strokeType="OUTSIDE" strokeWidth="0.0" text="铜🥉:">
+                                                <Text fill="#964a0c" strokeType="OUTSIDE" strokeWidth="0.0" text="铜🥉:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="volcanic_stonefish_bronze" fill="#ffc800" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="volcanic_stonefish_bronze" fill="#964a0c" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -1457,12 +1457,12 @@
                                         </HBox>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
                                             <children>
-                                                <Text fill="YELLOW" strokeType="OUTSIDE" strokeWidth="0.0" text="金🥇:">
+                                                <Text fill="#e49b23" strokeType="OUTSIDE" strokeWidth="0.0" text="金🥇:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="volcanic_stonefish_gold" fill="YELLOW" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="volcanic_stonefish_gold" fill="#e49b23" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -1471,12 +1471,12 @@
                                         </HBox>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
                                             <children>
-                                                <Text fill="SILVER" strokeType="OUTSIDE" strokeWidth="0.0" text="银🥈:">
+                                                <Text fill="#757f89" strokeType="OUTSIDE" strokeWidth="0.0" text="银🥈:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="volcanic_stonefish_silver" fill="SILVER" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="volcanic_stonefish_silver" fill="#757f89" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -1485,12 +1485,12 @@
                                         </HBox>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                             <children>
-                                                <Text fill="AQUA" strokeType="OUTSIDE" strokeWidth="0.0" text="钻💎:">
+                                                <Text fill="#1cffff" strokeType="OUTSIDE" strokeWidth="0.0" text="钻💎:">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="volcanic_stonefish_diamond" fill="AQUA" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="volcanic_stonefish_diamond" fill="#1cffff" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
