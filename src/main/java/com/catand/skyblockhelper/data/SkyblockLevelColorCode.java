@@ -30,6 +30,7 @@ public enum SkyblockLevelColorCode {
 		this.color = color;
 		this.level = level;
 	}
+
 	public static SkyblockLevelColorCode getLevelColor(int level) {
 		SkyblockLevelColorCode result = SkyblockLevelColorCode.GRAY;
 		for (SkyblockLevelColorCode colorCode : SkyblockLevelColorCode.values()) {

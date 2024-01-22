@@ -3,11 +3,10 @@ package com.catand.skyblockhelper.data;
 import lombok.Getter;
 
 import static com.catand.skyblockhelper.utils.LevenshteinDistanceUtil.getLevenshteinDistance;
-import static com.catand.skyblockhelper.utils.LevenshteinDistanceUtil.getMinLevenshteinDistance;
 
 @Getter
 public enum SkyblockProfile {
-	APPLE("Apple", new String[]{"苹果"}, new String[]{"\uD83C\uDF4F","\uD83C\uDF4E"}),
+	APPLE("Apple", new String[]{"苹果"}, new String[]{"\uD83C\uDF4F", "\uD83C\uDF4E"}),
 	BANANA("Banana", new String[]{"香蕉"}, new String[]{"\uD83C\uDF4C"}),
 	BLUEBERRY("Blueberry", new String[]{"蓝莓"}, new String[]{"\uD83E\uDED0"}),
 	COCONUT("Coconut", new String[]{"椰子"}, new String[]{"\uD83E\uDD65"}),

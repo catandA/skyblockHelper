@@ -1,9 +1,15 @@
 package com.catand.skyblockhelper.utils;
 
+import javafx.embed.swing.SwingFXUtils;
+import javafx.scene.image.Image;
+import javafx.scene.image.PixelReader;
+import javafx.scene.image.PixelWriter;
+import javafx.scene.image.WritableImage;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
-import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -64,6 +70,38 @@ public class ImageUtil {
 		return image;
 	}
 
+	public static Image getImageBackground(int width, int height) throws IOException {
+		BufferedImage bufferedImage = getBufferedImageBackground(width, height);
+		return convertToFXImage(bufferedImage);
+	}
+
+	public static Image scaleImage(Image originalImage, int targetWidth, int targetHeight) {
+		// 计算缩放因子
+		int scaleFactor = targetWidth / Math.max((int) originalImage.getWidth(), targetHeight / (int) originalImage.getHeight());
+
+		// 获取原始图像的像素数据
+		PixelReader pixelReader = originalImage.getPixelReader();
+
+		// 创建一个新的WritableImage，其大小是目标大小
+		WritableImage scaledImage = new WritableImage(targetWidth, targetHeight);
+		PixelWriter pixelWriter = scaledImage.getPixelWriter();
+
+		// 将原始图像的每一个像素放大到目标大小
+		for (int y = 0; y < originalImage.getHeight(); y++) {
+			for (int x = 0; x < originalImage.getWidth(); x++) {
+				javafx.scene.paint.Color color = pixelReader.getColor(x, y);
+				for (int dy = 0; dy < scaleFactor; dy++) {
+					for (int dx = 0; dx < scaleFactor; dx++) {
+						pixelWriter.setColor(x * scaleFactor + dx, y * scaleFactor + dy, color);
+					}
+				}
+			}
+		}
+
+		// 返回新的图像
+		return scaledImage;
+	}
+
 	public static String ImageToBase64(BufferedImage image) throws IOException {
 		// 创建一个用于输出的ByteArrayOutputStream
 		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
@@ -100,5 +138,20 @@ public class ImageUtil {
 
 	public static int getFontPixelSize(int fontSize) {
 		return (int) (72.0 * fontSize / 96);
+	}
+
+	public static Image convertToFXImage(BufferedImage bufferedImage) {
+		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+		try {
+			ImageIO.write(bufferedImage, "png", outputStream);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		ByteArrayInputStream inputStream = new ByteArrayInputStream(outputStream.toByteArray());
+		return new Image(inputStream);
+	}
+
+	public static BufferedImage convertToBufferedImage(Image image) {
+		return SwingFXUtils.fromFXImage(image, null);
 	}
 }

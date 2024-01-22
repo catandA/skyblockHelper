@@ -19,6 +19,11 @@ public class ErrorProcessor {
 		this.bot = bot;
 		this.event = event;
 		this.exception = exception;
+		if (exception instanceof RuntimeException) {
+			if (exception.getCause() != null) {
+				exception = (Exception) exception.getCause();
+			}
+		}
 		if (exception instanceof HttpServerErrorException.InternalServerError) {
 			if (exception.getMessage().contains("No user with the name")) {
 				sendMsg = MsgUtils.builder().text("玩家不存在");

@@ -2,8 +2,8 @@ package com.catand.skyblockhelper.plugins;
 
 import com.alibaba.fastjson2.JSONObject;
 import com.catand.skyblockhelper.ErrorProcessor;
-import com.catand.skyblockhelper.data.Gamemode;
 import com.catand.skyblockhelper.Player;
+import com.catand.skyblockhelper.data.Gamemode;
 import com.catand.skyblockhelper.data.SkyblockProfile;
 import com.catand.skyblockhelper.utils.ProfileUtil;
 import com.mikuac.shiro.common.utils.MsgUtils;
