@@ -34,7 +34,7 @@ dependencies {
 	implementation 'org.apache.httpcomponents:httpclient:4.5.14'
 	implementation 'com.alibaba:fastjson:2.0.45'
 	implementation 'org.jfree:jfreechart:1.5.4'
-	implementation 'org.openjfx:javafx:21-ea+5'
+	implementation 'org.openjfx:javafx:21.0.2'
 	implementation 'com.github.KevinPriv:MojangAPI:1.0'
 }
 bootJar {
