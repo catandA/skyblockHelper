@@ -44,7 +44,9 @@ public class ErrorProcessor {
 			sendMsg = MsgUtils.builder().text("网络错误,再来一次!");
 		} else if (exception instanceof HttpServerErrorException.GatewayTimeout) {
 			sendMsg = MsgUtils.builder().text("网络错误,再来一次!");
-		} else {
+		} else if (exception instanceof NullPointerException) {
+			sendMsg = MsgUtils.builder().text("经典空指针错误 :(");
+		}else {
 			sendMsg = MsgUtils.builder().text("未知错误,爆!");
 		}
 		log.error("Error: " + exception.getMessage());
