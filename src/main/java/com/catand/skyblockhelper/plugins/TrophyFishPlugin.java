@@ -20,6 +20,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import org.springframework.stereotype.Component;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.concurrent.CompletableFuture;
 
@@ -172,7 +173,8 @@ public class TrophyFishPlugin extends BotPlugin {
 	}
 
 	public static Image getFishImage(String name, String tier) {
-		return new Image("assets/trophy_fish/" + name + "/" + name + "_" + tier + ".png");
+		URL url = TrophyFishPlugin.class.getResource("/assets/trophy_fish/" + name + "/" + name + "_" + tier + ".png");
+		return new Image(url.toString());
 	}
 
 	public static void setBasicFishImage(Scene scene, String name) {
