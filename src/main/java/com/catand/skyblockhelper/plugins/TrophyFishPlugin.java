@@ -161,10 +161,9 @@ public class TrophyFishPlugin extends BotPlugin {
 				text.setText(String.valueOf(trophyFish.getIntValue("gold")));
 				text = (Text) scene[0].lookup("#" + name + "_diamond");
 				text.setText(String.valueOf(trophyFish.getIntValue("diamond")));
-
-				handler.setScene(scene[0]);
-				handler.sendAsImage(bot, event);
 			});
+			handler.setScene(scene[0]);
+			handler.sendAsImage(bot, event);
 		} catch (Exception e) {
 			new ErrorProcessor(e, bot, event);
 		}
