@@ -17,16 +17,16 @@ public enum SkyblockProfile {
 	LIME("Lime", new String[]{"酸橙", "青柠"}, new String[]{"\uD83C\uDF4B\u200D\uD83D\uDFE9"}),
 	MANGO("Mango", new String[]{"芒果"}, new String[]{"\uD83E\uDD6D"}),
 	ORANGE("Orange", new String[]{"橙子", "橘子"}, new String[]{"\uD83C\uDF4A"}),
-	PAPAYA("Papaya", new String[]{"木瓜"}, new String[]{}),
+	PAPAYA("Papaya", new String[]{"木瓜"}, new String[]{""}),
 	PEAR("Pear", new String[]{"梨", "梨子"}, new String[]{"\uD83C\uDF50"}),
 	PEACH("Peach", new String[]{"桃", "桃子"}, new String[]{"\uD83C\uDF51"}),
 	PINEAPPLE("Pineapple", new String[]{"菠萝"}, new String[]{"\uD83C\uDF4D"}),
-	POMEGRANATE("Pomegranate", new String[]{"石榴"}, new String[]{}),
-	RASPBERRY("Raspberry", new String[]{"树莓", "覆盆子"}, new String[]{}),
+	POMEGRANATE("Pomegranate", new String[]{"石榴"}, new String[]{""}),
+	RASPBERRY("Raspberry", new String[]{"树莓", "覆盆子"}, new String[]{""}),
 	STRAWBERRY("Strawberry", new String[]{"草莓"}, new String[]{"\uD83C\uDF53"}),
 	TOMATO("Tomato", new String[]{"番茄", "西红柿"}, new String[]{"\uD83C\uDF45"}),
 	WATERMELON("Watermelon", new String[]{"西瓜"}, new String[]{"\uD83C\uDF49"}),
-	ZUCCHINI("Zucchini", new String[]{"西葫芦"}, new String[]{});
+	ZUCCHINI("Zucchini", new String[]{"西葫芦"}, new String[]{""});
 	private final String jsonName;
 	private final String[] chineseName;
 	private final String[] emoji;

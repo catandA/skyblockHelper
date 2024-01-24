@@ -39,13 +39,15 @@ public class ErrorProcessor {
 		} else if (exception instanceof HttpServerErrorException.GatewayTimeout) {
 			sendMsg = sendMsg.text("网络错误,再来一次!");
 		} else if (exception instanceof NullPointerException) {
-			sendMsg = sendMsg.text("经典空指针错误 :(");
+			sendMsg = sendMsg.text("经典空指针错误 :( 我先爆了");
 		} else if (exception instanceof NoSuchProfileException noSuchProfileException) {
 			sendMsg = MsgUtils.builder().text("俺没瞅见" + noSuchProfileException.getPlayer().getName() + "有个啥" + noSuchProfileException.getProfileName() + "啊\n俺只知道他有这些:\n");
 			for (JSONObject profile2 : player.getProfileList()) {
 				sendMsg.text("[" + ProfileUtil.getSkyblockLevel(profile2) + "]" + profile2.getString("cute_name") + Gamemode.getGamemode(profile2).getIcon() + "\n");
 			}
-		} else {
+		} else if (exception instanceof ArrayIndexOutOfBoundsException) {
+			sendMsg = sendMsg.text("未知的数组越界,爆!");
+		}else {
 			sendMsg = sendMsg.text("未知错误,爆!");
 		}
 		log.error("Error: " + exception.getMessage());
