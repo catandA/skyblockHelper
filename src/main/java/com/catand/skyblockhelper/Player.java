@@ -4,11 +4,13 @@ import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONObject;
 import com.catand.skyblockhelper.utils.SkyCryptAPIGetUtil;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 
 public class Player {
 	@Getter
+	@Setter
 	private String name;
 	@Getter
 	private ArrayList<JSONObject> profileList;
