@@ -40,6 +40,6 @@ jobs:
           const fs = require("fs")
           return fs.readdirSync("build/libs/").filter(e => !e.endsWith("plain.jar")&& e.endsWith(".jar"))[0]
     - name: Upload build artifact
-      uses: actions/upload-artifact@v4.2.0
+      uses: actions/upload-artifact@v4.3.0
       with:
         path: build/libs/${{ steps.fname.outputs.result }}
