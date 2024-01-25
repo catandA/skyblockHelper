@@ -22,6 +22,7 @@ repositories {
 	maven { url 'https://maven.aliyun.com/repository/spring/' }
 	maven { url 'https://maven.aliyun.com/repository/javafx/' }
 	maven { url 'https://jitpack.io' }
+	maven { url 'https://repo.hypixel.net/repository/Hypixel/' }
 	mavenCentral()
 }
 
@@ -36,6 +37,7 @@ dependencies {
 	implementation 'org.jfree:jfreechart:1.5.4'
 	implementation 'org.openjfx:javafx:22-ea+16'
 	implementation 'com.github.KevinPriv:MojangAPI:1.0'
+	implementation 'net.hypixel:hypixel-api-transport-reactor:4.3'
 }
 bootJar {
 	archiveFileName = "${archiveBaseName.get()}.${archiveExtension.get()}"

@@ -14,4 +14,4 @@ shiro:
     - com.catand.skyblockhelper.plugins.ProfilePlugin
     - com.catand.skyblockhelper.plugins.BingoPlugin
     - com.catand.skyblockhelper.plugins.NoSuchCommandPlugin
-  interceptor:
+hypixel-api-key: ${HYPIXEL_API_KEY}
