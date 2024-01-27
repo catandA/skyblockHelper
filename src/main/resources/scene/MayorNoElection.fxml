@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="770.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="70.0" prefWidth="500.0" spacing="30.0" style="-fx-background-color: rgb(40,40,40);">
+            <children>
+                <HBox alignment="CENTER" maxWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" style="-fx-background-color: #d4d4d4; -fx-background-radius: 15;" HBox.hgrow="ALWAYS">
+                    <children>
+                        <Text id="IGN" strokeType="OUTSIDE" strokeWidth="0.0" text="第">
+                            <font>
+                                <Font name="Noto Sans SC Bold" size="26.0" />
+                            </font>
+                        </Text>
+                  <Text id="year" strokeType="OUTSIDE" strokeWidth="0.0" text="114514">
+                     <font>
+                        <Font name="Noto Sans SC Bold" size="26.0" />
+                     </font>
+                  </Text>
+                  <Text id="IGN" strokeType="OUTSIDE" strokeWidth="0.0" text="年当选市长, 恭喜! :)">
+                     <font>
+                        <Font name="Noto Sans SC Bold" size="26.0" />
+                     </font>
+                  </Text>
+                    </children>
+               <padding>
+                  <Insets left="15.0" right="15.0" />
+               </padding>
+                </HBox>
+            </children>
+            <padding>
+                <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
+            </padding>
+        </HBox>
+        <HBox id="Background" alignment="CENTER" layoutY="70.0" prefHeight="700.0" prefWidth="500.0" spacing="30.0">
+            <padding>
+                <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
+            </padding>
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+         <children>
+            <VBox alignment="CENTER" maxWidth="-Infinity" prefHeight="470.0" prefWidth="200.0" spacing="15.0">
+               <children>
+                  <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" style="-fx-background-color: rgba(30, 30, 30, 0.784); -fx-background-radius: 20;" VBox.vgrow="ALWAYS">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="401.0" prefWidth="200.0">
+                           <children>
+                              <ImageView id="mayorImage0" fitHeight="375.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                           </children>
+                        </VBox>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                           <children>
+                              <ImageView id="mayorIcon0" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" />
+                              <Text id="mayorName0" fill="#d4d4d4" strokeType="OUTSIDE" strokeWidth="0.0" text="Scorpius">
+                                 <font>
+                                    <Font name="Noto Sans SC Bold" size="30.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </HBox>
+                        <VBox id="mayorImage5" alignment="CENTER" prefHeight="200.0" prefWidth="112.0">
+                           <children>
+                              <Text id="mayorPerk01" fill="#d4d4d4" strokeType="OUTSIDE" strokeWidth="0.0" text="小人产能翻倍">
+                                 <font>
+                                    <Font name="Noto Sans SC Bold" size="20.0" />
+                                 </font>
+                              </Text>
+                              <Text id="mayorPerk02" fill="#d4d4d4" strokeType="OUTSIDE" strokeWidth="0.0" text="关闭AH">
+                                 <font>
+                                    <Font name="Noto Sans SC Bold" size="20.0" />
+                                 </font>
+                              </Text>
+                              <Text id="mayorPerk03" fill="#d4d4d4" strokeType="OUTSIDE" strokeWidth="0.0" text="怪物双倍生命">
+                                 <font>
+                                    <Font name="Noto Sans SC Bold" size="20.0" />
+                                 </font>
+                              </Text>
+                              <Text id="mayorPerk04" fill="#d4d4d4" strokeType="OUTSIDE" strokeWidth="0.0" text="经验150%">
+                                 <font>
+                                    <Font name="Noto Sans SC Bold" size="20.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </VBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" top="15.0" />
+                     </padding>
+                  </VBox>
+               </children></VBox>
+         </children>
+        </HBox>
+    </children>
+</AnchorPane>

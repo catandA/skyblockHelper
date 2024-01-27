@@ -74,6 +74,9 @@ public class MayorPlugin extends BotPlugin {
 			JSONObject jsonObject = future1.get();
 			JSONObject mayorData = jsonObject.getJSONObject("mayor");
 			JSONObject electionData = jsonObject.getJSONObject("current");
+			if (electionData == null) {
+				scene[0] = createNoElectionScene();
+			}
 			PieChart pieChart = (PieChart) scene[0].lookup("#pieChart");
 
 			// 当前市长
@@ -103,55 +106,61 @@ public class MayorPlugin extends BotPlugin {
 			}
 
 			// 当前选举
-			// 年份
-			int year = electionData.getIntValue("year");
-			Text yearText = (Text) scene[0].lookup("#electionYear");
-			yearText.setText(String.valueOf(year));
+			if (electionData != null) {
+				// 年份
+				int year = electionData.getIntValue("year");
+				Text yearText = (Text) scene[0].lookup("#electionYear");
+				yearText.setText(String.valueOf(year));
 
-			JSONArray candidates = electionData.getJSONArray("candidates");
-			// 总票数
-			int totalVotes = candidates.stream().mapToInt(candidate -> ((JSONObject) candidate).getIntValue("votes")).sum();
-			candidates.stream().forEach(candidate -> {
-				JSONObject candidateData = (JSONObject) candidate;
-				int index = candidates.indexOf(candidate) + 1;
+				JSONArray candidates = electionData.getJSONArray("candidates");
+				// 总票数
+				int totalVotes = candidates.stream().mapToInt(candidate -> ((JSONObject) candidate).getIntValue("votes")).sum();
+				candidates.stream().forEach(candidate -> {
+					JSONObject candidateData = (JSONObject) candidate;
+					int index = candidates.indexOf(candidate) + 1;
 
-				// 名字
-				String name = getMayorPerkName(candidateData.getString("name"));
-				Text text1 = (Text) scene[0].lookup("#mayorName" + index);
-				text1.setText(name);
+					// 名字
+					String name = getMayorPerkName(candidateData.getString("name"));
+					Text text1 = (Text) scene[0].lookup("#mayorName" + index);
+					text1.setText(name);
 
-				// 得票
-				int votes = candidateData.getIntValue("votes");
-				pieChart.getData().add(new PieChart.Data(name, votes));
-				ProgressBar progressBar = (ProgressBar) scene[0].lookup("#mayorProgress" + index);
-				progressBar.setProgress(votes / (double) totalVotes);
-				Text percentText = (Text) scene[0].lookup("#mayorPercent" + index);
-				percentText.setText(String.format("%.2f%%", votes / (double) totalVotes * 100));
+					// 得票
+					int votes = candidateData.getIntValue("votes");
+					pieChart.getData().add(new PieChart.Data(name, votes));
+					ProgressBar progressBar = (ProgressBar) scene[0].lookup("#mayorProgress" + index);
+					progressBar.setProgress(votes / (double) totalVotes);
+					Text percentText = (Text) scene[0].lookup("#mayorPercent" + index);
+					percentText.setText(String.format("%.2f%%", votes / (double) totalVotes * 100));
 
-				// 图片
-				ImageView imageView = (ImageView) scene[0].lookup("#mayorImage" + index);
-				URL imageUrl = MayorPlugin.class.getResource("/assets/mayor/" + name + ".png");
-				imageView.setImage(new Image(imageUrl.toString()));
+					// 图片
+					ImageView imageView = (ImageView) scene[0].lookup("#mayorImage" + index);
+					URL imageUrl = MayorPlugin.class.getResource("/assets/mayor/" + name + ".png");
+					imageView.setImage(new Image(imageUrl.toString()));
 
-				// 头像
-				ImageView iconView = (ImageView) scene[0].lookup("#mayorIcon" + index);
-				URL iconUrl = MayorPlugin.class.getResource("/assets/mayor/" + name + "_Sprite.png");
-				Image scaledImage1 = ImageUtil.scaleImage(new Image(iconUrl.toString()), 40, 40);
-				iconView.setImage(scaledImage1);
+					// 头像
+					ImageView iconView = (ImageView) scene[0].lookup("#mayorIcon" + index);
+					URL iconUrl = MayorPlugin.class.getResource("/assets/mayor/" + name + "_Sprite.png");
+					Image scaledImage1 = ImageUtil.scaleImage(new Image(iconUrl.toString()), 40, 40);
+					iconView.setImage(scaledImage1);
 
-				// 特权
-				JSONArray perks1 = candidateData.getJSONArray("perks");
-				perks1.stream().forEach(perk -> {
-					JSONObject perkData = (JSONObject) perk;
-					String perkName = getMayorPerkName(perkData.getString("name"));
-					Text text = (Text) scene[0].lookup("#mayorPerk" + index + (perks1.indexOf(perk) + 1));
-					text.setText(perkName);
+					// 特权
+					JSONArray perks1 = candidateData.getJSONArray("perks");
+					perks1.stream().forEach(perk -> {
+						JSONObject perkData = (JSONObject) perk;
+						String perkName = getMayorPerkName(perkData.getString("name"));
+						Text text = (Text) scene[0].lookup("#mayorPerk" + index + (perks1.indexOf(perk) + 1));
+						text.setText(perkName);
+					});
+					for (int i = perks1.size() + 1; i < 5; i++) {
+						Text text = (Text) scene[0].lookup("#mayorPerk" + index + (i));
+						text.setText("");
+					}
 				});
-				for (int i = perks1.size() + 1; i < 5; i++) {
-					Text text = (Text) scene[0].lookup("#mayorPerk" + index + (i));
-					text.setText("");
-				}
-			});
+			} else {
+				int year = mayorData.getJSONObject("election").getIntValue("year");
+				Text yearText = (Text) scene[0].lookup("#year");
+				yearText.setText(String.valueOf(year));
+			}
 
 			final WritableImage[] writableImage = new WritableImage[1];
 			Platform.runLater(() -> {
@@ -187,6 +196,22 @@ public class MayorPlugin extends BotPlugin {
 
 			// 设置背景
 			Image background = ImageUtil.getImageBackground(900, 700);
+			BackgroundImage backgroundImage = new BackgroundImage(background, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+			HBox hBox = (HBox) scene.lookup("#Background");
+			hBox.setBackground(new Background(backgroundImage));
+			return scene;
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	private Scene createNoElectionScene() {
+		try {
+			Parent root = FXMLLoader.load(TrophyFishPlugin.class.getResource("/scene/MayorNoElection.fxml"));
+			Scene scene = new Scene(root, 500, 770);
+
+			// 设置背景
+			Image background = ImageUtil.getImageBackground(500, 700);
 			BackgroundImage backgroundImage = new BackgroundImage(background, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
 			HBox hBox = (HBox) scene.lookup("#Background");
 			hBox.setBackground(new Background(backgroundImage));
