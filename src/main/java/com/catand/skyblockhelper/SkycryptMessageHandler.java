@@ -1,9 +1,9 @@
-package com.catand.skyblockhelper.plugins;
+package com.catand.skyblockhelper;
 
 import com.alibaba.fastjson2.JSONObject;
-import com.catand.skyblockhelper.Player;
 import com.catand.skyblockhelper.data.SkyblockProfile;
 import com.catand.skyblockhelper.exception.NoSuchProfileException;
+import com.catand.skyblockhelper.plugins.TrophyFishPlugin;
 import com.catand.skyblockhelper.utils.ImageUtil;
 import com.catand.skyblockhelper.utils.MinecraftUtils;
 import com.catand.skyblockhelper.utils.ProfileUtil;
@@ -119,7 +119,7 @@ public class SkycryptMessageHandler {
 		}
 	}
 
-	void sendAsImage(Bot bot, GroupMessageEvent event) {
+	public void sendAsImage(Bot bot, GroupMessageEvent event) {
 		final WritableImage[] writableImage = new WritableImage[1];
 		Platform.runLater(() -> {
 			try {

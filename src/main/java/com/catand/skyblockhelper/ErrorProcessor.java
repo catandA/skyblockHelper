@@ -47,7 +47,7 @@ public class ErrorProcessor {
 			}
 		} else if (exception instanceof ArrayIndexOutOfBoundsException) {
 			sendMsg = sendMsg.text("未知的数组越界,爆!");
-		}else {
+		} else {
 			sendMsg = sendMsg.text("未知错误,爆!");
 		}
 		log.error("Error: " + exception.getMessage());
