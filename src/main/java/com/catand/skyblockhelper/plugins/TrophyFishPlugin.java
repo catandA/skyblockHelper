@@ -46,7 +46,7 @@ public class TrophyFishPlugin extends BotPlugin {
 		}
 		SkycryptMessageHandler handler;
 		if (args.length > 2) {
-			handler = new SkycryptMessageHandler(args[1], args[2]);
+			handler = new SkycryptMessageHandler(args[1], SkyblockProfile.getProfile(args[2]).getJsonName());
 		} else {
 			handler = new SkycryptMessageHandler(args[1]);
 		}

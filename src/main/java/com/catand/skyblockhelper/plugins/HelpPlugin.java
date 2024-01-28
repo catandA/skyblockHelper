@@ -21,7 +21,7 @@ public class HelpPlugin extends BotPlugin {
 		bot.sendGroupMsg(event.getGroupId(), "skyblockHelper v" + SkyblockHelperApplication.VERSION +
 				"\n\ncatand开发 :D\n\n" +
 				"/帮助 /身价 /护符补全 /技能\n" +
-				"/地牢 /奖杯鱼 /杀手\n" +
+				"/地牢 /奖杯鱼 /杀手 /市长\n" +
 				"/山心 /档案 /宾果\n" +
 				"Bot交流群:180901798", false);
 		return MESSAGE_BLOCK;
