@@ -41,7 +41,7 @@ public class ErrorProcessor {
 		} else if (exception instanceof NullPointerException) {
 			sendMsg = sendMsg.text("经典空指针错误 :( 我先爆了");
 		} else if (exception instanceof NoSuchProfileException noSuchProfileException) {
-			sendMsg = MsgUtils.builder().text("俺没瞅见" + noSuchProfileException.getPlayer().getName() + "有个啥" + noSuchProfileException.getProfileName() + "啊\n俺只知道他有这些:\n");
+			sendMsg.text("俺没瞅见" + noSuchProfileException.getPlayer().getName() + "有个啥" + noSuchProfileException.getProfileName() + "啊\n俺只知道他有这些:\n");
 			for (JSONObject profile2 : player.getProfileList()) {
 				sendMsg.text("[" + ProfileUtil.getSkyblockLevel(profile2) + "]" + profile2.getString("cute_name") + Gamemode.getGamemode(profile2).getIcon() + "\n");
 			}

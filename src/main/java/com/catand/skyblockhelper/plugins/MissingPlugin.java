@@ -18,7 +18,6 @@ import java.util.ArrayList;
 
 @Component
 public class MissingPlugin extends BotPlugin {
-	MsgUtils sendMsg;
 
 	@Override
 	public int onGroupMessage(Bot bot, GroupMessageEvent event) {
@@ -31,13 +30,13 @@ public class MissingPlugin extends BotPlugin {
 		if (!messageRaw.startsWith("护符补全")) {
 			return MESSAGE_IGNORE;
 		}
+		MsgUtils sendMsg = MsgUtils.builder();
 		String[] args = messageRaw.split(" ");
 		if (args.length < 2) {
-			sendMsg = MsgUtils.builder().text("参数错误，\n正确格式：/护符补全 <玩家名> [档案名]");
+			sendMsg.text("参数错误，\n正确格式：/护符补全 <玩家名> [档案名]");
 			bot.sendGroupMsg(event.getGroupId(), event.getUserId(), sendMsg.build(), false);
 			return MESSAGE_BLOCK;
 		}
-		sendMsg = MsgUtils.builder();
 		JSONObject profile;
 		String playerName;
 
@@ -52,7 +51,7 @@ public class MissingPlugin extends BotPlugin {
 				JSONObject profile1 = player.getProfile(profileName);
 				// 未找到指定存档
 				if (profile1 == null) {
-					sendMsg = MsgUtils.builder().text("俺没瞅见" + playerName + "有个啥" + profileName + "啊\n俺只知道他有这些:\n");
+					sendMsg.text("俺没瞅见" + playerName + "有个啥" + profileName + "啊\n俺只知道他有这些:\n");
 					for (JSONObject profile2 : player.getProfileList()) {
 						sendMsg.text("[" + ProfileUtil.getSkyblockLevel(profile2) + "]" + profile2.getString("cute_name") + Gamemode.getGamemode(profile2).getIcon() + "\n");
 					}
@@ -91,9 +90,10 @@ public class MissingPlugin extends BotPlugin {
 
 			sendMsg.text(ProfileUtil.getDisplayNameData(profile) + "在" + "[" + ProfileUtil.getSkyblockLevel(profile) + "]" + ProfileUtil.getProfileName(profile) + Gamemode.getGamemode(profile).getIcon() + "的护符补全:\n" + "总mp:" + accessoriesData.getJSONObject("magical_power").getIntValue("total") + "\n");
 
+			MsgUtils finalSendMsg = sendMsg;
 			accessoriesMissingList.stream().limit(7).forEach(accessory -> {
 				long price = accessory.getJSONObject("extra").getLongValue("price");
-				sendMsg.text(accessory.getString("name") + ": " +
+				finalSendMsg.text(accessory.getString("name") + ": " +
 						NumberFormatUtil.format(price) +
 						"(" + NumberFormatUtil.format(price / getMagicpowerFromRarity(accessory.getString("tier"))) + "每mp)\n");
 			});

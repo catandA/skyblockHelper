@@ -17,7 +17,6 @@ import java.text.DecimalFormat;
 
 @Component
 public class SkillPlugin extends BotPlugin {
-	MsgUtils sendMsg;
 
 	@Override
 	public int onGroupMessage(Bot bot, GroupMessageEvent event) {
@@ -30,13 +29,13 @@ public class SkillPlugin extends BotPlugin {
 		if (!messageRaw.startsWith("技能")) {
 			return MESSAGE_IGNORE;
 		}
+		MsgUtils sendMsg = MsgUtils.builder();
 		String[] args = messageRaw.split(" ");
 		if (args.length < 2) {
-			sendMsg = MsgUtils.builder().text("参数错误，\n正确格式：/技能 <玩家名> [档案名]");
+			sendMsg.text("参数错误，\n正确格式：/技能 <玩家名> [档案名]");
 			bot.sendGroupMsg(event.getGroupId(), event.getUserId(), sendMsg.build(), false);
 			return MESSAGE_BLOCK;
 		}
-		sendMsg = MsgUtils.builder();
 		JSONObject profile;
 		String playerName;
 
@@ -50,7 +49,7 @@ public class SkillPlugin extends BotPlugin {
 				JSONObject profile1 = player.getProfile(profileName);
 				// 未找到指定存档
 				if (profile1 == null) {
-					sendMsg = MsgUtils.builder().text("俺没瞅见" + playerName + "有个啥" + profileName + "啊\n俺只知道他有这些:\n");
+					sendMsg.text("俺没瞅见" + playerName + "有个啥" + profileName + "啊\n俺只知道他有这些:\n");
 					for (JSONObject profile2 : player.getProfileList()) {
 						sendMsg.text("[" + ProfileUtil.getSkyblockLevel(profile2) + "]" + profile2.getString("cute_name") + Gamemode.getGamemode(profile2).getIcon() + "\n");
 					}

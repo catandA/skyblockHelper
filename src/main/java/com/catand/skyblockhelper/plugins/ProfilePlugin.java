@@ -13,7 +13,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class ProfilePlugin extends BotPlugin {
-	MsgUtils sendMsg;
 
 	@Override
 	public int onGroupMessage(Bot bot, GroupMessageEvent event) {
@@ -26,16 +25,16 @@ public class ProfilePlugin extends BotPlugin {
 		if (!messageRaw.startsWith("档案")) {
 			return MESSAGE_IGNORE;
 		}
+		MsgUtils sendMsg = MsgUtils.builder();
 		String[] args = messageRaw.split(" ");
 		if (args.length < 2) {
-			sendMsg = MsgUtils.builder().text("参数错误，\n正确格式：/档案 <玩家名>");
+			sendMsg.text("参数错误，\n正确格式：/档案 <玩家名>");
 			bot.sendGroupMsg(event.getGroupId(), event.getUserId(), sendMsg.build(), false);
 			return MESSAGE_BLOCK;
 		}
 
 		//获取networth
 		try {
-			sendMsg = MsgUtils.builder();
 			Player player = new Player(args[1]);
 
 			sendMsg.text(ProfileUtil.getDisplayNameData(player.getMainProfile()) + "的档案:\n当前档案:" + "[" + ProfileUtil.getSkyblockLevel(player.getMainProfile()) + "]" + player.getMainProfile().getString("cute_name") + Gamemode.getGamemode(player.getMainProfile()).getIcon() + "\n其他档案:\n");
