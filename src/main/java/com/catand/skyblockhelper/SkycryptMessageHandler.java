@@ -45,7 +45,7 @@ public class SkycryptMessageHandler {
 		this.playerName = playerName;
 	}
 
-	public SkycryptMessageHandler(String profileName, String playerName) {
+	public SkycryptMessageHandler(String playerName, String profileName) {
 		this.profileName = profileName;
 		this.playerName = playerName;
 	}
