@@ -31,4 +31,13 @@ public enum MinecraftColorCode {
 		this.jsonName = jsonName;
 		this.color = color;
 	}
+
+	public static MinecraftColorCode getColorCode(String code) {
+		for (MinecraftColorCode colorCode : MinecraftColorCode.values()) {
+			if (colorCode.getJsonName().equals(code)) {
+				return colorCode;
+			}
+		}
+		return null;
+	}
 }

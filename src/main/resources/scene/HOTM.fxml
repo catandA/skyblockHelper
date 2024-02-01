@@ -1,0 +1,816 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="630.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="70.0" prefWidth="900.0" spacing="30.0" style="-fx-background-color: rgb(40,40,40);">
+            <children>
+                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #d4d4d4; -fx-background-radius: 15;" HBox.hgrow="ALWAYS">
+                    <children>
+                        <Text id="IGN" strokeType="OUTSIDE" strokeWidth="0.0" text="catandE">
+                            <font>
+                                <Font name="Noto Sans SC Bold" size="27.0" />
+                            </font>
+                        </Text>
+                    </children>
+               <padding>
+                  <Insets left="10.0" right="10.0" />
+               </padding>
+                </HBox>
+                <HBox alignment="CENTER" layoutX="390.0" layoutY="25.0" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #d4d4d4; -fx-background-radius: 15;" HBox.hgrow="ALWAYS">
+                    <children>
+                        <Text id="ProfileName" strokeType="OUTSIDE" strokeWidth="0.0" text="Watermelon">
+                            <font>
+                                <Font name="Noto Sans SC Bold" size="27.0" />
+                            </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                        </Text>
+                        <Text id="ProfileIcon" layoutX="26.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="🍉">
+                            <font>
+                                <Font name="Noto Sans SC Bold" size="27.0" />
+                            </font>
+                        </Text>
+                    </children>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <padding>
+                  <Insets left="10.0" right="10.0" />
+               </padding>
+                </HBox>
+                <HBox alignment="CENTER" layoutX="505.0" layoutY="25.0" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #d4d4d4; -fx-background-radius: 15;" HBox.hgrow="ALWAYS">
+                    <children>
+                        <Text fill="#555555" strokeType="OUTSIDE" strokeWidth="0.0" text="[">
+                            <font>
+                                <Font name="Noto Sans SC Bold" size="27.0" />
+                            </font>
+                        </Text>
+                        <Text id="ProfileLevel" fill="#aa00aa" layoutX="110.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="250">
+                            <font>
+                                <Font name="Noto Sans SC Bold" size="27.0" />
+                            </font>
+                        </Text>
+                        <Text fill="#555555" layoutX="94.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="]">
+                            <font>
+                                <Font name="Noto Sans SC Bold" size="27.0" />
+                            </font>
+                        </Text>
+                        <Text id="Gamemode" layoutX="142.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="铁人">
+                            <font>
+                                <Font name="Noto Sans SC Bold" size="27.0" />
+                            </font>
+                        </Text>
+                        <Text id="GamemodeIcon" layoutX="123.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="♻">
+                            <font>
+                                <Font name="Noto Sans SC Bold" size="27.0" />
+                            </font>
+                        </Text>
+                    </children>
+               <padding>
+                  <Insets left="10.0" right="10.0" />
+               </padding>
+                </HBox>
+                <HBox alignment="CENTER" layoutX="620.0" layoutY="25.0" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #d4d4d4; -fx-background-radius: 15;" HBox.hgrow="ALWAYS">
+                    <children>
+                        <Text id="rankBracket1" strokeType="OUTSIDE" strokeWidth="0.0" text="[">
+                            <font>
+                                <Font name="Noto Sans SC Bold" size="27.0" />
+                            </font>
+                        </Text>
+                        <Text id="rankName" layoutX="110.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WIP">
+                            <font>
+                                <Font name="Noto Sans SC Bold" size="27.0" />
+                            </font>
+                        </Text>
+                        <Text id="rankPlus" layoutX="115.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="++">
+                            <font>
+                                <Font name="Noto Sans SC Bold" size="27.0" />
+                            </font>
+                        </Text>
+                        <Text id="rankBracket2" layoutX="149.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="]">
+                            <font>
+                                <Font name="Noto Sans SC Bold" size="27.0" />
+                            </font>
+                        </Text>
+                    </children>
+               <padding>
+                  <Insets left="10.0" right="10.0" />
+               </padding>
+                </HBox>
+            </children>
+            <padding>
+                <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+            </padding>
+        </HBox>
+        <HBox id="Background" layoutY="70.0" prefHeight="560.0" prefWidth="900.0" spacing="15.0">
+            <padding>
+                <Insets bottom="13.0" left="18.0" right="18.0" top="13.0" />
+            </padding>
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+         <children>
+            <VBox maxWidth="-Infinity" prefHeight="530.0" prefWidth="140.0" spacing="15.0">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="67.0" prefWidth="160.0" style="-fx-background-color: rgba(30, 30, 30, 0.784); -fx-background-radius: 20;" VBox.vgrow="ALWAYS">
+                     <children>
+                        <Text fill="#d4d4d4" strokeType="OUTSIDE" strokeWidth="0.0" text="山心等级:">
+                           <font>
+                              <Font name="Noto Sans SC Bold" size="28.0" />
+                           </font>
+                        </Text>
+                        <Text id="HOTMLevel" accessibleText="114" fill="#d4d4d4" strokeType="OUTSIDE" strokeWidth="0.0" text="5/7">
+                           <font>
+                              <Font name="Noto Sans SC Bold" size="28.0" />
+                           </font>
+                        </Text>
+                        <StackPane prefHeight="37.0" prefWidth="160.0">
+                           <children>
+                              <HBox alignment="CENTER" maxWidth="-Infinity" prefHeight="38.0" prefWidth="172.0" style="-fx-background-color: rgb(40,40,40); -fx-background-radius: 5;">
+                                 <children>
+                                    <ProgressBar id="HOTMLevelProgressBar" prefHeight="37.0" prefWidth="160.0" progress="0.53" style="-fx-control-inner-background: 0; -fx-border-radius: 10;" />
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                                 </padding>
+                              </HBox>
+                              <Text id="HOTMLevelProgress" fill="#d4d4d4" strokeType="OUTSIDE" strokeWidth="0.0" text="114K/514M">
+                                 <font>
+                                    <Font name="Noto Sans SC Bold" size="15.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </StackPane>
+                     </children>
+                     <padding>
+                        <Insets left="10.0" right="10.0" />
+                     </padding>
+                  </VBox>
+                  <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="360.0" prefWidth="160.0" style="-fx-background-color: rgba(30, 30, 30, 0.784); -fx-background-radius: 20;">
+                     <children>
+                        <ImageView id="skinImage" fitHeight="270.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" smooth="false" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="534.0" prefWidth="449.0" spacing="10.0">
+               <children>
+                  <GridPane alignment="CENTER" hgap="2.0" prefHeight="472.0" prefWidth="548.0" style="-fx-background-color: rgba(30, 30, 30, 0.784); -fx-background-radius: 20;" vgap="2.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="20.0" prefWidth="20.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="64.0" prefWidth="64.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="64.0" prefWidth="64.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="64.0" prefWidth="64.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="64.0" prefWidth="64.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="64.0" prefWidth="64.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="64.0" prefWidth="64.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="64.0" prefWidth="64.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints maxHeight="-Infinity" minHeight="64.0" prefHeight="64.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="-Infinity" minHeight="64.0" prefHeight="64.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="-Infinity" minHeight="64.0" prefHeight="64.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="-Infinity" minHeight="64.0" prefHeight="64.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="-Infinity" minHeight="64.0" prefHeight="64.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="-Infinity" minHeight="64.0" prefHeight="64.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="-Infinity" minHeight="64.0" prefHeight="64.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                     <children>
+                        <Rectangle id="HOTMLevelProgressBlock7" arcHeight="5.0" arcWidth="5.0" fill="#00800000" height="64.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="20.0" />
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Text fill="#d4d4d4" strokeType="OUTSIDE" strokeWidth="0.0" text="7">
+                                 <font>
+                                    <Font name="Noto Sans SC Bold" size="20.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </HBox>
+                        <Rectangle id="HOTMLevelProgressBlock6" arcHeight="5.0" arcWidth="5.0" fill="#00800000" height="64.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="20.0" GridPane.rowIndex="1" />
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
+                           <children>
+                              <Text fill="#d4d4d4" strokeType="OUTSIDE" strokeWidth="0.0" text="6">
+                                 <font>
+                                    <Font name="Noto Sans SC Bold" size="20.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </HBox>
+                        <Rectangle id="HOTMLevelProgressBlock5" arcHeight="5.0" arcWidth="5.0" fill="#00800000" height="64.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="20.0" GridPane.rowIndex="2" />
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="33.0" GridPane.rowIndex="2">
+                           <children>
+                              <Text fill="#d4d4d4" strokeType="OUTSIDE" strokeWidth="0.0" text="5">
+                                 <font>
+                                    <Font name="Noto Sans SC Bold" size="20.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </HBox>
+                        <Rectangle id="HOTMLevelProgressBlock4" arcHeight="5.0" arcWidth="5.0" fill="#00800000" height="64.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="20.0" GridPane.rowIndex="3" />
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="3">
+                           <children>
+                              <Text fill="#d4d4d4" strokeType="OUTSIDE" strokeWidth="0.0" text="4">
+                                 <font>
+                                    <Font name="Noto Sans SC Bold" size="20.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </HBox>
+                        <Rectangle id="HOTMLevelProgressBlock3" arcHeight="5.0" arcWidth="5.0" fill="#00800000" height="64.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="20.0" GridPane.rowIndex="4" />
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="4">
+                           <children>
+                              <Text fill="#d4d4d4" strokeType="OUTSIDE" strokeWidth="0.0" text="3">
+                                 <font>
+                                    <Font name="Noto Sans SC Bold" size="20.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </HBox>
+                        <Rectangle id="HOTMLevelProgressBlock2" arcHeight="5.0" arcWidth="5.0" fill="#00800000" height="64.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="20.0" GridPane.rowIndex="5" />
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="5">
+                           <children>
+                              <Text fill="#d4d4d4" strokeType="OUTSIDE" strokeWidth="0.0" text="2">
+                                 <font>
+                                    <Font name="Noto Sans SC Bold" size="20.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </HBox>
+                        <Rectangle id="HOTMLevelProgressBlock1" arcHeight="5.0" arcWidth="5.0" fill="#00800000" height="64.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="20.0" GridPane.rowIndex="6" />
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="6">
+                           <children>
+                              <Text fill="#d4d4d4" strokeType="OUTSIDE" strokeWidth="0.0" text="1">
+                                 <font>
+                                    <Font name="Noto Sans SC Bold" size="20.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </HBox>
+                        <StackPane alignment="BOTTOM_RIGHT" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="6">
+                           <children>
+                              <ImageView id="mining_speed" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" />
+                              <Text id="mining_speed_1" fill="#d4d4d4" stroke="BLACK" strokeType="OUTSIDE" text="50/50">
+                                 <font>
+                                    <Font name="Noto Sans SC Bold" size="13.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </StackPane>
+                        <StackPane alignment="BOTTOM_RIGHT" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="5">
+                           <children>
+                              <ImageView id="forge_time" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" />
+                              <Text id="forge_time_1" fill="#d4d4d4" stroke="BLACK" strokeType="OUTSIDE" text="20/20">
+                                 <font>
+                                    <Font name="Noto Sans SC Bold" size="13.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </StackPane>
+                        <StackPane alignment="BOTTOM_RIGHT" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="5">
+                           <children>
+                              <ImageView id="mining_fortune" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" />
+                              <Text id="mining_fortune_1" fill="#d4d4d4" stroke="BLACK" strokeType="OUTSIDE" text="50/50">
+                                 <font>
+                                    <Font name="Noto Sans SC Bold" size="13.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </StackPane>
+                        <StackPane alignment="BOTTOM_RIGHT" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="5">
+                           <children>
+                              <ImageView id="mining_speed_boost" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" />
+                              <Text id="mining_speed_boost_1" fill="RED" stroke="BLACK" strokeType="OUTSIDE" text="✖">
+                                 <font>
+                                    <Font name="Noto Sans SC Bold" size="13.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </StackPane>
+                        <StackPane alignment="BOTTOM_RIGHT" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                           <children>
+                              <ImageView id="random_event" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" />
+                              <Text id="random_event_1" fill="#d4d4d4" stroke="BLACK" strokeType="OUTSIDE" text="45/45">
+                                 <font>
+                                    <Font name="Noto Sans SC Bold" size="13.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </StackPane>
+                        <StackPane alignment="BOTTOM_RIGHT" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="4">
+                           <children>
+                              <ImageView id="daily_powder" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" />
+                              <Text id="daily_powder_1" fill="#d4d4d4" stroke="BLACK" strokeType="OUTSIDE" text="100/100">
+                                 <font>
+                                    <Font name="Noto Sans SC Bold" size="13.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </StackPane>
+                        <StackPane alignment="BOTTOM_RIGHT" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="5">
+                           <children>
+                              <ImageView id="pickaxe_toss" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" />
+                              <Text id="pickaxe_toss_1" fill="RED" stroke="BLACK" strokeType="OUTSIDE" text="✖">
+                                 <font>
+                                    <Font name="Noto Sans SC Bold" size="13.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </StackPane>
+                        <StackPane alignment="BOTTOM_RIGHT" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="5">
+                           <children>
+                              <ImageView id="titanium_insanium" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" />
+                              <Text id="titanium_insanium_1" fill="#d4d4d4" stroke="BLACK" strokeType="OUTSIDE" text="50/50">
+                                 <font>
+                                    <Font name="Noto Sans SC Bold" size="13.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </StackPane>
+                        <StackPane alignment="BOTTOM_RIGHT" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="4">
+                           <children>
+                              <ImageView id="fallen_star_bonus" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" />
+                              <Text id="fallen_star_bonus_1" fill="#d4d4d4" stroke="BLACK" strokeType="OUTSIDE" text="30/30">
+                                 <font>
+                                    <Font name="Noto Sans SC Bold" size="13.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </StackPane>
+                        <StackPane alignment="BOTTOM_RIGHT" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="7" GridPane.rowIndex="3">
+                           <children>
+                              <ImageView id="precision_mining" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" />
+                              <Text id="precision_mining_1" fill="RED" stroke="BLACK" strokeType="OUTSIDE" text="✖">
+                                 <font>
+                                    <Font name="Noto Sans SC Bold" size="13.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </StackPane>
+                        <StackPane alignment="BOTTOM_RIGHT" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="3">
+                           <children>
+                              <ImageView id="experience_orbs" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" />
+                              <Text id="experience_orbs_1" fill="#d4d4d4" stroke="BLACK" strokeType="OUTSIDE" text="80/80">
+                                 <font>
+                                    <Font name="Noto Sans SC Bold" size="13.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </StackPane>
+                        <StackPane alignment="BOTTOM_RIGHT" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="3">
+                           <children>
+                              <ImageView id="front_loaded" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" />
+                              <Text id="front_loaded_1" fill="RED" stroke="BLACK" strokeType="OUTSIDE" text="✖">
+                                 <font>
+                                    <Font name="Noto Sans SC Bold" size="13.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </StackPane>
+                        <StackPane alignment="BOTTOM_RIGHT" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="3">
+                           <children>
+                              <ImageView id="efficient_miner" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" />
+                              <Text id="efficient_miner_1" fill="#d4d4d4" stroke="BLACK" strokeType="OUTSIDE" text="100/100">
+                                 <font>
+                                    <Font name="Noto Sans SC Bold" size="13.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </StackPane>
+                        <StackPane alignment="BOTTOM_RIGHT" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                           <children>
+                              <ImageView id="mining_experience" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" />
+                              <Text id="mining_experience_1" fill="#d4d4d4" stroke="BLACK" strokeType="OUTSIDE" text="100/100">
+                                 <font>
+                                    <Font name="Noto Sans SC Bold" size="13.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </StackPane>
+                        <StackPane alignment="BOTTOM_RIGHT" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                           <children>
+                              <ImageView id="mining_madness" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" />
+                              <Text id="mining_madness_1" fill="RED" stroke="BLACK" strokeType="OUTSIDE" text="✖">
+                                 <font>
+                                    <Font name="Noto Sans SC Bold" size="13.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </StackPane>
+                        <StackPane alignment="BOTTOM_RIGHT" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="2">
+                           <children>
+                              <ImageView id="star_powder" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" />
+                              <Text id="star_powder_1" fill="RED" stroke="BLACK" strokeType="OUTSIDE" text="✖">
+                                 <font>
+                                    <Font name="Noto Sans SC Bold" size="13.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </StackPane>
+                        <StackPane alignment="BOTTOM_RIGHT" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <children>
+                              <ImageView id="daily_effect" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" />
+                              <Text id="daily_effect_1" fill="RED" stroke="BLACK" strokeType="OUTSIDE" text="✖">
+                                 <font>
+                                    <Font name="Noto Sans SC Bold" size="13.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </StackPane>
+                        <StackPane alignment="BOTTOM_RIGHT" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                           <children>
+                              <ImageView id="goblin_killer" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" />
+                              <Text id="goblin_killer_1" fill="RED" stroke="BLACK" strokeType="OUTSIDE" text="✖">
+                                 <font>
+                                    <Font name="Noto Sans SC Bold" size="13.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </StackPane>
+                        <StackPane alignment="BOTTOM_RIGHT" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                           <children>
+                              <ImageView id="lonesome_miner" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" />
+                              <Text id="lonesome_miner_1" fill="#d4d4d4" stroke="BLACK" strokeType="OUTSIDE" text="45/45">
+                                 <font>
+                                    <Font name="Noto Sans SC Bold" size="13.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </StackPane>
+                        <StackPane alignment="BOTTOM_RIGHT" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="2">
+                           <children>
+                              <ImageView id="mining_speed_2" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" />
+                              <Text id="mining_speed_2_1" fill="#d4d4d4" stroke="BLACK" strokeType="OUTSIDE" text="50/50">
+                                 <font>
+                                    <Font name="Noto Sans SC Bold" size="13.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </StackPane>
+                        <StackPane alignment="BOTTOM_RIGHT" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <children>
+                              <ImageView id="vein_seeker" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" />
+                              <Text id="vein_seeker_1" fill="RED" stroke="BLACK" strokeType="OUTSIDE" text="✖">
+                                 <font>
+                                    <Font name="Noto Sans SC Bold" size="13.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </StackPane>
+                        <StackPane alignment="BOTTOM_RIGHT" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                           <children>
+                              <ImageView id="professional" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" />
+                              <Text id="professional_1" fill="#d4d4d4" stroke="BLACK" strokeType="OUTSIDE" text="140/140">
+                                 <font>
+                                    <Font name="Noto Sans SC Bold" size="13.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </StackPane>
+                        <StackPane alignment="BOTTOM_RIGHT" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                           <children>
+                              <ImageView id="mole" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" />
+                              <Text id="mole_1" fill="#d4d4d4" stroke="BLACK" strokeType="OUTSIDE" text="190/190">
+                                 <font>
+                                    <Font name="Noto Sans SC Bold" size="13.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </StackPane>
+                        <StackPane alignment="BOTTOM_RIGHT" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="1">
+                           <children>
+                              <ImageView id="fortunate" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" />
+                              <Text id="fortunate_1" fill="#d4d4d4" stroke="BLACK" strokeType="OUTSIDE" text="20/20">
+                                 <font>
+                                    <Font name="Noto Sans SC Bold" size="13.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </StackPane>
+                        <StackPane alignment="BOTTOM_RIGHT" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="2">
+                           <children>
+                              <ImageView id="special_0" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" />
+                              <Text id="special_0_1" fill="#d4d4d4" stroke="BLACK" strokeType="OUTSIDE" text="7/7">
+                                 <font>
+                                    <Font name="Noto Sans SC Bold" size="13.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </StackPane>
+                        <StackPane alignment="BOTTOM_RIGHT" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="4">
+                           <children>
+                              <ImageView id="powder_buff" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" />
+                              <Text id="powder_buff_1" fill="#d4d4d4" stroke="BLACK" strokeType="OUTSIDE" text="50/50">
+                                 <font>
+                                    <Font name="Noto Sans SC Bold" size="13.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </StackPane>
+                        <StackPane alignment="BOTTOM_RIGHT" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="6">
+                           <children>
+                              <ImageView id="mining_fortune_2" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" />
+                              <Text id="mining_fortune_2_1" fill="#d4d4d4" stroke="BLACK" strokeType="OUTSIDE" text="50/50">
+                                 <font>
+                                    <Font name="Noto Sans SC Bold" size="13.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </StackPane>
+                        <StackPane alignment="BOTTOM_RIGHT" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="1">
+                           <children>
+                              <ImageView id="great_explorer" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" />
+                              <Text id="great_explorer_1" fill="#d4d4d4" stroke="BLACK" strokeType="OUTSIDE" text="20/20">
+                                 <font>
+                                    <Font name="Noto Sans SC Bold" size="13.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </StackPane>
+                        <StackPane alignment="BOTTOM_RIGHT" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="7" GridPane.rowIndex="1">
+                           <children>
+                              <ImageView id="maniac_miner" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" />
+                              <Text id="maniac_miner_1" fill="RED" stroke="BLACK" strokeType="OUTSIDE" text="✖">
+                                 <font>
+                                    <Font name="Noto Sans SC Bold" size="13.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </StackPane>
+                     </children>
+                  </GridPane>
+                  <HBox alignment="CENTER" prefHeight="50.0" prefWidth="421.0" spacing="5.0" style="-fx-background-color: rgba(30, 30, 30, 0.784); -fx-background-radius: 20;" VBox.vgrow="ALWAYS">
+                     <children>
+                        <Text fill="#d4d4d4" strokeType="OUTSIDE" strokeWidth="0.0" text="上次重置:">
+                           <font>
+                              <Font name="Noto Sans SC Bold" size="30.0" />
+                           </font>
+                        </Text>
+                        <Text id="resetTime" fill="#d4d4d4" strokeType="OUTSIDE" strokeWidth="0.0" text="2023/12/25 11:45:14">
+                           <font>
+                              <Font name="Noto Sans SC Bold" size="30.0" />
+                           </font>
+                        </Text>
+                     </children>
+                     <padding>
+                        <Insets left="10.0" right="10.0" />
+                     </padding>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox prefHeight="530.0" prefWidth="152.0" spacing="10.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="103.0" prefWidth="200.0" style="-fx-background-color: rgba(30, 30, 30, 0.784); -fx-background-radius: 20;" VBox.vgrow="ALWAYS">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="30.0" prefWidth="225.0" spacing="5.0">
+                           <children>
+                              <Text accessibleText="114" fill="#d4d4d4" strokeType="OUTSIDE" strokeWidth="0.0" text="任务里程碑:">
+                                 <font>
+                                    <Font name="Noto Sans SC Bold" size="20.0" />
+                                 </font>
+                              </Text>
+                              <Text id="commissionMilestone" accessibleText="114" fill="#d4d4d4" strokeType="OUTSIDE" strokeWidth="0.0" text="3/6">
+                                 <font>
+                                    <Font name="Noto Sans SC Bold" size="20.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="30.0" prefWidth="225.0" spacing="5.0">
+                           <children>
+                              <Text accessibleText="114" fill="#d4d4d4" strokeType="OUTSIDE" strokeWidth="0.0" text="任务数:">
+                                 <font>
+                                    <Font name="Noto Sans SC Bold" size="20.0" />
+                                 </font>
+                              </Text>
+                              <Text id="commissionNumber" accessibleText="114" fill="#d4d4d4" strokeType="OUTSIDE" strokeWidth="0.0" text="114514">
+                                 <font>
+                                    <Font name="Noto Sans SC Bold" size="20.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </VBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: rgba(30, 30, 30, 0.784); -fx-background-radius: 20; -fx-border-color: green; -fx-border-width: 5; -fx-border-radius: 10;" HBox.hgrow="ALWAYS">
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                           <children>
+                              <Text id="TotalFish" accessibleText="114" fill="#00ff51" strokeType="OUTSIDE" strokeWidth="0.0" text="秘银:">
+                                 <font>
+                                    <Font name="Noto Sans SC Bold" size="20.0" />
+                                 </font>
+                              </Text>
+                              <Text id="mythrilPowder" accessibleText="114" fill="#00ff51" strokeType="OUTSIDE" strokeWidth="0.0" text="114k">
+                                 <font>
+                                    <Font name="Noto Sans SC Bold" size="20.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: rgba(30, 30, 30, 0.784); -fx-background-radius: 20; -fx-border-color: purple; -fx-border-width: 5; -fx-border-radius: 10;" HBox.hgrow="ALWAYS">
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                           <children>
+                              <Text id="TotalFish" accessibleText="114" fill="#db3fdd" strokeType="OUTSIDE" strokeWidth="0.0" text="宝石:">
+                                 <font>
+                                    <Font name="Noto Sans SC Bold" size="20.0" />
+                                 </font>
+                              </Text>
+                              <Text id="gemstonePowder" accessibleText="114" fill="#db3fdd" strokeType="OUTSIDE" strokeWidth="0.0" text="514k">
+                                 <font>
+                                    <Font name="Noto Sans SC Bold" size="20.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <VBox alignment="CENTER" prefHeight="91.0" prefWidth="288.0" style="-fx-background-color: rgba(30, 30, 30, 0.784); -fx-background-radius: 20;">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="30.0" prefWidth="225.0" spacing="5.0">
+                           <children>
+                              <Text id="TotalFish" accessibleText="114" fill="#d4d4d4" strokeType="OUTSIDE" strokeWidth="0.0" text="水晶:">
+                                 <font>
+                                    <Font name="Noto Sans SC Bold" size="20.0" />
+                                 </font>
+                              </Text>
+                              <Text id="crystal" accessibleText="114" fill="#d4d4d4" strokeType="OUTSIDE" strokeWidth="0.0" text="1/5">
+                                 <font>
+                                    <Font name="Noto Sans SC Bold" size="20.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="63.0" prefWidth="144.0" spacing="2.0">
+                           <children>
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="24.0">
+                                 <children>
+                                    <Rectangle arcHeight="10.0" arcWidth="10.0" fill="LIME" height="20.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="20.0" />
+                                    <Text id="jade_crystal" accessibleText="114" fill="LIME" strokeType="OUTSIDE" strokeWidth="0.0" text="✔">
+                                       <font>
+                                          <Font name="Noto Sans SC Bold" size="22.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="24.0">
+                                 <children>
+                                    <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#ff9905" height="20.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="20.0" />
+                                    <Text id="amber_crystal" accessibleText="114" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="✖">
+                                       <font>
+                                          <Font name="Noto Sans SC Bold" size="22.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="24.0">
+                                 <children>
+                                    <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#ab00ab" height="20.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="20.0" />
+                                    <Text id="amethyst_crystal" accessibleText="114" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="✖">
+                                       <font>
+                                          <Font name="Noto Sans SC Bold" size="22.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="24.0">
+                                 <children>
+                                    <Rectangle arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="20.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="20.0" />
+                                    <Text id="sapphire_crystal" accessibleText="114" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="✖">
+                                       <font>
+                                          <Font name="Noto Sans SC Bold" size="22.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="24.0">
+                                 <children>
+                                    <Rectangle arcHeight="10.0" arcWidth="10.0" fill="YELLOW" height="20.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="20.0" />
+                                    <Text id="topaz_crystal" accessibleText="114" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="✖">
+                                       <font>
+                                          <Font name="Noto Sans SC Bold" size="22.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="24.0">
+                                 <children>
+                                    <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#f528be" height="20.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="20.0" />
+                                    <Text id="jasper_crystal" accessibleText="114" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="✖">
+                                       <font>
+                                          <Font name="Noto Sans SC Bold" size="22.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="24.0">
+                                 <children>
+                                    <Rectangle arcHeight="10.0" arcWidth="10.0" fill="RED" height="20.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="20.0" />
+                                    <Text id="ruby_crystal" accessibleText="114" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="✖">
+                                       <font>
+                                          <Font name="Noto Sans SC Bold" size="22.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
+                     </padding>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="97.0" prefWidth="200.0" style="-fx-background-color: rgba(30, 30, 30, 0.784); -fx-background-radius: 20;" VBox.vgrow="ALWAYS">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="30.0" prefWidth="225.0" spacing="4.0">
+                           <children>
+                              <Text accessibleText="114" fill="#d4d4d4" strokeType="OUTSIDE" strokeWidth="0.0" text="挖矿等级:">
+                                 <font>
+                                    <Font name="Noto Sans SC Bold" size="20.0" />
+                                 </font>
+                              </Text>
+                              <Text id="miningLevel" accessibleText="114" fill="#d4d4d4" strokeType="OUTSIDE" strokeWidth="0.0" text="50/60">
+                                 <font>
+                                    <Font name="Noto Sans SC Bold" size="20.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </HBox>
+                        <StackPane prefHeight="34.0" prefWidth="184.0">
+                           <children>
+                              <HBox alignment="CENTER" maxWidth="-Infinity" prefHeight="36.0" prefWidth="207.0" style="-fx-background-color: rgb(40,40,40); -fx-background-radius: 5;">
+                                 <children>
+                                    <ProgressBar id="miningLevelProgressBar" prefHeight="158.0" prefWidth="314.0" progress="0.53" style="-fx-control-inner-background: 0; -fx-border-radius: 10;" />
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                                 </padding>
+                              </HBox>
+                              <Text id="miningLevelProgress" fill="#d4d4d4" strokeType="OUTSIDE" strokeWidth="0.0" text="114M/514M">
+                                 <font>
+                                    <Font name="Noto Sans SC Bold" size="15.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </StackPane>
+                     </children>
+                     <padding>
+                        <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                     </padding>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="75.0" prefWidth="164.0" style="-fx-background-color: rgba(30, 30, 30, 0.784); -fx-background-radius: 20;">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="30.0" prefWidth="225.0" spacing="4.0">
+                           <children>
+                              <Text accessibleText="114" fill="#d4d4d4" strokeType="OUTSIDE" strokeWidth="0.0" text="当前技能">
+                                 <font>
+                                    <Font name="Noto Sans SC Bold" size="20.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </HBox>
+                        <StackPane prefHeight="34.0" prefWidth="184.0">
+                           <children>
+                              <Text id="currentPickaxeAbility" fill="#d4d4d4" strokeType="OUTSIDE" strokeWidth="0.0" text="双倍挖掘速度">
+                                 <font>
+                                    <Font name="Noto Sans SC Bold" size="15.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </StackPane>
+                     </children>
+                     <padding>
+                        <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </VBox>
+         </children>
+        </HBox>
+    </children>
+</AnchorPane>

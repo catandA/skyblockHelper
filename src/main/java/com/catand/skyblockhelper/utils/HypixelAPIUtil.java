@@ -1,9 +1,9 @@
 package com.catand.skyblockhelper.utils;
 
-import net.hypixel.api.HypixelAPI;
-import net.hypixel.api.http.HypixelHttpClient;
 import com.catand.skyblockhelper.SpringConfig;
 import lombok.Getter;
+import net.hypixel.api.HypixelAPI;
+import net.hypixel.api.http.HypixelHttpClient;
 import net.hypixel.api.reactor.ReactorHttpClient;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
