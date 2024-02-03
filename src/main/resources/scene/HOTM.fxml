@@ -55,17 +55,17 @@
                 </HBox>
                 <HBox alignment="CENTER" layoutX="505.0" layoutY="25.0" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #d4d4d4; -fx-background-radius: 15;" HBox.hgrow="ALWAYS">
                     <children>
-                        <Text fill="#555555" strokeType="OUTSIDE" strokeWidth="0.0" text="[">
+                        <Text fill="#555555" stroke="BLACK" strokeType="OUTSIDE" text="[">
                             <font>
                                 <Font name="Noto Sans SC Bold" size="27.0" />
                             </font>
                         </Text>
-                        <Text id="ProfileLevel" fill="#aa00aa" layoutX="110.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="250">
+                        <Text id="ProfileLevel" fill="#aa00aa" layoutX="110.0" layoutY="42.0" stroke="BLACK" strokeType="OUTSIDE" text="250">
                             <font>
                                 <Font name="Noto Sans SC Bold" size="27.0" />
                             </font>
                         </Text>
-                        <Text fill="#555555" layoutX="94.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="]">
+                        <Text fill="#555555" layoutX="94.0" layoutY="42.0" stroke="BLACK" strokeType="OUTSIDE" text="]">
                             <font>
                                 <Font name="Noto Sans SC Bold" size="27.0" />
                             </font>
@@ -87,22 +87,22 @@
                 </HBox>
                 <HBox alignment="CENTER" layoutX="620.0" layoutY="25.0" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #d4d4d4; -fx-background-radius: 15;" HBox.hgrow="ALWAYS">
                     <children>
-                        <Text id="rankBracket1" strokeType="OUTSIDE" strokeWidth="0.0" text="[">
+                        <Text id="rankBracket1" stroke="BLACK" strokeType="OUTSIDE" text="[">
                             <font>
                                 <Font name="Noto Sans SC Bold" size="27.0" />
                             </font>
                         </Text>
-                        <Text id="rankName" layoutX="110.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NORANK">
+                        <Text id="rankName" layoutX="110.0" layoutY="42.0" stroke="BLACK" strokeType="OUTSIDE" text="NORANK">
                             <font>
                                 <Font name="Noto Sans SC Bold" size="26.0" />
                             </font>
                         </Text>
-                        <Text id="rankPlus" layoutX="115.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0">
+                        <Text id="rankPlus" layoutX="115.0" layoutY="42.0" stroke="BLACK" strokeType="OUTSIDE">
                             <font>
                                 <Font name="Noto Sans SC Bold" size="27.0" />
                             </font>
                         </Text>
-                        <Text id="rankBracket2" layoutX="149.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="]">
+                        <Text id="rankBracket2" layoutX="149.0" layoutY="42.0" stroke="BLACK" strokeType="OUTSIDE" text="]">
                             <font>
                                 <Font name="Noto Sans SC Bold" size="27.0" />
                             </font>
