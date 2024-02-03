@@ -212,7 +212,7 @@ public class HOTMPlugin extends BotPlugin {
 				miningLevelText.setText(miningLevel + "/60");
 				int currentLevelExp = SkillsLevelInfo.getCurrentLevelXp((int) miningTotalExp);
 				int thisMiningLevelExp = SkillsLevelInfo.LEVELS.get(miningLevel + 1).getXpRequired();
-				miningLevelProgressText.setText(NumberFormatUtil.format(currentLevelExp) + "/" + NumberFormatUtil.format(thisMiningLevelExp));
+				miningLevelProgressText.setText(NumberFormatUtil.format(currentLevelExp, 1) + "/" + NumberFormatUtil.format(thisMiningLevelExp, 1));
 				miningLevelProgressBar.setProgress((double) currentLevelExp / (double) thisMiningLevelExp);
 			}
 
@@ -231,7 +231,7 @@ public class HOTMPlugin extends BotPlugin {
 				hotmLevelText.setText(hotmLevel + "/7");
 				int currentLevelExp = HOTMLevelInfo.getCurrentLevelXp((int) hotmTotalExp);
 				int thisHOTMLevelExp = HOTMLevelInfo.LEVELS.get(hotmLevel).getXpRequired();
-				hotmLevelProgressText.setText(NumberFormatUtil.format(currentLevelExp) + "/" + NumberFormatUtil.format(thisHOTMLevelExp));
+				hotmLevelProgressText.setText(NumberFormatUtil.format(currentLevelExp, 1) + "/" + NumberFormatUtil.format(thisHOTMLevelExp, 1));
 				hotmLevelProgressBar.setProgress((double) currentLevelExp / (double) thisHOTMLevelExp);
 			}
 
@@ -271,9 +271,9 @@ public class HOTMPlugin extends BotPlugin {
 			int mithrilPowder = miningData.getIntValue("powder_mithril_total") + miningData.getIntValue("powder_spent_mithril");
 			int gemstonePowder = miningData.getIntValue("powder_gemstone_total") + miningData.getIntValue("powder_spent_gemstone");
 			Text mithrilPowderText = (Text) scene[0].lookup("#mythrilPowder");
-			mithrilPowderText.setText(NumberFormatUtil.format(mithrilPowder));
+			mithrilPowderText.setText(NumberFormatUtil.format(mithrilPowder, 1));
 			Text gemstonePowderText = (Text) scene[0].lookup("#gemstonePowder");
-			gemstonePowderText.setText(NumberFormatUtil.format(gemstonePowder));
+			gemstonePowderText.setText(NumberFormatUtil.format(gemstonePowder, 1));
 
 			// 设置水晶
 			JSONObject crystalsJsonObject = miningData.getJSONObject("crystals");
@@ -325,9 +325,13 @@ public class HOTMPlugin extends BotPlugin {
 			// 重置时间
 			Text resetTimeText = (Text) scene[0].lookup("#resetTime");
 			long resetTime = miningData.getLongValue("last_reset");
-			Instant instant = Instant.ofEpochSecond(resetTime / 1000);
-			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss").withZone(ZoneId.systemDefault());
-			resetTimeText.setText(formatter.format(instant));
+			if (resetTime == 0) {
+				resetTimeText.setText("没重置过");
+			} else {
+				Instant instant = Instant.ofEpochSecond(resetTime / 1000);
+				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss").withZone(ZoneId.systemDefault());
+				resetTimeText.setText(formatter.format(instant));
+			}
 
 			// 山心树
 			JSONObject treeData = miningData.getJSONObject("nodes");

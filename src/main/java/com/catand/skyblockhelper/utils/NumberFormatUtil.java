@@ -36,4 +36,16 @@ public class NumberFormatUtil {
 		boolean hasDecimal = truncated < 100 && (truncated / 10d) != (truncated / 10);
 		return hasDecimal ? (truncated / 10d) + suffix : (truncated / 10) + suffix;
 	}
+
+	public static String format(int value, int decimalPlaces) {
+		if (value < 1000) return Integer.toString(value); //deal with easy case
+
+		Map.Entry<Long, String> e = suffixes.floorEntry((long) value);
+		Long divideBy = e.getKey();
+		String suffix = e.getValue();
+
+		double truncated = (double) value / ((double) divideBy / 10); //the number part of the output times 10
+		String formatString = "%." + decimalPlaces + "f%s";
+		return String.format(formatString, truncated / 10, suffix);
+	}
 }
