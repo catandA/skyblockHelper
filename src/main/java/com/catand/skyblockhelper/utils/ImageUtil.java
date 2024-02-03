@@ -76,30 +76,29 @@ public class ImageUtil {
 	}
 
 	public static Image scaleImage(Image originalImage, int targetWidth, int targetHeight) {
-		// 计算缩放因子
-		int scaleFactor = targetWidth / Math.max((int) originalImage.getWidth(), targetHeight / (int) originalImage.getHeight());
+		double scaleFactor = Math.min(
+				targetWidth / originalImage.getWidth(),
+				targetHeight / originalImage.getHeight()
+		);
 
-		// 获取原始图像的像素数据
-		PixelReader pixelReader = originalImage.getPixelReader();
+		int width = (int) (originalImage.getWidth() * scaleFactor);
+		int height = (int) (originalImage.getHeight() * scaleFactor);
 
-		// 创建一个新的WritableImage，其大小是目标大小
-		WritableImage scaledImage = new WritableImage(targetWidth, targetHeight);
-		PixelWriter pixelWriter = scaledImage.getPixelWriter();
+		WritableImage writableImage = new WritableImage(width, height);
+		PixelReader reader = originalImage.getPixelReader();
+		PixelWriter writer = writableImage.getPixelWriter();
 
-		// 将原始图像的每一个像素放大到目标大小
-		for (int y = 0; y < originalImage.getHeight(); y++) {
-			for (int x = 0; x < originalImage.getWidth(); x++) {
-				javafx.scene.paint.Color color = pixelReader.getColor(x, y);
-				for (int dy = 0; dy < scaleFactor; dy++) {
-					for (int dx = 0; dx < scaleFactor; dx++) {
-						pixelWriter.setColor(x * scaleFactor + dx, y * scaleFactor + dy, color);
-					}
-				}
+		for (int y = 0; y < height; y++) {
+			for (int x = 0; x < width; x++) {
+				double srcX = x / scaleFactor;
+				double srcY = y / scaleFactor;
+
+				javafx.scene.paint.Color color = reader.getColor((int) srcX, (int) srcY);
+				writer.setColor(x, y, color);
 			}
 		}
 
-		// 返回新的图像
-		return scaledImage;
+		return writableImage;
 	}
 
 	public static String ImageToBase64(BufferedImage image) throws IOException {
