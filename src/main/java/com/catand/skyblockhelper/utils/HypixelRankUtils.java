@@ -61,7 +61,7 @@ public class HypixelRankUtils {
 	public static int getPlusNumber(String rank) {
 		return switch (rank) {
 			// default rank
-			case "VIP" -> 0;
+			case "VIP", "MVP" -> 0;
 			case "VIP_PLUS", "MVP_PLUS" -> 1;
 			case "SUPERSTAR" -> 2;
 			// special rank

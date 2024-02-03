@@ -92,12 +92,12 @@
                                 <Font name="Noto Sans SC Bold" size="27.0" />
                             </font>
                         </Text>
-                        <Text id="rankName" layoutX="110.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WIP">
+                        <Text id="rankName" layoutX="110.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NORANK">
                             <font>
-                                <Font name="Noto Sans SC Bold" size="27.0" />
+                                <Font name="Noto Sans SC Bold" size="26.0" />
                             </font>
                         </Text>
-                        <Text id="rankPlus" layoutX="115.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="++">
+                        <Text id="rankPlus" layoutX="115.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0">
                             <font>
                                 <Font name="Noto Sans SC Bold" size="27.0" />
                             </font>
