@@ -4,6 +4,8 @@ import com.alibaba.fastjson2.JSONArray;
 import com.alibaba.fastjson2.JSONObject;
 import com.catand.skyblockhelper.ErrorProcessor;
 import com.catand.skyblockhelper.data.*;
+import com.catand.skyblockhelper.exception.NoProfilesException;
+import com.catand.skyblockhelper.exception.NoSuchProfileException;
 import com.catand.skyblockhelper.utils.*;
 import com.google.gson.Gson;
 import com.mikuac.shiro.common.utils.MsgUtils;
@@ -104,6 +106,10 @@ public class HOTMPlugin extends BotPlugin {
 
 			CompletableFuture<Void> future1ThenAccept = future1.thenAcceptAsync(result -> {
 				profiles[0] = result;
+				if (profiles[0].isEmpty()) {
+					// 没有存档 Wiped R.I.P :(
+					throw new NoProfilesException(profiles[0], playerName[0], uuid);
+				}
 				if (profileName[0] == null) {
 					// 找到主档
 					profiles[0].forEach(value -> {
@@ -113,6 +119,10 @@ public class HOTMPlugin extends BotPlugin {
 							profileName[0] = jsonObject.getString("cute_name");
 						}
 					});
+					if (profile[0] == null) {
+						// 没有主档 Wiped R.I.P :(
+						throw new NoProfilesException(profiles[0], playerName[0], uuid);
+					}
 				} else {
 					// 找到指定存档
 					profiles[0].forEach((value) -> {
@@ -134,23 +144,7 @@ public class HOTMPlugin extends BotPlugin {
 
 			final JSONObject[] member = new JSONObject[1];
 			if (profile[0] == null) {
-				// 未找到指定档案
-				sendMsg.text("俺没瞅见" + playerName[0] + "有个啥" + profileName[0] + "啊\n俺只知道他有这些:\n");
-				// 循环档案
-				profiles[0].forEach((value) -> {
-					JSONObject jsonObject = (JSONObject) value;
-					// 循环成员
-					jsonObject.getJSONObject("members").forEach((key1, value1) -> {
-						// 找到当前玩家
-						if (key1.equals(uuid.toString().replace("-", "").toLowerCase())) {
-							JSONObject jsonObject1 = (JSONObject) value1;
-							int experience = jsonObject1.getJSONObject("leveling").getIntValue("experience");
-							sendMsg.text("[" + Math.floorDiv(experience, 100) + "]" + jsonObject.getString("cute_name") + Gamemode.getGamemode(jsonObject).getIcon() + "\n");
-						}
-					});
-				});
-				bot.sendGroupMsg(event.getGroupId(), event.getUserId(), sendMsg.build(), false);
-				return MESSAGE_BLOCK;
+				throw new NoSuchProfileException(profiles[0], profileName[0], playerName[0], uuid);
 			} else {
 				JSONObject members = profile[0].getJSONObject("members");
 				// 循环成员
