@@ -15,12 +15,12 @@ public class HOTMLevelInfo {
 
 	static {
 		LEVELS.add(new HOTMLevelInfo(1, 0, 0));
-		LEVELS.add(new HOTMLevelInfo(2, 3000, 50));
-		LEVELS.add(new HOTMLevelInfo(3, 9000, 175));
-		LEVELS.add(new HOTMLevelInfo(4, 25000, 375));
-		LEVELS.add(new HOTMLevelInfo(5, 60000, 675));
-		LEVELS.add(new HOTMLevelInfo(6, 10000, 1925));
-		LEVELS.add(new HOTMLevelInfo(7, 150000, 2925));
+		LEVELS.add(new HOTMLevelInfo(2, 3000, 3000));
+		LEVELS.add(new HOTMLevelInfo(3, 9000, 12000));
+		LEVELS.add(new HOTMLevelInfo(4, 25000, 37000));
+		LEVELS.add(new HOTMLevelInfo(5, 60000, 97000));
+		LEVELS.add(new HOTMLevelInfo(6, 100000, 197000));
+		LEVELS.add(new HOTMLevelInfo(7, 150000, 347000));
 	}
 
 	public HOTMLevelInfo(int level, int xpRequired, int cumulativeXp) {

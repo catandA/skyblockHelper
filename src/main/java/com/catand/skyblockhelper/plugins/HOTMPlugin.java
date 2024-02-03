@@ -211,9 +211,9 @@ public class HOTMPlugin extends BotPlugin {
 			} else {
 				miningLevelText.setText(miningLevel + "/60");
 				int currentLevelExp = SkillsLevelInfo.getCurrentLevelXp((int) miningTotalExp);
-				int nextLevelExp = SkillsLevelInfo.getRemainingXpToNextLevel((int) miningTotalExp);
-				miningLevelProgressText.setText(NumberFormatUtil.format(currentLevelExp) + "/" + NumberFormatUtil.format(nextLevelExp));
-				miningLevelProgressBar.setProgress((double) currentLevelExp / (double) nextLevelExp);
+				int thisMiningLevelExp = SkillsLevelInfo.LEVELS.get(miningLevel + 1).getXpRequired();
+				miningLevelProgressText.setText(NumberFormatUtil.format(currentLevelExp) + "/" + NumberFormatUtil.format(thisMiningLevelExp));
+				miningLevelProgressBar.setProgress((double) currentLevelExp / (double) thisMiningLevelExp);
 			}
 
 			// 设置山心等级
@@ -230,9 +230,9 @@ public class HOTMPlugin extends BotPlugin {
 			} else {
 				hotmLevelText.setText(hotmLevel + "/7");
 				int currentLevelExp = HOTMLevelInfo.getCurrentLevelXp((int) hotmTotalExp);
-				int nextLevelExp = HOTMLevelInfo.getRemainingXpToNextLevel((int) hotmTotalExp);
-				hotmLevelProgressText.setText(NumberFormatUtil.format(currentLevelExp) + "/" + NumberFormatUtil.format(nextLevelExp));
-				hotmLevelProgressBar.setProgress((double) currentLevelExp / (double) nextLevelExp);
+				int thisHOTMLevelExp = HOTMLevelInfo.LEVELS.get(hotmLevel).getXpRequired();
+				hotmLevelProgressText.setText(NumberFormatUtil.format(currentLevelExp) + "/" + NumberFormatUtil.format(thisHOTMLevelExp));
+				hotmLevelProgressBar.setProgress((double) currentLevelExp / (double) thisHOTMLevelExp);
 			}
 
 			Color baseColor = Color.web("#008000");
@@ -277,32 +277,39 @@ public class HOTMPlugin extends BotPlugin {
 
 			// 设置水晶
 			JSONObject crystalsJsonObject = miningData.getJSONObject("crystals");
-			final int[] crystalCount = {0};
-			crystalsJsonObject.forEach((key, value) -> {
-				JSONObject jsonObject = (JSONObject) value;
-				switch (jsonObject.getString("state")) {
-					case "FOUND":
-						if (!key.equals("jasper_crystal") && !key.equals("ruby_crystal")) {
-							crystalCount[0]++;
-						}
-						Text crystalText = (Text) scene[0].lookup("#" + key);
-						crystalText.setText("✔");
-						crystalText.setFill(Color.GREEN);
-						break;
-					case "PLACED":
-						Text crystalText1 = (Text) scene[0].lookup("#" + key);
-						crystalText1.setText("✔");
-						crystalText1.setFill(Color.YELLOW);
-						break;
-					case "NOT_FOUND":
-						Text crystalText2 = (Text) scene[0].lookup("#" + key);
-						crystalText2.setText("✖");
-						crystalText2.setFill(Color.RED);
-						break;
-				}
-			});
-			Text crystalCountText = (Text) scene[0].lookup("#crystal");
-			crystalCountText.setText(String.valueOf(crystalCount[0]));
+			if (crystalsJsonObject != null && !crystalsJsonObject.isEmpty()) {
+				final int[] crystalCount = {0};
+				crystalsJsonObject.forEach((key, value) -> {
+					JSONObject jsonObject = (JSONObject) value;
+					switch (jsonObject.getString("state")) {
+						case "FOUND":
+							if (!key.equals("jasper_crystal") && !key.equals("ruby_crystal")) {
+								crystalCount[0]++;
+							}
+							Text crystalText = (Text) scene[0].lookup("#" + key);
+							crystalText.setText("✔");
+							crystalText.setFill(Color.GREEN);
+							break;
+						case "PLACED":
+							Text crystalText1 = (Text) scene[0].lookup("#" + key);
+							crystalText1.setText("✔");
+							crystalText1.setFill(Color.YELLOW);
+							break;
+						case "NOT_FOUND":
+							Text crystalText2 = (Text) scene[0].lookup("#" + key);
+							crystalText2.setText("✖");
+							crystalText2.setFill(Color.RED);
+							break;
+					}
+				});
+				Text crystalCountText = (Text) scene[0].lookup("#crystal");
+				crystalCountText.setText(String.valueOf(crystalCount[0]));
+			} else {
+				Text crystalHintText = (Text) scene[0].lookup("#crystalHint");
+				crystalHintText.setText("没跑过水晶 :(");
+				Text crystalCountText = (Text) scene[0].lookup("#crystal");
+				crystalCountText.setText("");
+			}
 
 			// 设置当前技能
 			Text currentSkillText = (Text) scene[0].lookup("#currentPickaxeAbility");

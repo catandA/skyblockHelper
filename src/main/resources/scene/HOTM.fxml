@@ -619,7 +619,7 @@
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </padding>
                            <children>
-                              <Text id="TotalFish" accessibleText="114" fill="#00ff51" strokeType="OUTSIDE" strokeWidth="0.0" text="秘银:">
+                              <Text accessibleText="114" fill="#00ff51" strokeType="OUTSIDE" strokeWidth="0.0" text="秘银:">
                                  <font>
                                     <Font name="Noto Sans SC Bold" size="20.0" />
                                  </font>
@@ -636,7 +636,7 @@
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </padding>
                            <children>
-                              <Text id="TotalFish" accessibleText="114" fill="#db3fdd" strokeType="OUTSIDE" strokeWidth="0.0" text="宝石:">
+                              <Text accessibleText="114" fill="#db3fdd" strokeType="OUTSIDE" strokeWidth="0.0" text="宝石:">
                                  <font>
                                     <Font name="Noto Sans SC Bold" size="20.0" />
                                  </font>
@@ -654,7 +654,7 @@
                      <children>
                         <HBox alignment="CENTER" prefHeight="30.0" prefWidth="225.0" spacing="5.0">
                            <children>
-                              <Text id="TotalFish" accessibleText="114" fill="#d4d4d4" strokeType="OUTSIDE" strokeWidth="0.0" text="水晶:">
+                              <Text id="crystalHint" accessibleText="114" fill="#d4d4d4" strokeType="OUTSIDE" strokeWidth="0.0" text="水晶:">
                                  <font>
                                     <Font name="Noto Sans SC Bold" size="20.0" />
                                  </font>
@@ -671,7 +671,7 @@
                               <VBox alignment="CENTER" prefHeight="200.0" prefWidth="24.0">
                                  <children>
                                     <Rectangle arcHeight="10.0" arcWidth="10.0" fill="LIME" height="20.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="20.0" />
-                                    <Text id="jade_crystal" accessibleText="114" fill="LIME" strokeType="OUTSIDE" strokeWidth="0.0" text="✔">
+                                    <Text id="jade_crystal" accessibleText="114" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="✖">
                                        <font>
                                           <Font name="Noto Sans SC Bold" size="22.0" />
                                        </font>
