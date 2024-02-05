@@ -205,8 +205,7 @@ public class HOTMPlugin extends BotPlugin {
 			int miningLevel = SkillsLevelInfo.getCurrentLevel((int) miningTotalExp).getLevel();
 			if (miningLevel == 60) {
 				miningLevelText.setText("60");
-				int currentLevelExp = SkillsLevelInfo.getCurrentLevelXp((int) miningTotalExp);
-				miningLevelProgressText.setText(NumberFormatUtil.format(currentLevelExp));
+				miningLevelProgressText.setText(NumberFormatUtil.format((int) miningTotalExp, 1));
 				miningLevelProgressBar.setProgress(1.0);
 			} else {
 				miningLevelText.setText(miningLevel + "/60");
