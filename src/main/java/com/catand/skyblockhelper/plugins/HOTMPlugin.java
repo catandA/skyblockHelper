@@ -224,8 +224,7 @@ public class HOTMPlugin extends BotPlugin {
 			int hotmLevel = HOTMLevelInfo.getCurrentLevel((int) hotmTotalExp).getLevel();
 			if (hotmLevel == 7) {
 				hotmLevelText.setText("7");
-				int currentLevelExp = HOTMLevelInfo.getCurrentLevelXp((int) hotmTotalExp);
-				hotmLevelProgressText.setText(NumberFormatUtil.format(currentLevelExp));
+				hotmLevelProgressText.setText(NumberFormatUtil.format((int) hotmTotalExp, 1));
 				hotmLevelProgressBar.setProgress(1.0);
 			} else {
 				hotmLevelText.setText(hotmLevel + "/7");
@@ -314,11 +313,15 @@ public class HOTMPlugin extends BotPlugin {
 			// 设置当前技能
 			Text currentSkillText = (Text) scene[0].lookup("#currentPickaxeAbility");
 			String currentSkill = miningData.getString("selected_pickaxe_ability");
-			switch (currentSkill) {
-				case "vein_seeker" -> currentSkill = "Vein Seeker";
-				case "maniac_miner" -> currentSkill = "Maniac Miner";
-				case "pickaxe_toss" -> currentSkill = "Pickobulus";
-				case "mining_speed_boost" -> currentSkill = "Mining Speed Boost";
+			if (currentSkill == null) {
+				currentSkill = "别问,问就是没有";
+			} else {
+				switch (currentSkill) {
+					case "vein_seeker" -> currentSkill = "Vein Seeker";
+					case "maniac_miner" -> currentSkill = "Maniac Miner";
+					case "pickaxe_toss" -> currentSkill = "Pickobulus";
+					case "mining_speed_boost" -> currentSkill = "Mining Speed Boost";
+				}
 			}
 			currentSkillText.setText(currentSkill);
 
