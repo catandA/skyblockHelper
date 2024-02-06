@@ -98,7 +98,7 @@ public class SkycryptMessageHandler {
 	private void fetchSkinData() {
 		try {
 			String uuid = String.valueOf(MojangAPI.getUUID(playerName));
-			skinImage = ImageUtil.convertToFXImage(MinecraftUtils.getBufferedImageSkin(uuid));
+			skinImage = MinecraftUtils.getFXImageSkin(uuid);
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}

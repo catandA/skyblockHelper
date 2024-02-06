@@ -75,8 +75,8 @@ public class HOTMPlugin extends BotPlugin {
 			final Image[] skinImage = new Image[1];
 			UUID uuid = MojangAPI.getUUID(playerName[0]);
 
-			CompletableFuture<JSONArray> future1 = fetchSkyBlockProfilesData(uuid);
-			CompletableFuture<Void> future2 = CompletableFuture.supplyAsync(() -> {
+			CompletableFuture<JSONArray> fetchSkyBlockProfilesDataFuture = fetchSkyBlockProfilesData(uuid);
+			CompletableFuture<Void> creatSceneFuture = CompletableFuture.supplyAsync(() -> {
 				final CompletableFuture<Void> innerFuture = new CompletableFuture<>();
 				Platform.runLater(() -> {
 					try {
@@ -88,23 +88,23 @@ public class HOTMPlugin extends BotPlugin {
 				});
 				return innerFuture;
 			}).thenCompose(Function.identity());
-			CompletableFuture<PlayerReply.Player> future3 = fetchPlayersData(uuid);
-			CompletableFuture<Void> future4 = CompletableFuture.runAsync(() -> skinImage[0] = fetchSkinData(uuid));
+			CompletableFuture<PlayerReply.Player> fetchPlayersDataFuture = fetchPlayersData(uuid);
+			CompletableFuture<Void> fetchSkinFuture = CompletableFuture.runAsync(() -> skinImage[0] = fetchSkinData(uuid));
 
-			future1.exceptionally(throwable -> {
+			fetchSkyBlockProfilesDataFuture.exceptionally(throwable -> {
 				throw new RuntimeException(throwable);
 			});
-			future2.exceptionally(throwable -> {
+			creatSceneFuture.exceptionally(throwable -> {
 				throw new RuntimeException(throwable);
 			});
-			future3.exceptionally(throwable -> {
+			fetchPlayersDataFuture.exceptionally(throwable -> {
 				throw new RuntimeException(throwable);
 			});
-			future4.exceptionally(throwable -> {
+			fetchSkinFuture.exceptionally(throwable -> {
 				throw new RuntimeException(throwable);
 			});
 
-			CompletableFuture<Void> future1ThenAccept = future1.thenAcceptAsync(result -> {
+			CompletableFuture<Void> fetchSkyBlockProfilesDataFutureThenAccept = fetchSkyBlockProfilesDataFuture.thenAcceptAsync(result -> {
 				profiles[0] = result;
 				if (profiles[0].isEmpty()) {
 					// 没有存档 Wiped R.I.P :(
@@ -134,13 +134,13 @@ public class HOTMPlugin extends BotPlugin {
 				}
 			});
 
-			CompletableFuture<Void> future3ThenAccept = future3.thenAcceptAsync(result -> {
+			CompletableFuture<Void> fetchPlayersDataFutureThenAccept = fetchPlayersDataFuture.thenAcceptAsync(result -> {
 				playerName[0] = result.getName();
 				rank[0] = result.getHighestRank();
 				rankPlusColorCode[0] = MinecraftColorCode.getColorCode(result.getSelectedPlusColor().toLowerCase());
 			});
 
-			CompletableFuture.allOf(future1ThenAccept, future2, future3ThenAccept, future4).join();
+			CompletableFuture.allOf(fetchSkyBlockProfilesDataFutureThenAccept, creatSceneFuture, fetchPlayersDataFutureThenAccept, fetchSkinFuture).join();
 
 			final JSONObject[] member = new JSONObject[1];
 			if (profile[0] == null) {
@@ -261,7 +261,7 @@ public class HOTMPlugin extends BotPlugin {
 			} else {
 				commissionMilestoneText.setText(maxTier[0] + "/6");
 			}
-			int connissionNumber = future3.get().getRaw().getAsJsonObject("achievements").get("skyblock_hard_working_miner").getAsInt();
+			int connissionNumber = fetchPlayersDataFuture.get().getRaw().getAsJsonObject("achievements").get("skyblock_hard_working_miner").getAsInt();
 			Text commissionNumberText = (Text) scene[0].lookup("#commissionNumber");
 			commissionNumberText.setText(String.valueOf(connissionNumber));
 
@@ -443,7 +443,7 @@ public class HOTMPlugin extends BotPlugin {
 
 	private Image fetchSkinData(UUID uuid) {
 		try {
-			return ImageUtil.convertToFXImage(MinecraftUtils.getBufferedImageSkin(String.valueOf(uuid)));
+			return MinecraftUtils.getFXImageSkin(String.valueOf(uuid));
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
