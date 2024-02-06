@@ -72,7 +72,6 @@ public class HOTMPlugin extends BotPlugin {
 			final Scene[] scene = new Scene[1];
 			final JSONArray[] profiles = new JSONArray[1];
 			final JSONObject[] profile = new JSONObject[1];
-			final Image[] skinImage = new Image[1];
 			UUID uuid = MojangAPI.getUUID(playerName[0]);
 
 			CompletableFuture<JSONArray> fetchSkyBlockProfilesDataFuture = fetchSkyBlockProfilesData(uuid);
@@ -89,7 +88,7 @@ public class HOTMPlugin extends BotPlugin {
 				return innerFuture;
 			}).thenCompose(Function.identity());
 			CompletableFuture<PlayerReply.Player> fetchPlayersDataFuture = fetchPlayersData(uuid);
-			CompletableFuture<Void> fetchSkinFuture = CompletableFuture.runAsync(() -> skinImage[0] = fetchSkinData(uuid));
+			CompletableFuture<Image> fetchSkinFuture = MinecraftUtils.getFXImageSkinAsync(uuid.toString());
 
 			fetchSkyBlockProfilesDataFuture.exceptionally(throwable -> {
 				throw new RuntimeException(throwable);
@@ -196,7 +195,7 @@ public class HOTMPlugin extends BotPlugin {
 
 			// 设置皮肤
 			ImageView skinImageView = (ImageView) scene[0].lookup("#skinImage");
-			skinImageView.setImage(skinImage[0]);
+			skinImageView.setImage(fetchSkinFuture.get());
 
 			// 设置矿工等级
 			Text miningLevelText = (Text) scene[0].lookup("#miningLevel");
@@ -437,14 +436,6 @@ public class HOTMPlugin extends BotPlugin {
 			hBox.setBackground(new Background(backgroundImage));
 			return scene;
 		} catch (IOException e) {
-			throw new RuntimeException(e);
-		}
-	}
-
-	private Image fetchSkinData(UUID uuid) {
-		try {
-			return MinecraftUtils.getFXImageSkin(String.valueOf(uuid));
-		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
 	}
