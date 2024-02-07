@@ -37,7 +37,6 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
-import java.util.function.Function;
 
 @Component
 public class HOTMPlugin extends BotPlugin {
@@ -69,24 +68,13 @@ public class HOTMPlugin extends BotPlugin {
 		}
 		MsgUtils sendMsg = MsgUtils.builder();
 		try {
-			final Scene[] scene = new Scene[1];
+			final Scene scene;
 			final JSONArray[] profiles = new JSONArray[1];
 			final JSONObject[] profile = new JSONObject[1];
 			UUID uuid = MojangAPI.getUUID(playerName[0]);
 
 			CompletableFuture<JSONArray> fetchSkyBlockProfilesDataFuture = fetchSkyBlockProfilesData(uuid);
-			CompletableFuture<Void> creatSceneFuture = CompletableFuture.supplyAsync(() -> {
-				final CompletableFuture<Void> innerFuture = new CompletableFuture<>();
-				Platform.runLater(() -> {
-					try {
-						scene[0] = createScene();
-						innerFuture.complete(null);
-					} catch (Exception e) {
-						innerFuture.completeExceptionally(e);
-					}
-				});
-				return innerFuture;
-			}).thenCompose(Function.identity());
+			CompletableFuture<Scene> creatSceneFuture = JavaFXUtils.createSceneWithBackgroundAsync("/scene/HOTM.fxml", 900, 630, 900, 560);
 			CompletableFuture<PlayerReply.Player> fetchPlayersDataFuture = fetchPlayersData(uuid);
 			CompletableFuture<Image> fetchSkinFuture = MinecraftUtils.getFXImageSkinAsync(uuid.toString());
 
@@ -141,6 +129,7 @@ public class HOTMPlugin extends BotPlugin {
 
 			CompletableFuture.allOf(fetchSkyBlockProfilesDataFutureThenAccept, creatSceneFuture, fetchPlayersDataFutureThenAccept, fetchSkinFuture).join();
 
+			scene = creatSceneFuture.get();
 			final JSONObject[] member = new JSONObject[1];
 			if (profile[0] == null) {
 				throw new NoSuchProfileException(profiles[0], profileName[0], playerName[0], uuid);
@@ -160,25 +149,25 @@ public class HOTMPlugin extends BotPlugin {
 			JSONObject miningData = member[0].getJSONObject("mining_core");
 
 			// 设置基本信息
-			Text playerNameText = (Text) scene[0].lookup("#IGN");
+			Text playerNameText = (Text) scene.lookup("#IGN");
 			playerNameText.setText(playerName[0]);
-			Text profileNameText = (Text) scene[0].lookup("#ProfileName");
+			Text profileNameText = (Text) scene.lookup("#ProfileName");
 			profileNameText.setText(profileName[0]);
-			Text profileIconText = (Text) scene[0].lookup("#ProfileIcon");
+			Text profileIconText = (Text) scene.lookup("#ProfileIcon");
 			profileIconText.setText(SkyblockProfile.getProfile(profileName[0]).getEmoji()[0]);
-			Text skyblockLevelText = (Text) scene[0].lookup("#ProfileLevel");
+			Text skyblockLevelText = (Text) scene.lookup("#ProfileLevel");
 			skyblockLevelText.setText(String.valueOf(skyblockLevel));
 			Color skyblockLevelColor = JavaFXUtils.AWTColorToJavaFXColor(SkyblockLevelColorCode.getLevelColor(skyblockLevel).getColor());
 			skyblockLevelText.setFill(skyblockLevelColor);
-			Text gamemodeText = (Text) scene[0].lookup("#Gamemode");
+			Text gamemodeText = (Text) scene.lookup("#Gamemode");
 			gamemodeText.setText(Gamemode.getGamemode(profile[0]).getChineseName());
-			Text gamemodeIconText = (Text) scene[0].lookup("#GamemodeIcon");
+			Text gamemodeIconText = (Text) scene.lookup("#GamemodeIcon");
 			gamemodeIconText.setText(Gamemode.getGamemode(profile[0]).getIcon());
-			Text rankText = (Text) scene[0].lookup("#rankName");
+			Text rankText = (Text) scene.lookup("#rankName");
 			rankText.setText(HypixelRankUtils.getName(rank[0]));
 			Color rankColor = JavaFXUtils.AWTColorToJavaFXColor(HypixelRankUtils.getRankColor(rank[0]).getColor());
 			rankText.setFill(rankColor);
-			Text rankPlusText = (Text) scene[0].lookup("#rankPlus");
+			Text rankPlusText = (Text) scene.lookup("#rankPlus");
 			StringBuilder plusBuilder = new StringBuilder();
 			int plusNumber = HypixelRankUtils.getPlusNumber(rank[0]);
 			plusBuilder.append("+".repeat(Math.max(0, plusNumber)));
@@ -187,20 +176,20 @@ public class HOTMPlugin extends BotPlugin {
 				Color rankPlusColor = JavaFXUtils.AWTColorToJavaFXColor(rankPlusColorCode[0].getColor());
 				rankPlusText.setFill(rankPlusColor);
 			}
-			Text bracketText1 = (Text) scene[0].lookup("#rankBracket1");
-			Text bracketText2 = (Text) scene[0].lookup("#rankBracket2");
+			Text bracketText1 = (Text) scene.lookup("#rankBracket1");
+			Text bracketText2 = (Text) scene.lookup("#rankBracket2");
 			Color bracketColor = JavaFXUtils.AWTColorToJavaFXColor(HypixelRankUtils.getBracketColor(rank[0]).getColor());
 			bracketText1.setFill(bracketColor);
 			bracketText2.setFill(bracketColor);
 
 			// 设置皮肤
-			ImageView skinImageView = (ImageView) scene[0].lookup("#skinImage");
+			ImageView skinImageView = (ImageView) scene.lookup("#skinImage");
 			skinImageView.setImage(fetchSkinFuture.get());
 
 			// 设置矿工等级
-			Text miningLevelText = (Text) scene[0].lookup("#miningLevel");
-			Text miningLevelProgressText = (Text) scene[0].lookup("#miningLevelProgress");
-			ProgressBar miningLevelProgressBar = (ProgressBar) scene[0].lookup("#miningLevelProgressBar");
+			Text miningLevelText = (Text) scene.lookup("#miningLevel");
+			Text miningLevelProgressText = (Text) scene.lookup("#miningLevelProgress");
+			ProgressBar miningLevelProgressBar = (ProgressBar) scene.lookup("#miningLevelProgressBar");
 			int miningLevel = SkillsLevelInfo.getCurrentLevel((int) miningTotalExp).getLevel();
 			if (miningLevel == 60) {
 				miningLevelText.setText("60");
@@ -216,9 +205,9 @@ public class HOTMPlugin extends BotPlugin {
 
 			// 设置山心等级
 			double hotmTotalExp = miningData.getDoubleValue("experience");
-			Text hotmLevelText = (Text) scene[0].lookup("#HOTMLevel");
-			Text hotmLevelProgressText = (Text) scene[0].lookup("#HOTMLevelProgress");
-			ProgressBar hotmLevelProgressBar = (ProgressBar) scene[0].lookup("#HOTMLevelProgressBar");
+			Text hotmLevelText = (Text) scene.lookup("#HOTMLevel");
+			Text hotmLevelProgressText = (Text) scene.lookup("#HOTMLevelProgress");
+			ProgressBar hotmLevelProgressBar = (ProgressBar) scene.lookup("#HOTMLevelProgressBar");
 			int hotmLevel = HOTMLevelInfo.getCurrentLevel((int) hotmTotalExp).getLevel();
 			if (hotmLevel == 7) {
 				hotmLevelText.setText("7");
@@ -234,7 +223,7 @@ public class HOTMPlugin extends BotPlugin {
 
 			Color baseColor = Color.web("#008000");
 			for (int i = 1; i <= 7; i++) {
-				Rectangle rectangle = (Rectangle) scene[0].lookup("#HOTMLevelProgressBlock" + i);
+				Rectangle rectangle = (Rectangle) scene.lookup("#HOTMLevelProgressBlock" + i);
 				if (rectangle != null) {
 					double opacity = i <= hotmLevel ? 1.0 : 0;
 					Color color = new Color(baseColor.getRed(), baseColor.getGreen(), baseColor.getBlue(), opacity);
@@ -254,22 +243,22 @@ public class HOTMPlugin extends BotPlugin {
 					}
 				}
 			});
-			Text commissionMilestoneText = (Text) scene[0].lookup("#commissionMilestone");
+			Text commissionMilestoneText = (Text) scene.lookup("#commissionMilestone");
 			if (maxTier[0] == 6) {
 				commissionMilestoneText.setText("6");
 			} else {
 				commissionMilestoneText.setText(maxTier[0] + "/6");
 			}
 			int connissionNumber = fetchPlayersDataFuture.get().getRaw().getAsJsonObject("achievements").get("skyblock_hard_working_miner").getAsInt();
-			Text commissionNumberText = (Text) scene[0].lookup("#commissionNumber");
+			Text commissionNumberText = (Text) scene.lookup("#commissionNumber");
 			commissionNumberText.setText(String.valueOf(connissionNumber));
 
 			// 设置粉末
 			int mithrilPowder = miningData.getIntValue("powder_mithril_total") + miningData.getIntValue("powder_spent_mithril");
 			int gemstonePowder = miningData.getIntValue("powder_gemstone_total") + miningData.getIntValue("powder_spent_gemstone");
-			Text mithrilPowderText = (Text) scene[0].lookup("#mythrilPowder");
+			Text mithrilPowderText = (Text) scene.lookup("#mythrilPowder");
 			mithrilPowderText.setText(NumberFormatUtil.format(mithrilPowder, 1));
-			Text gemstonePowderText = (Text) scene[0].lookup("#gemstonePowder");
+			Text gemstonePowderText = (Text) scene.lookup("#gemstonePowder");
 			gemstonePowderText.setText(NumberFormatUtil.format(gemstonePowder, 1));
 
 			// 设置水晶
@@ -283,33 +272,33 @@ public class HOTMPlugin extends BotPlugin {
 							if (!key.equals("jasper_crystal") && !key.equals("ruby_crystal")) {
 								crystalCount[0]++;
 							}
-							Text crystalText = (Text) scene[0].lookup("#" + key);
+							Text crystalText = (Text) scene.lookup("#" + key);
 							crystalText.setText("✔");
 							crystalText.setFill(Color.GREEN);
 							break;
 						case "PLACED":
-							Text crystalText1 = (Text) scene[0].lookup("#" + key);
+							Text crystalText1 = (Text) scene.lookup("#" + key);
 							crystalText1.setText("✔");
 							crystalText1.setFill(Color.YELLOW);
 							break;
 						case "NOT_FOUND":
-							Text crystalText2 = (Text) scene[0].lookup("#" + key);
+							Text crystalText2 = (Text) scene.lookup("#" + key);
 							crystalText2.setText("✖");
 							crystalText2.setFill(Color.RED);
 							break;
 					}
 				});
-				Text crystalCountText = (Text) scene[0].lookup("#crystal");
+				Text crystalCountText = (Text) scene.lookup("#crystal");
 				crystalCountText.setText(String.valueOf(crystalCount[0]));
 			} else {
-				Text crystalHintText = (Text) scene[0].lookup("#crystalHint");
+				Text crystalHintText = (Text) scene.lookup("#crystalHint");
 				crystalHintText.setText("没跑过水晶 :(");
-				Text crystalCountText = (Text) scene[0].lookup("#crystal");
+				Text crystalCountText = (Text) scene.lookup("#crystal");
 				crystalCountText.setText("");
 			}
 
 			// 设置当前技能
-			Text currentSkillText = (Text) scene[0].lookup("#currentPickaxeAbility");
+			Text currentSkillText = (Text) scene.lookup("#currentPickaxeAbility");
 			String currentSkill = miningData.getString("selected_pickaxe_ability");
 			if (currentSkill == null) {
 				currentSkill = "别问,问就是没有";
@@ -324,7 +313,7 @@ public class HOTMPlugin extends BotPlugin {
 			currentSkillText.setText(currentSkill);
 
 			// 重置时间
-			Text resetTimeText = (Text) scene[0].lookup("#resetTime");
+			Text resetTimeText = (Text) scene.lookup("#resetTime");
 			long resetTime = miningData.getLongValue("last_reset");
 			if (resetTime == 0) {
 				resetTimeText.setText("没重置过");
@@ -337,8 +326,8 @@ public class HOTMPlugin extends BotPlugin {
 			// 山心树
 			JSONObject treeData = miningData.getJSONObject("nodes");
 
-			ImageView POTMImageView = (ImageView) scene[0].lookup("#special_0");
-			Text POTMText = (Text) scene[0].lookup("#special_0_1");
+			ImageView POTMImageView = (ImageView) scene.lookup("#special_0");
+			Text POTMText = (Text) scene.lookup("#special_0_1");
 			URL POTMImageURL;
 			if (treeData.containsKey("special_0")) {
 				int POTM = treeData.getIntValue("special_0");
@@ -359,41 +348,41 @@ public class HOTMPlugin extends BotPlugin {
 				POTMText.setFill(Color.RED);
 			}
 
-			updateImageViewAndText(scene[0], treeData, "mining_speed", "vertical_start", 50);
-			updateImageViewAndText(scene[0], treeData, "mining_fortune", "fork", 50);
-			updateImageViewAndText(scene[0], treeData, "titanium_insanium", "horizontal", 50);
-			updateImageViewAndText(scene[0], treeData, "mining_speed_boost", "45_degree", 1);
-			updateImageViewAndText(scene[0], treeData, "forge_time", "horizontal", 20);
-			updateImageViewAndText(scene[0], treeData, "pickaxe_toss", "135_degree", 1);
-			updateImageViewAndText(scene[0], treeData, "daily_powder", "vertical", 100);
-			updateImageViewAndText(scene[0], treeData, "random_event", "vertical", 45);
-			updateImageViewAndText(scene[0], treeData, "fallen_star_bonus", "vertical", 30);
-			updateImageViewAndText(scene[0], treeData, "mining_madness", "fork", 1);
-			updateImageViewAndText(scene[0], treeData, "daily_effect", "horizontal_start", 1);
-			updateImageViewAndText(scene[0], treeData, "mining_experience", "horizontal", 100);
-			updateImageViewAndText(scene[0], treeData, "efficient_miner", "fork", 100);
-			updateImageViewAndText(scene[0], treeData, "experience_orbs", "horizontal", 80);
-			updateImageViewAndText(scene[0], treeData, "front_loaded", "fork", 1);
-			updateImageViewAndText(scene[0], treeData, "precision_mining", "horizontal_end", 1);
-			updateImageViewAndText(scene[0], treeData, "goblin_killer", "vertical", 1);
-			updateImageViewAndText(scene[0], treeData, "star_powder", "vertical", 1);
-			updateImageViewAndText(scene[0], treeData, "vein_seeker", "horizontal_start", 1);
-			updateImageViewAndText(scene[0], treeData, "lonesome_miner", "fork", 45);
-			updateImageViewAndText(scene[0], treeData, "professional", "horizontal", 140);
-			updateImageViewAndText(scene[0], treeData, "mole", "fork", 190);
-			updateImageViewAndText(scene[0], treeData, "fortunate", "horizontal", 20);
-			updateImageViewAndText(scene[0], treeData, "great_explorer", "fork", 20);
-			updateImageViewAndText(scene[0], treeData, "maniac_miner", "horizontal_end", 1);
-			updateImageViewAndText(scene[0], treeData, "powder_buff", "vertical_end", 50);
-			updateImageViewAndText(scene[0], treeData, "mining_speed_2", "vertical_end", 50);
-			updateImageViewAndText(scene[0], treeData, "mining_fortune_2", "vertical_end", 50);
+			updateImageViewAndText(scene, treeData, "mining_speed", "vertical_start", 50);
+			updateImageViewAndText(scene, treeData, "mining_fortune", "fork", 50);
+			updateImageViewAndText(scene, treeData, "titanium_insanium", "horizontal", 50);
+			updateImageViewAndText(scene, treeData, "mining_speed_boost", "45_degree", 1);
+			updateImageViewAndText(scene, treeData, "forge_time", "horizontal", 20);
+			updateImageViewAndText(scene, treeData, "pickaxe_toss", "135_degree", 1);
+			updateImageViewAndText(scene, treeData, "daily_powder", "vertical", 100);
+			updateImageViewAndText(scene, treeData, "random_event", "vertical", 45);
+			updateImageViewAndText(scene, treeData, "fallen_star_bonus", "vertical", 30);
+			updateImageViewAndText(scene, treeData, "mining_madness", "fork", 1);
+			updateImageViewAndText(scene, treeData, "daily_effect", "horizontal_start", 1);
+			updateImageViewAndText(scene, treeData, "mining_experience", "horizontal", 100);
+			updateImageViewAndText(scene, treeData, "efficient_miner", "fork", 100);
+			updateImageViewAndText(scene, treeData, "experience_orbs", "horizontal", 80);
+			updateImageViewAndText(scene, treeData, "front_loaded", "fork", 1);
+			updateImageViewAndText(scene, treeData, "precision_mining", "horizontal_end", 1);
+			updateImageViewAndText(scene, treeData, "goblin_killer", "vertical", 1);
+			updateImageViewAndText(scene, treeData, "star_powder", "vertical", 1);
+			updateImageViewAndText(scene, treeData, "vein_seeker", "horizontal_start", 1);
+			updateImageViewAndText(scene, treeData, "lonesome_miner", "fork", 45);
+			updateImageViewAndText(scene, treeData, "professional", "horizontal", 140);
+			updateImageViewAndText(scene, treeData, "mole", "fork", 190);
+			updateImageViewAndText(scene, treeData, "fortunate", "horizontal", 20);
+			updateImageViewAndText(scene, treeData, "great_explorer", "fork", 20);
+			updateImageViewAndText(scene, treeData, "maniac_miner", "horizontal_end", 1);
+			updateImageViewAndText(scene, treeData, "powder_buff", "vertical_end", 50);
+			updateImageViewAndText(scene, treeData, "mining_speed_2", "vertical_end", 50);
+			updateImageViewAndText(scene, treeData, "mining_fortune_2", "vertical_end", 50);
 
 
 			// 发送消息
 			final WritableImage[] writableImage = new WritableImage[1];
 			Platform.runLater(() -> {
 				try {
-					writableImage[0] = scene[0].snapshot(null);
+					writableImage[0] = scene.snapshot(null);
 					sendMsg.img(ImageUtil.ImageToBase64(SwingFXUtils.fromFXImage(writableImage[0], null)));
 					bot.sendGroupMsg(event.getGroupId(), event.getUserId(), sendMsg.build(), false);
 				} catch (IOException e) {
