@@ -2,6 +2,7 @@ package com.catand.skyblockhelper;
 
 import com.alibaba.fastjson2.JSONObject;
 import com.catand.skyblockhelper.data.Gamemode;
+import com.catand.skyblockhelper.exception.NoPlayerException;
 import com.catand.skyblockhelper.exception.NoProfilesException;
 import com.catand.skyblockhelper.exception.NoSuchProfileException;
 import com.catand.skyblockhelper.exception.NoSuchProfileSkycryptException;
@@ -40,6 +41,8 @@ public class ErrorProcessor {
 			sendMsg.text("网络错误,再来一次!");
 		} else if (exception instanceof HttpServerErrorException.GatewayTimeout) {
 			sendMsg.text("网络错误,再来一次!");
+		} else if (exception instanceof NoPlayerException noPlayerException) {
+			sendMsg.text("玩家\"" + noPlayerException.getPlayerName() + "\"不存在");
 		} else if (exception instanceof NullPointerException) {
 			sendMsg.text("经典空指针错误 :( 我先爆了");
 		} else if (exception instanceof NoSuchProfileSkycryptException noSuchProfileSkycryptException) {

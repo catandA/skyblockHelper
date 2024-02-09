@@ -4,6 +4,7 @@ import com.alibaba.fastjson2.JSONArray;
 import com.alibaba.fastjson2.JSONObject;
 import com.catand.skyblockhelper.ErrorProcessor;
 import com.catand.skyblockhelper.data.*;
+import com.catand.skyblockhelper.exception.NoPlayerException;
 import com.catand.skyblockhelper.exception.NoProfilesException;
 import com.catand.skyblockhelper.exception.NoSuchProfileException;
 import com.catand.skyblockhelper.utils.*;
@@ -14,14 +15,11 @@ import com.mikuac.shiro.core.BotPlugin;
 import com.mikuac.shiro.dto.event.message.GroupMessageEvent;
 import javafx.application.Platform;
 import javafx.embed.swing.SwingFXUtils;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
-import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
@@ -71,8 +69,12 @@ public class HOTMPlugin extends BotPlugin {
 			final Scene scene;
 			final JSONArray[] profiles = new JSONArray[1];
 			final JSONObject[] profile = new JSONObject[1];
-			UUID uuid = MojangAPI.getUUID(playerName[0]);
-
+			UUID uuid;
+			try {
+				uuid = MojangAPI.getUUID(playerName[0]);
+			} catch (NullPointerException e) {
+				throw new NoPlayerException(playerName[0]);
+			}
 			CompletableFuture<JSONArray> fetchSkyBlockProfilesDataFuture = fetchSkyBlockProfilesData(uuid);
 			CompletableFuture<Scene> creatSceneFuture = JavaFXUtils.createSceneWithBackgroundAsync("/scene/HOTM.fxml", 900, 630, 900, 560);
 			CompletableFuture<PlayerReply.Player> fetchPlayersDataFuture = fetchPlayersData(uuid);
@@ -411,22 +413,6 @@ public class HOTMPlugin extends BotPlugin {
 		return hypixelAPI.getPlayerByUuid(uuid).thenApplyAsync(
 				PlayerReply::getPlayer
 		);
-	}
-
-	private Scene createScene() {
-		try {
-			Parent root = FXMLLoader.load(TrophyFishPlugin.class.getResource("/scene/HOTM.fxml"));
-			Scene scene = new Scene(root, 900, 630);
-
-			// 设置背景
-			Image background = ImageUtil.getImageBackground(900, 560);
-			BackgroundImage backgroundImage = new BackgroundImage(background, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
-			HBox hBox = (HBox) scene.lookup("#Background");
-			hBox.setBackground(new Background(backgroundImage));
-			return scene;
-		} catch (IOException e) {
-			throw new RuntimeException(e);
-		}
 	}
 
 	private void updateImageViewAndText(Scene scene, JSONObject treeData, String dataKey, String imageMiddlePath, int maxValue) {
