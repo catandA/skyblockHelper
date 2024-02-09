@@ -8,7 +8,7 @@ import java.util.UUID;
 
 @AllArgsConstructor
 @Getter
-public class NoProfilesException extends RuntimeException{
+public class NoProfilesException extends RuntimeException {
 	JSONArray profiles;
 	String playerName;
 	UUID uuid;

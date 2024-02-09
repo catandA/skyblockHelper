@@ -70,9 +70,13 @@ public class ImageUtil {
 		return image;
 	}
 
-	public static Image getImageBackground(int width, int height) throws IOException {
-		BufferedImage bufferedImage = getBufferedImageBackground(width, height);
-		return convertToFXImage(bufferedImage);
+	public static Image getImageBackground(int width, int height) {
+		try {
+			BufferedImage bufferedImage = getBufferedImageBackground(width, height);
+			return convertToFXImage(bufferedImage);
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	public static Image scaleImage(Image originalImage, int targetWidth, int targetHeight) {

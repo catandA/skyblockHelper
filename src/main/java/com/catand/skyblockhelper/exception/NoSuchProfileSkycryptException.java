@@ -6,7 +6,7 @@ import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-public class NoSuchProfileSkycryptException extends RuntimeException{
+public class NoSuchProfileSkycryptException extends RuntimeException {
 	Player player;
 	String profileName;
 }

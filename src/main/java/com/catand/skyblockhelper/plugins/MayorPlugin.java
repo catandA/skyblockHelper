@@ -191,7 +191,7 @@ public class MayorPlugin extends BotPlugin {
 
 	private Scene createScene() {
 		try {
-			Parent root = FXMLLoader.load(TrophyFishPlugin.class.getResource("/scene/Mayor.fxml"));
+			Parent root = FXMLLoader.load(MayorPlugin.class.getResource("/scene/Mayor.fxml"));
 			Scene scene = new Scene(root, 900, 770);
 
 			// 设置背景
@@ -207,7 +207,7 @@ public class MayorPlugin extends BotPlugin {
 
 	private Scene createNoElectionScene() {
 		try {
-			Parent root = FXMLLoader.load(TrophyFishPlugin.class.getResource("/scene/MayorNoElection.fxml"));
+			Parent root = FXMLLoader.load(MayorPlugin.class.getResource("/scene/MayorNoElection.fxml"));
 			Scene scene = new Scene(root, 500, 770);
 
 			// 设置背景
