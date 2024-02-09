@@ -39,6 +39,7 @@ public class TrophyFishPlugin extends BotPlugin {
 		if (!messageRaw.startsWith("奖杯鱼")) {
 			return MESSAGE_IGNORE;
 		}
+		messageRaw = messageRaw.replaceAll("\\s+", " ");
 		String[] args = messageRaw.split(" ");
 		if (args.length < 2) {
 			bot.sendGroupMsg(event.getGroupId(), event.getUserId(), MsgUtils.builder().text("参数错误，\n正确格式：/奖杯鱼 <玩家名> [档案名]").build(), false);

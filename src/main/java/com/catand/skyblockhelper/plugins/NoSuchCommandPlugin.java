@@ -20,6 +20,7 @@ public class NoSuchCommandPlugin extends BotPlugin {
 			return MESSAGE_BLOCK;
 		}
 		messageRaw = messageRaw.split("/")[1];
+		messageRaw = messageRaw.replaceAll("\\s+", " ");
 		String[] args = messageRaw.split(" ");
 		sendMsg.text("不存在名为\"" + args[0] + "\"的指令，输入/帮助 查看帮助");
 		bot.sendGroupMsg(event.getGroupId(), event.getUserId(), sendMsg.build(), false);

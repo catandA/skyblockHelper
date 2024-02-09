@@ -48,6 +48,7 @@ public class NetworthPlugin extends BotPlugin {
 			return MESSAGE_IGNORE;
 		}
 		MsgUtils sendMsg = MsgUtils.builder();
+		messageRaw = messageRaw.replaceAll("\\s+", " ");
 		String[] args = messageRaw.split(" ");
 		if (args.length < 2) {
 			sendMsg.text("参数错误，\n正确格式：/身价 <玩家名> [档案名]");

@@ -26,6 +26,7 @@ public class ProfilePlugin extends BotPlugin {
 			return MESSAGE_IGNORE;
 		}
 		MsgUtils sendMsg = MsgUtils.builder();
+		messageRaw = messageRaw.replaceAll("\\s+", " ");
 		String[] args = messageRaw.split(" ");
 		if (args.length < 2) {
 			sendMsg.text("参数错误，\n正确格式：/档案 <玩家名>");
