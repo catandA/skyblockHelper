@@ -76,9 +76,9 @@ public class HOTMPlugin extends BotPlugin {
 			} catch (NullPointerException e) {
 				throw new NoPlayerException(playerName[0]);
 			}
-			CompletableFuture<JSONArray> fetchSkyBlockProfilesDataFuture = fetchSkyBlockProfilesData(uuid);
+			CompletableFuture<JSONArray> fetchSkyBlockProfilesDataFuture = HypixelAPIUtil.fetchSkyBlockProfilesData(uuid);
 			CompletableFuture<Scene> creatSceneFuture = JavaFXUtils.createSceneWithBackgroundAsync("/scene/HOTM.fxml", 900, 630, 900, 560);
-			CompletableFuture<PlayerReply.Player> fetchPlayersDataFuture = fetchPlayersData(uuid);
+			CompletableFuture<PlayerReply.Player> fetchPlayersDataFuture = HypixelAPIUtil.fetchPlayersData(uuid);
 			CompletableFuture<Image> fetchSkinFuture = MinecraftUtils.getFXImageSkinAsync(uuid.toString());
 
 			fetchSkyBlockProfilesDataFuture.exceptionally(throwable -> {
@@ -396,24 +396,6 @@ public class HOTMPlugin extends BotPlugin {
 			new ErrorProcessor(e, bot, event);
 		}
 		return MESSAGE_BLOCK;
-	}
-
-	private CompletableFuture<JSONArray> fetchSkyBlockProfilesData(UUID uuid) {
-		HypixelAPI hypixelAPI = HypixelAPIUtil.getHypixelAPI();
-		return hypixelAPI.getSkyBlockProfiles(uuid).thenApplyAsync(
-				resourceReply -> {
-					Gson gson = new Gson();
-					String jsonString = gson.toJson(resourceReply.getProfiles());
-					return JSONArray.parseArray(jsonString);
-				}
-		);
-	}
-
-	private CompletableFuture<PlayerReply.Player> fetchPlayersData(UUID uuid) {
-		HypixelAPI hypixelAPI = HypixelAPIUtil.getHypixelAPI();
-		return hypixelAPI.getPlayerByUuid(uuid).thenApplyAsync(
-				PlayerReply::getPlayer
-		);
 	}
 
 	private void updateImageViewAndText(Scene scene, JSONObject treeData, String dataKey, String imageMiddlePath, int maxValue) {

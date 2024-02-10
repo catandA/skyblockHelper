@@ -78,22 +78,22 @@
                 </HBox>
                 <HBox alignment="CENTER" layoutX="620.0" layoutY="25.0" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #d4d4d4; -fx-background-radius: 15;" HBox.hgrow="ALWAYS">
                     <children>
-                        <Text stroke="BLACK" strokeType="OUTSIDE" text="[">
+                        <Text id="rankBracket1" stroke="BLACK" strokeType="OUTSIDE" text="[">
                             <font>
                                 <Font name="Noto Sans SC Bold" size="27.0" />
                             </font>
                         </Text>
-                        <Text layoutX="110.0" layoutY="42.0" stroke="BLACK" strokeType="OUTSIDE" text="WIP">
+                        <Text id="rankName" layoutX="110.0" layoutY="42.0" stroke="BLACK" strokeType="OUTSIDE" text="WIP">
                             <font>
                                 <Font name="Noto Sans SC Bold" size="27.0" />
                             </font>
                         </Text>
-                        <Text layoutX="115.0" layoutY="42.0" stroke="BLACK" strokeType="OUTSIDE" text="++">
+                        <Text id="rankPlus" layoutX="115.0" layoutY="42.0" stroke="BLACK" strokeType="OUTSIDE" text="++">
                             <font>
                                 <Font name="Noto Sans SC Bold" size="27.0" />
                             </font>
                         </Text>
-                        <Text layoutX="149.0" layoutY="42.0" stroke="BLACK" strokeType="OUTSIDE" text="]">
+                        <Text id="rankBracket2" layoutX="149.0" layoutY="42.0" stroke="BLACK" strokeType="OUTSIDE" text="]">
                             <font>
                                 <Font name="Noto Sans SC Bold" size="27.0" />
                             </font>
@@ -128,7 +128,7 @@
                         </VBox>
                         <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="360.0" prefWidth="160.0" style="-fx-background-color: rgba(30, 30, 30, 0.784); -fx-background-radius: 20;">
                             <children>
-                                <ImageView id="SkinImage" fitHeight="270.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" smooth="false" />
+                                <ImageView id="skinImage" fitHeight="270.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" smooth="false" />
                             </children>
                         </HBox>
                     </children>
@@ -528,9 +528,9 @@
                                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                             </padding>
                         </HBox>
-                        <HBox id="lavahorse" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: rgba(30, 30, 30, 0.784); -fx-background-radius: 20; -fx-border-color: black; -fx-border-radius: 15; -fx-border-width: 5;" GridPane.rowIndex="2">
+                        <HBox id="lava_horse" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: rgba(30, 30, 30, 0.784); -fx-background-radius: 20; -fx-border-color: black; -fx-border-radius: 15; -fx-border-width: 5;" GridPane.rowIndex="2">
                             <children>
-                                <ImageView id="lavahorseImage" fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true" smooth="false" />
+                                <ImageView id="lava_horseImage" fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true" smooth="false" />
                                 <GridPane>
                                     <columnConstraints>
                                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -548,7 +548,7 @@
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="lavahorse_bronze" fill="#964a0c" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="lava_horse_bronze" fill="#964a0c" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -562,7 +562,7 @@
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="lavahorse_gold" fill="#e49b23" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="lava_horse_gold" fill="#e49b23" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -576,7 +576,7 @@
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="lavahorse_silver" fill="#757f89" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="lava_horse_silver" fill="#757f89" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -590,7 +590,7 @@
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="lavahorse_diamond" fill="#1cffff" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="lava_horse_diamond" fill="#1cffff" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -756,9 +756,9 @@
                                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                             </padding>
                         </HBox>
-                        <HBox id="obfuscated_1_fish" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: rgba(30, 30, 30, 0.784); -fx-background-radius: 20; -fx-border-color: black; -fx-border-radius: 15; -fx-border-width: 5;" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                        <HBox id="obfuscated_fish_1" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: rgba(30, 30, 30, 0.784); -fx-background-radius: 20; -fx-border-color: black; -fx-border-radius: 15; -fx-border-width: 5;" GridPane.columnIndex="1" GridPane.rowIndex="3">
                             <children>
-                                <ImageView id="obfuscated_1_fishImage" fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true" smooth="false" />
+                                <ImageView id="obfuscated_fish_1Image" fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true" smooth="false" />
                                 <GridPane>
                                     <columnConstraints>
                                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -776,7 +776,7 @@
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="obfuscated_1_fish_bronze" fill="#964a0c" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="obfuscated_fish_1_bronze" fill="#964a0c" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -790,7 +790,7 @@
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="obfuscated_1_fish_gold" fill="#e49b23" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="obfuscated_fish_1_gold" fill="#e49b23" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -804,7 +804,7 @@
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="obfuscated_1_fish_silver" fill="#757f89" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="obfuscated_fish_1_silver" fill="#757f89" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -818,7 +818,7 @@
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="obfuscated_1_fish_diamond" fill="#1cffff" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="obfuscated_fish_1_diamond" fill="#1cffff" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -832,9 +832,9 @@
                                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                             </padding>
                         </HBox>
-                        <HBox id="obfuscated_2_fish" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: rgba(30, 30, 30, 0.784); -fx-background-radius: 20; -fx-border-color: black; -fx-border-radius: 15; -fx-border-width: 5;" GridPane.rowIndex="4">
+                        <HBox id="obfuscated_fish_2" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: rgba(30, 30, 30, 0.784); -fx-background-radius: 20; -fx-border-color: black; -fx-border-radius: 15; -fx-border-width: 5;" GridPane.rowIndex="4">
                             <children>
-                                <ImageView id="obfuscated_2_fishImage" fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true" smooth="false" />
+                                <ImageView id="obfuscated_fish_2Image" fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true" smooth="false" />
                                 <GridPane>
                                     <columnConstraints>
                                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -852,7 +852,7 @@
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="obfuscated_2_fish_bronze" fill="#964a0c" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="obfuscated_fish_2_bronze" fill="#964a0c" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -866,7 +866,7 @@
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="obfuscated_2_fish_gold" fill="#e49b23" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="obfuscated_fish_2_gold" fill="#e49b23" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -880,7 +880,7 @@
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="obfuscated_2_fish_silver" fill="#757f89" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="obfuscated_fish_2_silver" fill="#757f89" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -894,7 +894,7 @@
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="obfuscated_2_fish_diamond" fill="#1cffff" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="obfuscated_fish_2_diamond" fill="#1cffff" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -908,9 +908,9 @@
                                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                             </padding>
                         </HBox>
-                        <HBox id="obfuscated_3_fish" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: rgba(30, 30, 30, 0.784); -fx-background-radius: 20; -fx-border-color: black; -fx-border-radius: 15; -fx-border-width: 5;" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                        <HBox id="obfuscated_fish_3" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: rgba(30, 30, 30, 0.784); -fx-background-radius: 20; -fx-border-color: black; -fx-border-radius: 15; -fx-border-width: 5;" GridPane.columnIndex="1" GridPane.rowIndex="4">
                             <children>
-                                <ImageView id="obfuscated_3_fishImage" fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true" smooth="false" />
+                                <ImageView id="obfuscated_fish_3Image" fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true" smooth="false" />
                                 <GridPane>
                                     <columnConstraints>
                                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -928,7 +928,7 @@
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="obfuscated_3_fish_bronze" fill="#964a0c" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="obfuscated_fish_3_bronze" fill="#964a0c" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -942,7 +942,7 @@
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="obfuscated_3_fish_gold" fill="#e49b23" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="obfuscated_fish_3_gold" fill="#e49b23" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -956,7 +956,7 @@
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="obfuscated_3_fish_silver" fill="#757f89" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="obfuscated_fish_3_silver" fill="#757f89" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
@@ -970,7 +970,7 @@
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
                                                 </Text>
-                                                <Text id="obfuscated_3_fish_diamond" fill="#1cffff" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                                <Text id="obfuscated_fish_3_diamond" fill="#1cffff" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                                                     <font>
                                                         <Font name="Noto Sans SC Black" size="20.0" />
                                                     </font>
