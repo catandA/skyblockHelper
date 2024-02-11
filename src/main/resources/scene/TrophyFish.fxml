@@ -119,7 +119,7 @@
                                         <Font name="Noto Sans SC Bold" size="30.0" />
                                     </font>
                                 </Text>
-                                <Text id="TotalFish" accessibleText="114" fill="#d4d4d4" strokeType="OUTSIDE" strokeWidth="0.0" text="114514">
+                                <Text id="totalFish" accessibleText="114" fill="#d4d4d4" strokeType="OUTSIDE" strokeWidth="0.0" text="114514">
                                     <font>
                                         <Font name="Noto Sans SC Bold" size="30.0" />
                                     </font>

@@ -195,6 +195,8 @@ public class TrophyFishPlugin extends BotPlugin {
 				rankPlusText.setText(plusBuilder.toString());
 				Color rankPlusColor = JavaFXUtils.AWTColorToJavaFXColor(rankPlusColorCode[0].getColor());
 				rankPlusText.setFill(rankPlusColor);
+			} else {
+				rankPlusText.setText("");
 			}
 			Text bracketText1 = (Text) scene.lookup("#rankBracket1");
 			Text bracketText2 = (Text) scene.lookup("#rankBracket2");
@@ -213,6 +215,7 @@ public class TrophyFishPlugin extends BotPlugin {
 					"obfuscated_fish_1", "obfuscated_fish_2", "obfuscated_fish_3", "skeleton_fish", "slugfish", "soul_fish",
 					"steaming_hot_flounder", "sulphur_skitter", "vanille", "volcanic_stonefish"
 			};
+			int totalFish = 0;
 			ArrayList<TrophyFish> trophyFishList = new ArrayList<>();
 			for (String fishName : fishNames) {
 				TrophyFish trophyFish = new TrophyFish();
@@ -220,6 +223,8 @@ public class TrophyFishPlugin extends BotPlugin {
 				trophyFish.total = trophyFishData.containsKey(fishName) ? trophyFishData.getIntValue(fishName) : 0;
 				if (trophyFish.total == 0) {
 					continue;
+				} else {
+					totalFish += trophyFish.total;
 				}
 				trophyFish.bronze = trophyFishData.containsKey(fishName + "_bronze") ? trophyFishData.getIntValue(fishName + "_bronze") : 0;
 				trophyFish.silver = trophyFishData.containsKey(fishName + "_silver") ? trophyFishData.getIntValue(fishName + "_silver") : 0;
@@ -227,7 +232,6 @@ public class TrophyFishPlugin extends BotPlugin {
 				trophyFish.diamond = trophyFishData.containsKey(fishName + "_diamond") ? trophyFishData.getIntValue(fishName + "_diamond") : 0;
 				trophyFishList.add(trophyFish);
 			}
-
 
 			// 处理奖杯鱼List
 			trophyFishList.forEach(trophyFish -> {
@@ -258,6 +262,8 @@ public class TrophyFishPlugin extends BotPlugin {
 				text = (Text) scene.lookup("#" + name + "_diamond");
 				text.setText(String.valueOf(trophyFish.diamond));
 			});
+			Text totalFishText = (Text) scene.lookup("#totalFish");
+			totalFishText.setText(String.valueOf(totalFish));
 
 			// 发送消息
 			final WritableImage[] writableImage = new WritableImage[1];

@@ -178,6 +178,8 @@ public class HOTMPlugin extends BotPlugin {
 				rankPlusText.setText(plusBuilder.toString());
 				Color rankPlusColor = JavaFXUtils.AWTColorToJavaFXColor(rankPlusColorCode[0].getColor());
 				rankPlusText.setFill(rankPlusColor);
+			}else {
+				rankPlusText.setText("");
 			}
 			Text bracketText1 = (Text) scene.lookup("#rankBracket1");
 			Text bracketText2 = (Text) scene.lookup("#rankBracket2");
